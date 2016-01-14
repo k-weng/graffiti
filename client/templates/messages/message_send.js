@@ -1,5 +1,8 @@
 Template.messageSend.events({
-	"submit .submit-message":function(e){
+	"submit .submit-message": function(e, t){
+
+		console.log(t.data._id);
+
 		e.preventDefault();
 		var input = $("#message-input").val();
 
@@ -11,7 +14,9 @@ Template.messageSend.events({
 		var message = {
 			userId:Meteor.userId(), 
 			text: input,
-			timestamp: Date.now()
+			timestamp: Date.now(),
+			groupId: t.data._id,
+			groupName: Session.get("currentGroup")
 		};
 
 		Meteor.call("messageSend", message, function(err, result){

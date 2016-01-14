@@ -4,5 +4,6 @@
 // 	});
 // }
 if (Groups.find().count() == 0){
-	Groups.insert({name: "Group Test"});
+	Groups.insert({name: "PublicGroup"});
+	Groups.insert({name: "SecondGroup"});
 }

@@ -1,5 +1,10 @@
 <template name = "groupPage">
 	<h1>{{name}}</h1>
 	{{> messageList}}
-	<a href={{pathFor "messageSend"}}>Send</a>
+	<!-- <a href={{pathFor "messageSend"}}>Send</a> -->
+	{{#if currentUser}}
+		{{> messageSend}}
+	{{else}}
+		<p> Login please </p>
+	{{/if}}
 </template>
