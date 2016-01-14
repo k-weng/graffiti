@@ -1,7 +1,5 @@
 <template name = "groupPage">
 	<h1>{{name}}</h1>
 	{{> messageList}}
-	<form class = "submit-message">
-		<input type="text" id = "message-input" placeholder = "comment">
-	</form>
+	<a href={{pathFor "messageSend"}}>Send</a>
 </template>
