@@ -16,7 +16,8 @@ Template.messageSend.events({
 			text: input,
 			timestamp: Date.now(),
 			groupId: t.data._id,
-			groupName: Session.get("currentGroup")
+			groupName: Session.get("currentGroup"),
+			transparency: 1
 		};
 
 		Meteor.call("messageSend", message, function(err, result){
