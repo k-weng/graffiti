@@ -5,7 +5,13 @@ Template.messageSend.events({
 		console.log(input);
 		console.log("submitted");
 		e.stopPropagation();
-		Messages.insert({name:"chris", text: input});
+		Messages.insert({
+			userId:Meteor.userId(), 
+			text: input,
+			timestamp: Date.now()
+		});
+
 		$("#message-input").val("");
+		// Router.go('groupPage',)
 	}
 })
