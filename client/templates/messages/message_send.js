@@ -29,5 +29,6 @@ Template.messageSend.events({
 
 		$("#message-input").val("");
 		// Router.go('groupPage',)
+		// debugger
 	}
-})
+});

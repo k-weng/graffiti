@@ -8,6 +8,15 @@ if (Groups.find().count() == 0){
 	Groups.insert({name: "SecondGroup"});
 }
 
+// if (Messages.find().count() == 0){
+// 	var message = {
+// 			text: "root",
+// 			timestamp: Date.now(),
+// 			groupName: "PublicGroup",
+// 			transparency: 1
+// 	}; 
+// 	Messages.insert(message);
+// }
 //an attempt to change opacity dynamically
 // var maxLife = 30000;
 // var interval = 5000;
