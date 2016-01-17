@@ -43,35 +43,31 @@ Template.messageList.onRendered(function(){
   console.log("autorun");
     if(Session.get('loaded')){
 
-    // var data = Messages.find().fetch();
+    var data = Messages.find().fetch();
    // debugger
     if(data===null){
       data = Messages.find().fetch();
     }
+    console.log('reloaded data 1');
     var nodes = data;
-   // debugger 
-    console.log("in loaded");
-    
+    console.log('reloaded data 2');
+    console.log(data);
     var force = d3.layout.force()
     .gravity(0.05)
     .charge(function(d, i) { return 5; })
     .nodes(nodes)
     .size([width, height]);
-
-    force.start();
-
-    var drag = force.drag();
-
+    console.log("in loaded");
 
     var label = d3.select("#bubble-labels");
     
-    label = label.selectAll(".bubble-label").data(nodes);
+    label = label.selectAll(".bubble-label").data(nodes, nodes._id);
     label.exit().remove();
 
     labelEnter = label.enter().append("a")
           .attr("class", "bubble-label")
           .style("position","absolute")
-          .call(drag);
+          .call(force.drag);
 
     labelEnter.append("div")
       .attr("class", "bubble-label-name")
@@ -90,7 +86,9 @@ Template.messageList.onRendered(function(){
         .style("fill", function(d, i) { return "white"; })
         .style("position","absolute")
         .attr("text",function(d){return d.text;})
-        .call(drag);
+        .call(force.drag);
+
+    force.start();
 
     force.on("tick", function(e) {
       var q = d3.geom.quadtree(nodes),
@@ -110,6 +108,7 @@ Template.messageList.onRendered(function(){
     });
 
     function collide(node) {
+      // console.log("collide");
       var r = node.radius + 16,
           nx1 = node.x - r,
           nx2 = node.x + r,
