@@ -1,6 +1,39 @@
-.logo{
-	font-size: 20pt;
+@import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
+.logo
+{
+	font-size: 30pt;
 	text-decoration: none;
-	font-family: "Helvetica";
+	color: black;
+	font-family: "Cookie";
 	font-style: "bold";
 }
+.bubble-label-name
+{   
+    width: 150px;
+    font-family: "Merriweather";
+    white-space: pre-wrap;
+
+}
+h1
+{
+	font-family:"Bitter";
+}
+a
+{
+	font-family:"Merriweather";
+	text-decoration: none;
+}
+ul
+{
+	list-style-type:none
+}
+.login
+{
+	position: relative;
+	top: -50px;
+    left: 600px;
+}
+/*.circle
+{
+	fill:"white";
+}*/

@@ -9,24 +9,23 @@ Template.messageList.onCreated(function(){
 	});
 });
 
+
 Template.messageList.helpers({
 	messages: function(){
 		return Messages.find();
 	}
 });
 
-Template.messageList.events({
-	'click circle':function(e, template){
-		alert('id: ' + $(e.currentTarget).data("id"));
-	}
-});
+// Template.messageList.events({
+// 	'click circle':function(e, template){
+// 		alert('id: ' + $(e.currentTarget).data("id"));
+// 	}
+// });
 
 Template.messageList.onRendered(function(){
   var width = 960,
-  height = 500;
-
-
-  
+  height = 500,
+  color = d3.scale.category10();
 
   var margin = {top: 0, right: 0, bottom: 0, left: 0}
   // root.radius = 0;
@@ -37,14 +36,20 @@ Template.messageList.onRendered(function(){
       .attr("height", height);
 
   console.log("in onRendered");
+  var data = null;
 
   Deps.autorun(function(){
     // debugger
   console.log("autorun");
     if(Session.get('loaded')){
-    var data = Messages.find().fetch();
+
+    // var data = Messages.find().fetch();
+   // debugger
+    if(data===null){
+      data = Messages.find().fetch();
+    }
     var nodes = data;
-    // debugger 
+   // debugger 
     console.log("in loaded");
     
     var force = d3.layout.force()
@@ -65,20 +70,24 @@ Template.messageList.onRendered(function(){
 
     labelEnter = label.enter().append("a")
           .attr("class", "bubble-label")
-          .style("position","relative")
-          .call(force.drag);
+          .style("position","absolute")
+          .call(drag);
 
     labelEnter.append("div")
       .attr("class", "bubble-label-name")
-      .text(function(d){return d.text});
-
+      .text(function(d){return d.text})
+      .style("color", function(d, i) { return color(i % 3); });;
+    
+    labelEnter.append("div")
+      .attr("class", "bubble-label-name")
+      .text(function(d){return "- " + d.username});
 
     svg.selectAll("circle")
-        .data(nodes)
+        .data(nodes, nodes._id)
       .enter().append("circle")
         .attr("r", function(d) { return d.radius; })
         // .attr("transform","translate(0,5)")
-        .style("fill", function(d, i) { return "red"; })
+        .style("fill", function(d, i) { return "white"; })
         .style("position","absolute")
         .attr("text",function(d){return d.text;})
         .call(drag);
@@ -93,10 +102,10 @@ Template.messageList.onRendered(function(){
       svg.selectAll("circle")
           .attr("cx", function(d) { return d.x;  })
           .attr("cy", function(d) { return d.y; });
-
+      console.log("tick");
       d3.select("#bubble-labels").selectAll(".bubble-label")
-          .style("left", function(d){return ( d.x  + "px" );})
-          .style("top", function(d){return ( d.y  + "px" ); });
+          .style("left", function(d){return ( d.x  - d.radius/2 + "px" );})
+          .style("top", function(d){return (  d.y + 120 - d.radius/2 + "px" ); });
          // debugger
     });
 

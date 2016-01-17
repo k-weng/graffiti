@@ -1,3 +1,5 @@
+var linearScale = d3.scale.linear().domain([0,250]).range([30,300]);
+
 Template.messageSend.events({
 	"submit .submit-message": function(e, t){
 
@@ -17,7 +19,8 @@ Template.messageSend.events({
 			timestamp: Date.now(),
 			groupId: t.data._id,
 			groupName: Session.get("currentGroup"),
-			transparency: 1
+			transparency: 1,
+			radius: linearScale(input.length)
 		};
 
 		Meteor.call("messageSend", message, function(err, result){
