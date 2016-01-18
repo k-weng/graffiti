@@ -44,19 +44,19 @@ function myGraph(el){
 
   this.removeNode = function (doc) {
   var i = 0;
-  var n = findNode(id);
+  var n = findNode(doc._id);
   nodes.splice(findNodeIndex(doc),1);
   update();
   };
 
-  var findNode = function(doc) {
+  var findNode = function(id) {
     for (var i in nodes) {
-      if (nodes[i]["id"] === doc._id) return nodes[i];};
+      if (nodes[i]["id"] === id) return nodes[i];};
   };
 
   var findNodeIndex = function(doc) {
     for (var i=0;i<nodes.length;i++) {
-      if (nodes[i].id==doc_.id){
+      if (nodes[i].id==doc._id){
         return i;
       }
     };
