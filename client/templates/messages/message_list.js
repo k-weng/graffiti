@@ -23,45 +23,86 @@ Template.messageList.helpers({
 // });
 
 Template.messageList.onRendered(function(){
-  var width = 960,
-  height = 500,
-  color = d3.scale.category10();
+var graph,
+    color = d3.scale.category10();
+graph = new myGraph("#vis");
+Messages.find().observe({
+  added: function (doc) {
+    graph.addNode(doc);
+  },
+  removed: function (doc) {
+    graph.removeNode(doc);
+  }
+});
 
-  var margin = {top: 0, right: 0, bottom: 0, left: 0}
-  // root.radius = 0;
-  // root.fixed = true;
+function myGraph(el){
 
-  var svg = d3.select("#vis").append("svg")
-      .attr("width", width)
-      .attr("height", height);
+  this.addNode = function(doc){
+    nodes.push(doc);
+    update();
+  };
 
-  console.log("in onRendered");
-  var data = null;
+  this.removeNode = function (doc) {
+  var i = 0;
+  var n = findNode(id);
+  nodes.splice(findNodeIndex(doc),1);
+  update();
+  };
 
-  Deps.autorun(function(){
-    // debugger
-  console.log("autorun");
-    if(Session.get('loaded')){
+  var findNode = function(doc) {
+    for (var i in nodes) {
+      if (nodes[i]["id"] === doc._id) return nodes[i];};
+  };
 
-    var data = Messages.find().fetch();
-   // debugger
-    if(data===null){
-      data = Messages.find().fetch();
-    }
-    console.log('reloaded data 1');
-    var nodes = data;
-    console.log('reloaded data 2');
-    console.log(data);
-    var force = d3.layout.force()
-    .gravity(0.05)
-    .charge(function(d, i) { return 5; })
-    .nodes(nodes)
-    .size([width, height]);
-    console.log("in loaded");
+  var findNodeIndex = function(doc) {
+    for (var i=0;i<nodes.length;i++) {
+      if (nodes[i].id==doc_.id){
+        return i;
+      }
+    };
+  };
 
-    var label = d3.select("#bubble-labels");
-    
-    label = label.selectAll(".bubble-label").data(nodes, nodes._id);
+  var w = 500,
+      h = 500;
+  var svg = d3.select(el)
+    .append("svg:svg")
+    .attr("width", w)
+    .attr("height", h)
+    .attr("id","svg")
+    .attr("pointer-events", "all")
+    .attr("viewBox","0 0 "+w+" "+h)
+    .attr("perserveAspectRatio","xMinYMid");
+
+  var vis = svg.append('svg:g');
+
+  var force = d3.layout.force();
+
+  var nodes = force.nodes();
+
+  var update = function(){
+  var node = vis.selectAll("g.node")
+    .data(nodes, function(d) { return d._id; });
+
+  var nodeEnter = node.enter().append("g")
+    .attr("class","node")
+    .call(force.drag);
+
+  nodeEnter.append("svg:circle")
+    .attr("r",function(d){return d.radius;})
+    .attr("id", function(d){return "Node;" + d.id})
+    .attr("class","nodeStrokeClass")
+    .style("fill", function(d, i) { return "white"; });
+
+  nodeEnter.append("svg:text")
+    .attr("class","textClass");
+    // .text(function(d){return d.text});
+
+  node.exit().remove();
+
+//LABELS
+var label = d3.select("#bubble-labels");
+  
+  label = label.selectAll(".bubble-label").data(nodes, nodes._id);
     label.exit().remove();
 
     labelEnter = label.enter().append("a")
@@ -78,34 +119,21 @@ Template.messageList.onRendered(function(){
       .attr("class", "bubble-label-name")
       .text(function(d){return "- " + d.username});
 
-    svg.selectAll("circle")
-        .data(nodes, nodes._id)
-      .enter().append("circle")
-        .attr("r", function(d) { return d.radius; })
-        // .attr("transform","translate(0,5)")
-        .style("fill", function(d, i) { return "white"; })
-        .style("position","absolute")
-        .attr("text",function(d){return d.text;})
-        .call(force.drag);
+  force.on("tick", function() {
+    var q = d3.geom.quadtree(nodes),
+        i = 0,
+        n = nodes.length;
 
-    force.start();
+    while (++i < n) q.visit(collide(nodes[i]));
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-    force.on("tick", function(e) {
-      var q = d3.geom.quadtree(nodes),
-          i = 0,
-          n = nodes.length;
-
-      while (++i < n) q.visit(collide(nodes[i]));
-
-      svg.selectAll("circle")
-          .attr("cx", function(d) { return d.x;  })
-          .attr("cy", function(d) { return d.y; });
-      console.log("tick");
-      d3.select("#bubble-labels").selectAll(".bubble-label")
+  d3.select("#bubble-labels").selectAll(".bubble-label")
           .style("left", function(d){return ( d.x  - d.radius/2 + "px" );})
           .style("top", function(d){return (  d.y + 120 - d.radius/2 + "px" ); });
-         // debugger
-    });
+    // svg.selectAll("circle")
+    //     .attr("cx", function(d) { return d.x;  })
+    //     .attr("cy", function(d) { return d.y; });
+  });
 
     function collide(node) {
       // console.log("collide");
@@ -131,6 +159,15 @@ Template.messageList.onRendered(function(){
         return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
       };
     }
-  }
-});
+
+      force
+        .gravity(.05)
+        .size([w, h])
+        .start();
+  };
+
+  update();
+
+}
+
 });

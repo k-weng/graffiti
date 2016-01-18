@@ -11,7 +11,7 @@ Template.messageSend.events({
 		console.log(input);
 		console.log("submitted");
 
-		e.stopPropagation();
+		// e.stopPropagation();
 
 		var message = {
 			userId:Meteor.userId(), 
