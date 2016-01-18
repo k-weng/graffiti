@@ -1,5 +1,6 @@
 Template.groupList.helpers({
 	groups: function(){
-		return Groups.find();
+		var currentUser = Meteor.userId();
+		return Groups.find({createdBy: currentUser});
 	}
 });
