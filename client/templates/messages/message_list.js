@@ -25,6 +25,7 @@ Template.messageList.helpers({
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
+
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {
@@ -49,9 +50,9 @@ function myGraph(el){
   update();
   };
 
-  var findNode = function(id) {
+  var findNode = function(doc) {
     for (var i in nodes) {
-      if (nodes[i]["id"] === id) return nodes[i];};
+      if (nodes[i]["id"] === doc._id) return nodes[i];};
   };
 
   var findNodeIndex = function(doc) {
@@ -78,8 +79,12 @@ function myGraph(el){
   var force = d3.layout.force();
 
   var nodes = force.nodes();
+  
+  var label = d3.select("#bubble-labels");
+
 
   var update = function(){
+
   var node = vis.selectAll("g.node")
     .data(nodes, function(d) { return d._id; });
 
@@ -93,31 +98,22 @@ function myGraph(el){
     .attr("class","nodeStrokeClass")
     .style("fill", function(d, i) { return "white"; });
 
-  nodeEnter.append("svg:text")
-    .attr("class","textClass");
-    // .text(function(d){return d.text});
+  // nodeEnter.append("svg:text")
+  //   .attr("class","textClass")      
+  //   .text(function(d){return d.text})
+  //   .style("width","100px")
+  //   .style("white-space","pre-wrap");
 
+  nodeEnter.append("foreignObject")
+    .attr("class","textClass2")
+    .attr('x', -150/2)
+    .attr('y', -20)
+    .attr("width", 150)
+    .attr("height", 200)
+    .append("xhtml:p")
+    .attr('style','word-wrap: break-word; text-align:center;')
+    .html(function(d){return d.text});
   node.exit().remove();
-
-//LABELS
-var label = d3.select("#bubble-labels");
-  
-  label = label.selectAll(".bubble-label").data(nodes, nodes._id);
-    label.exit().remove();
-
-    labelEnter = label.enter().append("a")
-          .attr("class", "bubble-label")
-          .style("position","absolute")
-          .call(force.drag);
-
-    labelEnter.append("div")
-      .attr("class", "bubble-label-name")
-      .text(function(d){return d.text})
-      .style("color", function(d, i) { return color(i % 3); });;
-    
-    labelEnter.append("div")
-      .attr("class", "bubble-label-name")
-      .text(function(d){return "- " + d.username});
 
   force.on("tick", function() {
     var q = d3.geom.quadtree(nodes),
@@ -127,12 +123,9 @@ var label = d3.select("#bubble-labels");
     while (++i < n) q.visit(collide(nodes[i]));
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-  d3.select("#bubble-labels").selectAll(".bubble-label")
-          .style("left", function(d){return ( d.x  - d.radius/2 + "px" );})
-          .style("top", function(d){return (  d.y + 120 - d.radius/2 + "px" ); });
-    // svg.selectAll("circle")
-    //     .attr("cx", function(d) { return d.x;  })
-    //     .attr("cy", function(d) { return d.y; });
+    d3.select("#bubble-labels").selectAll(".bubble-label")
+      .style("left", function(d){return ( d.x  - d.radius/2 + "px" );})
+      .style("top", function(d){return (  d.y + 120 - d.radius/2 + "px" ); });
   });
 
     function collide(node) {
@@ -148,7 +141,7 @@ var label = d3.select("#bubble-labels");
               y = node.y - quad.point.y,
               l = Math.sqrt(x * x + y * y),
               r = node.radius + quad.point.radius;
-          if (l < r) {
+          if (l < r ) {
             l = (l - r) / l * .5;
             node.x -= x *= l;
             node.y -= y *= l;
