@@ -3,9 +3,7 @@ Template.messageList.onCreated(function(){
   Session.set('loaded',false);
 	self.autorun(function(){
 		Meteor.subscribe('messages', Router.current().params._id, function(){
-      console.log("params id "+Router.current().params._id);
       Session.set('loaded',true);
-      console.log("subscribe 2");
     });
 	});
 });
