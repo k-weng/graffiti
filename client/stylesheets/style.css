@@ -40,10 +40,32 @@ ul
 .login
 {
 	position: relative;
-	top: -50px;
-    left: 600px;
+	margin-right: 200px;
+	float: right;
+}
+.inline
+{
+	display: inline-block;
 }
 /*.circle
 {
 	fill:"white";
 }*/
+
+@keyframes fadeOut { 
+	0% {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.alert {
+	animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	width: 250px;
+	float: right;
+	clear: both;
+	margin-bottom: 5px;
+	pointer-events: auto;
+}

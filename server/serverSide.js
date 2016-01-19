@@ -10,9 +10,8 @@ if (Groups.find().count() == 0){
 
 Meteor.methods({
 	doesUserExist: function (userName) {
-		// console.log(Meteor.users.find().fetch());
-		// console.log(Meteor.users.find({username: userName}).count());
-		// console.log(userName);
+		console.log("doesUserExist is being called.");
+		console.log("The return for the method is " + Meteor.users.find({username: userName}).count());
 		return Meteor.users.find({username: userName}).count();
 	},
 
