@@ -20,7 +20,8 @@ Template.messageSend.events({
 			groupId: t.data._id,
 			groupName: Session.get("currentGroup"),
 			transparency: 1,
-			radius: linearScale(input.length)
+			radius: linearScale(input.length),
+			live: 1
 		};
 
 		Meteor.call("messageSend", message, function(err, result){

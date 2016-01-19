@@ -3,6 +3,7 @@ Template.messageList.onCreated(function(){
   Session.set('loaded',false);
 	self.autorun(function(){
 		Meteor.subscribe('messages', Router.current().params._id, function(){
+      console.log("params id "+Router.current().params._id);
       Session.set('loaded',true);
       console.log("subscribe 2");
     });
@@ -25,7 +26,7 @@ Template.messageList.helpers({
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
-
+var maxLife = (10)*(1000);
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {
@@ -44,12 +45,19 @@ function myGraph(el){
   };
 
   this.removeNode = function (doc) {
-  var i = 0;
-  var n = findNode(doc._id);
-  nodes.splice(findNodeIndex(doc),1);
-  update();
+    var i = 0;
+    var n = findNode(doc._id);
+    nodes.splice(findNodeIndex(doc),1);
+    update();
   };
 
+  var removeNode = function (doc) {
+    var i = 0;
+    var n = findNode(doc._id);
+    nodes.splice(findNodeIndex(doc),1);
+    update();
+  };
+  
   var findNode = function(doc) {
     for (var i in nodes) {
       if (nodes[i]["id"] === doc._id) return nodes[i];};
@@ -96,23 +104,36 @@ function myGraph(el){
     .attr("r",function(d){return d.radius;})
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
-    .style("fill", function(d, i) { return "white"; });
+    .style("fill", function(d, i) { return "white"; })
+    .style("opacity",0);
 
-  // nodeEnter.append("svg:text")
-  //   .attr("class","textClass")      
-  //   .text(function(d){return d.text})
-  //   .style("width","100px")
-  //   .style("white-space","pre-wrap");
+  nodeEnter.append("svg:text")
+    .attr("class","textClass")      
+    .style("fill",function(d,i){return color(i%3);})
+    .text(function(d){return d.text})
+    .transition()
+    .duration(function(d){return d.life})
+    .style("opacity",.5)
+    .each('end',function(d){
+      removeNode(d);
+    });
 
-  nodeEnter.append("foreignObject")
-    .attr("class","textClass2")
-    .attr('x', -150/2)
-    .attr('y', -20)
-    .attr("width", 150)
-    .attr("height", 200)
-    .append("xhtml:p")
-    .attr('style','word-wrap: break-word; text-align:center;')
-    .html(function(d){return d.text});
+//foreign object solution
+  // nodeEnter.append("foreignObject")
+  //   .attr("class","textClass2")
+  //   .attr('x', -150/2)
+  //   .attr('y', -20)
+  //   .attr("width", 150)
+  //   .attr("height", 200)
+  //   .append("xhtml:p")
+  //   .attr('style','word-wrap: break-word; text-align:center;')
+  //   .style("color",function(d,i){return color(i%3);})
+  //   .html(function(d){return d.text})
+  //   .transition()
+  //   .duration(500)
+  //   .style("opacity",0);
+    
+
   node.exit().remove();
 
   force.on("tick", function() {
