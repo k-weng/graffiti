@@ -4,10 +4,18 @@
 // 	});
 // }
 if (Groups.find().count() == 0){
-	Groups.insert({name: "PublicGroup"});
-	Groups.insert({name: "SecondGroup"});
+	Groups.insert({name: "PublicGroup", people: []});
+	Groups.insert({name: "SecondGroup", people: []});
 }
 
+Meteor.methods({
+	doesUserExist: function (userName) {
+		console.log(Meteor.users.find().fetch());
+		console.log(Meteor.users.find({username: userName}).count());
+		console.log(userName);
+		return Meteor.users.find({username: userName}).count();
+	}
+});
 // if (Messages.find().count() == 0){
 // 	var message = {
 // 			text: "root",
