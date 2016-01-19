@@ -1,4 +1,5 @@
 <template name = "groupPage">
+	{{#if currentUser}}
 	<h1>{{name}}</h1>
 	{{#if ownerOf}}
 		<p>{{> deleteGroup}}</p>
@@ -6,7 +7,6 @@
 	<p class = "add-user">{{> addUser}}</p>
 	{{> messageList}}
 	<!-- <a href={{pathFor "messageSend"}}>Send</a> -->
-	{{#if currentUser}}
 		{{> messageSend}}
 	{{else}}
 		<p> Login please </p>

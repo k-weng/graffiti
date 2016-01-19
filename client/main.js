@@ -1,9 +1,7 @@
 // Meteor.subscribe('messages');
 Meteor.subscribe('groups');
 
-Meteor.subscribe('allUsers');
-
 Meteor.startup(function(){
-	Session.set("currentGroup", "PublicGroup" );
+	Session.set("currentGroup", this.name);
 });
 
