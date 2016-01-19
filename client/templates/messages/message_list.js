@@ -17,16 +17,18 @@ Template.messageList.helpers({
 	}
 });
 
-// Template.messageList.events({
-// 	'click circle':function(e, template){
-// 		alert('id: ' + $(e.currentTarget).data("id"));
-// 	}
-// });
+Template.messageList.events({
+	'click .textClass':function(e, template){
+    console.log($(e.currentTarget).data("id"));
+    Meteor.call("messageVote",$(e.currentTarget).data("id"));
+    // alert('id: ' + $(e.currentTarget).("votes"));
+	}
+});
 
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
-var maxLife = (10)*(1000);
+var maxLife = (5)*(2)*(1000);
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {
@@ -34,10 +36,41 @@ Messages.find().observe({
   },
   removed: function (doc) {
     graph.removeNode(doc);
+  },
+  changed: function(updated, old){
+    graph.updateNode(updated,old);
   }
 });
 
 function myGraph(el){
+
+  this.updateNode = function(updated, old){
+    console.log("updateNode"); 
+    console.log(old._id);
+    var n = findNode(old._id);
+    // // debugger
+    n.votes = updated.votes;
+    // nodes.splice(findNodeIndex(n),1);
+    // nodes.push(n);
+//     debugger
+//     var node = vis.selectAll("g.node")
+//      .data(nodes, function(d) { return d._id; })
+//      .attr("id",function(d){return "node-"+ d._id});
+// // debugger
+//     node.transition().duration(100);
+//     node.style("opacity",1);
+// debugger
+    // d3.select("#node-"+old._id)
+    // .transition()
+    // .duration(100)
+    // .style("fill","red");
+    // .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
+    // .transition()
+    // .duration(function(d){console.log("clicked");return 5000;})
+    // .each('end',function(d){
+    //   removeNode(d);
+    // });
+  };
 
   this.addNode = function(doc){
     nodes.push(doc);
@@ -58,9 +91,9 @@ function myGraph(el){
     update();
   };
   
-  var findNode = function(doc) {
+  var findNode = function(id) {
     for (var i in nodes) {
-      if (nodes[i]["id"] === doc._id) return nodes[i];};
+      if (nodes[i]._id === id) return nodes[i];};
   };
 
   var findNodeIndex = function(doc) {
@@ -94,7 +127,8 @@ function myGraph(el){
   var update = function(){
 
   var node = vis.selectAll("g.node")
-    .data(nodes, function(d) { return d._id; });
+    .data(nodes, function(d) { return d._id; })
+    .attr("id",function(d){return "node-"+ d._id});
 
   var nodeEnter = node.enter().append("g")
     .attr("class","node")
@@ -111,11 +145,19 @@ function myGraph(el){
     .attr("class","textClass")      
     .style("fill",function(d,i){return color(i%3);})
     .text(function(d){return d.text})
+    .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
     .transition()
     .duration(function(d){return d.life})
-    .style("opacity",.5)
+    .style("opacity",0)
     .each('end',function(d){
       removeNode(d);
+    })
+    .attr("data-id", function(d){
+        return d._id;
+    })
+    .attr("id", function(d){
+        console.log(d.text + " " + d._id + " add id");
+        return "node-"+d._id;
     });
 
 //foreign object solution
@@ -135,6 +177,7 @@ function myGraph(el){
     
 
   node.exit().remove();
+
 
   force.on("tick", function() {
     var q = d3.geom.quadtree(nodes),
