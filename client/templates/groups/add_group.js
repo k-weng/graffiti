@@ -10,6 +10,7 @@ Template.addGroup.events({
 				people: [currentUser],
 				createdBy: currentUser
 			});
+			console.log(Groups.findOne({name: groupName, createdBy: currentUser}));
 			console.log("New group added");
 
 			

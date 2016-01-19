@@ -2,7 +2,7 @@ Template.messageList.onCreated(function(){
 	var self = this;
   Session.set('loaded',false);
 	self.autorun(function(){
-		Meteor.subscribe('messages', Session.get("currentGroup"),function(){
+		Meteor.subscribe('messages', Router.current().params._id, function(){
       Session.set('loaded',true);
       console.log("subscribe 2");
     });
