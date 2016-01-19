@@ -3,7 +3,27 @@ Meteor.publish('groups',function(){
 });
 
 Meteor.publish('messages',function(group){
-	return Messages.find({groupName:group});
+	console.log("publications **** " + group);
+	var weight = (-15)*(60)*(1000);
+	var maxLife = (1)*(5)*(1000);
+	// Messages.aggregate(
+	// [{$project:
+	// 	{
+	// 		life:{$add: ["$life", [{ $multiply: ["$votes", (-15)*(60)*(1000)]} ] ]}
+	// 	}
+	// }
+	// ]);
+	Messages.find().forEach(function(data){
+		console.log(maxLife - (Date.now()-data.timestamp));
+		var now = Date.now();
+		Messages.update({_id:data._id},
+			{$set:{life: maxLife - (now - data.timestamp) + weight*data.votes }
+		});
+	});
+
+	Messages.remove({life:{$lt:0}});
+
+	return Messages.find({groupId:group},{life:{$gt:0}});
 });
 
 //Meteor.publish("allUsers", function () {

@@ -3,6 +3,7 @@ Template.messageList.onCreated(function(){
   Session.set('loaded',false);
 	self.autorun(function(){
 		Meteor.subscribe('messages', Router.current().params._id, function(){
+      console.log("params id "+Router.current().params._id);
       Session.set('loaded',true);
       console.log("subscribe 2");
     });
@@ -25,7 +26,7 @@ Template.messageList.helpers({
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
-
+var maxLife = (10)*(1000);
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {
@@ -111,7 +112,7 @@ function myGraph(el){
     .style("fill",function(d,i){return color(i%3);})
     .text(function(d){return d.text})
     .transition()
-    .duration(5000)
+    .duration(function(d){return d.life})
     .style("opacity",.5)
     .each('end',function(d){
       removeNode(d);
