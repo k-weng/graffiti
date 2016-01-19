@@ -96,7 +96,7 @@ function myGraph(el){
     .attr("r",function(d){return d.radius;})
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
-    .style("fill", function(d, i) { return "red"; });
+    .style("fill", function(d, i) { return "white"; });
 
   // nodeEnter.append("svg:text")
   //   .attr("class","textClass")      
@@ -106,12 +106,13 @@ function myGraph(el){
 
   nodeEnter.append("foreignObject")
     .attr("class","textClass2")
-    .style("position","relative")
-    .style("left", 20)
-    .style("top", 20)   
-    .text(function(d){return d.text})
-    .append("p");
-
+    .attr('x', -150/2)
+    .attr('y', -20)
+    .attr("width", 150)
+    .attr("height", 200)
+    .append("xhtml:p")
+    .attr('style','word-wrap: break-word; text-align:center;')
+    .html(function(d){return d.text});
   node.exit().remove();
 
   force.on("tick", function() {
@@ -140,7 +141,7 @@ function myGraph(el){
               y = node.y - quad.point.y,
               l = Math.sqrt(x * x + y * y),
               r = node.radius + quad.point.radius;
-          if (l < r) {
+          if (l < r ) {
             l = (l - r) / l * .5;
             node.x -= x *= l;
             node.y -= y *= l;

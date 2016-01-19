@@ -21,7 +21,7 @@
     font-family: "Merriweather";
     color: "white";
     white-space: pre-wrap;
-    position: relative;
+    /*text-anchor:middle;*/
 
 }
 h1
