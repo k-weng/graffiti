@@ -79,10 +79,11 @@ function myGraph(el){
   var force = d3.layout.force();
 
   var nodes = force.nodes();
+  
+  var label = d3.select("#bubble-labels");
 
 
   var update = function(){
-  var label = d3.select("#bubble-labels");
 
   var node = vis.selectAll("g.node")
     .data(nodes, function(d) { return d._id; });
@@ -97,28 +98,19 @@ function myGraph(el){
     .attr("class","nodeStrokeClass")
     .style("fill", function(d, i) { return "red"; });
 
-  nodeEnter.append("svg:text")
-    .attr("class","textClass")      
-    .text(function(d){return d.text});
+  // nodeEnter.append("svg:text")
+  //   .attr("class","textClass")      
+  //   .text(function(d){return d.text})
+  //   .style("width","100px")
+  //   .style("white-space","pre-wrap");
 
-  label = label.selectAll(".bubble-label")
-    .data(nodes, function(d) { return d._id; });
-
-  label.exit().remove();
-
-  labelEnter = label.enter().append("a")
-    .attr("class", "bubble-label")
-    .style("position","absolute")
-    .call(force.drag);
-
-  labelEnter.append("div")
-    .attr("class", "bubble-label-name")
+  nodeEnter.append("foreignObject")
+    .attr("class","textClass2")
+    .style("position","relative")
+    .style("left", 20)
+    .style("top", 20)   
     .text(function(d){return d.text})
-    .style("color", function(d, i) { return color(i % 3); });;
-  
-  labelEnter.append("div")
-    .attr("class", "bubble-label-name")
-    .text(function(d){return "- " + d.username});
+    .append("p");
 
   node.exit().remove();
 

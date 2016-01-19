@@ -3,15 +3,25 @@
 {
 	font-size: 30pt;
 	text-decoration: none;
-	color: black;
+	color: "black";
 	font-family: "Cookie";
 	font-style: "bold";
 }
 .textClass
 {   
+    width: 10px;
+    font-family: "Merriweather";
+    color: "white";
+    white-space: pre-wrap;
+
+}
+.textClass2
+{   
     width: 150px;
     font-family: "Merriweather";
+    color: "white";
     white-space: pre-wrap;
+    position: relative;
 
 }
 h1
