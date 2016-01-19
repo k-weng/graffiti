@@ -3,6 +3,8 @@
 	<h1>{{name}}</h1>
 	{{#if ownerOf}}
 		<p>{{> deleteGroup}}</p>
+	{{else}}
+		<p>{{> quitGroup}}</p>
 	{{/if}}
 	<p class = "add-user">{{> addUser}}</p>
 	{{> messageList}}

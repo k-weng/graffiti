@@ -3,7 +3,7 @@ Meteor.publish('groups',function(){
 });
 
 Meteor.publish('messages',function(group){
-	return Messages.find({groupName:group});
+	return Messages.find({groupId:group});
 });
 
 //Meteor.publish("allUsers", function () {

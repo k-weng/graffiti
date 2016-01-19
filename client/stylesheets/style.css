@@ -40,8 +40,12 @@ ul
 .login
 {
 	position: relative;
-	top: -50px;
-    left: 600px;
+	margin-right: 200px;
+	float: right;
+}
+.inline
+{
+	display: inline-block;
 }
 /*.circle
 {

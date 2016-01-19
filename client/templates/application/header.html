@@ -1,4 +1,8 @@
 <template name="header">
-	<a class="logo" href= "{{pathFor 'groupList'}}">Fade</a>
-	<p class = "login">{{> loginButtons}}</p>
+	<div class="inline">
+		<a class="logo" href= "{{pathFor 'groupList'}}">Fade</a>
+	</div>
+	<div class="inline login">
+		<p>{{> loginButtons}}</p>
+	</div>
 </template>
