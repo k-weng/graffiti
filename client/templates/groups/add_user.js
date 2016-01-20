@@ -26,7 +26,7 @@ Template.addUser.events({
 				Meteor.call('addUser', newUser, groupId);
 				console.log("New user added");
 				console.log(Groups.find().fetch());
-			} else if (result === 0 && lengths) {
+			} else if (result === 0 && length) {
 				Session.set('addUserMessages', "User does not exist");
 			}
 		});
