@@ -5,13 +5,9 @@ h1
 	margin-top:5px;
 	padding-bottom: 0px;
 }
-.groupTop
-{
-	display: block;	
-}
 .groupName
 {
-	position:fixed;
+	/*position:fixed;*/
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-left: 19px;
@@ -46,7 +42,7 @@ h1
 }
 .submit-message
 {
-	position:fixed;
+	/*position:fixed;*/
 	display: block;
 	margin: 5px;
 }
@@ -64,8 +60,7 @@ input
 }
 form
 {
-	position:fixed;
-	display:block;
+	/*position:fixed;*/
 	margin:5px;
 }
 .dropdown
@@ -121,7 +116,7 @@ a:active {
 h1
 {
 	font-family:"Bitter";
-	/*background-color: red;*/
+	background-color: red;
 	width:100%;
 }
 a
@@ -139,6 +134,10 @@ ul
 	margin-right: 200px;
 	float: right;
 }
+/*.circle
+{
+	fill:"white";
+}*/
 
 .tooltip {	
     position: fixed;	
@@ -158,6 +157,9 @@ ul
     /*overflow:scroll;			*/
 }
 
-.content {
+#main {
 	padding-top: 50px;
+}
+.content: {
+	padding-top: 100px;
 }

@@ -147,7 +147,7 @@ function myGraph(el){
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
     // .style("fill", function(d, i) { return "red"; })
-    .style("opacity",.5)
+    .style("opacity",0)
     .attr("id", function(d){
         console.log(d.text + " " + d._id + " add id");
         return "circle-"+d._id;
