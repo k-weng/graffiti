@@ -139,10 +139,6 @@ ul
 	margin-right: 200px;
 	float: right;
 }
-/*.circle
-{
-	fill:"white";
-}*/
 
 .tooltip {	
     position: fixed;	
@@ -162,6 +158,6 @@ ul
     /*overflow:scroll;			*/
 }
 
-#main {
+.content {
 	padding-top: 50px;
 }
