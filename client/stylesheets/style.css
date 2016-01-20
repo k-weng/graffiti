@@ -1,11 +1,31 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 .logo
 {
 	font-size: 30pt;
 	text-decoration: none;
 	color: "black";
-	font-family: "Cookie";
+	font-family: "Fjalla One";
 	font-style: "bold";
+}
+a:link {
+    text-decoration: none;
+    color: "black";
+}
+
+a:visited {
+    text-decoration: none;
+    color: "black";
+}
+
+a:hover {
+    text-decoration: none;
+    color: "black";
+}
+
+a:active {
+    text-decoration: none;
+    color: "black";
 }
 .textClass
 {   
@@ -72,10 +92,13 @@ ul
 	pointer-events: auto;
 }
 .tooltip {	
-    position: relative;			
+    position: fixed;	
+    top: 100;
+    left: 2000;	
+    bottom:100;	
     /*text-align: center;			*/
     width: 200px;					
-    height: 100px;					
+    height: 100%;					
     padding: 2px;				
     font: 20px sans-serif;	
     /*color:"red";	*/

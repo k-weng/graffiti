@@ -147,7 +147,7 @@ function myGraph(el){
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
     // .style("fill", function(d, i) { return "red"; })
-    .style("opacity",0)
+    .style("opacity",.5)
     .attr("id", function(d){
         console.log(d.text + " " + d._id + " add id");
         return "circle-"+d._id;
@@ -158,6 +158,7 @@ function myGraph(el){
   nodeEnter.append("svg:text")
     .attr("class","textClass")      
     .style("fill",function(d,i){return color(i%3);})
+    .style("text-anchor","middle")
     .text(function(d){
       if(d.text.length>20){
         console.log(d.text.length);
@@ -192,9 +193,7 @@ function myGraph(el){
           .style("opacity", .9)
           .style("background-color","red");    
       div.html(d.text)  
-          .style("font-family","Merriweather")
-          .style("left", d.x + "px")   
-          .style("top", d.y + "px");  
+          .style("font-family","Merriweather");
     })          
      .on("mouseout", function(d) {   
        div.transition()    
@@ -257,7 +256,6 @@ function myGraph(el){
     
 
   node.exit().remove();
-
 
   force.on("tick", function() {
     var q = d3.geom.quadtree(nodes),

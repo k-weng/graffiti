@@ -1,4 +1,4 @@
-var linearScale = d3.scale.linear().domain([0,250]).range([30,300]);
+var linearScale = d3.scale.linear().domain([0,20]).range([10,60]);
 
 Template.messageSend.events({
 	"submit .submit-message": function(e, t){
@@ -12,7 +12,13 @@ Template.messageSend.events({
 		console.log("submitted");
 
 		// e.stopPropagation();
-
+		var r = 0;
+		if(input.length<20){
+			r = linearScale(input.length);
+		}
+		else{
+			r = 60;
+		}
 		var message = {
 			userId:Meteor.userId(), 
 			text: input,
@@ -20,7 +26,7 @@ Template.messageSend.events({
 			groupId: t.data._id,
 			groupName: Session.get("currentGroup"),
 			transparency: 1,
-			radius: linearScale(input.length),
+			radius:r,
 			live: 1
 		};
 
