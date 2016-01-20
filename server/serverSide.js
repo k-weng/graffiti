@@ -15,10 +15,25 @@ Meteor.methods({
 		return Meteor.users.find({username: userName}).count();
 	},
 
+	messageSend: function(message){
+		var maxLife = (5)*(60)*(1000);
+		var newMsg = _.extend(message,{
+			uderID: Meteor.user()._id,
+			username: Meteor.user().username,
+			votes:0,
+			life:maxLife,
+			// radius:linearScale(message.text.length()),
+			voters:[]
+			// groupName: Groups.find({_id:message.groupId})
+		});
+		var id = Messages.insert(newMsg);
+		return {_id: id};
+	},
+
 	messageVote: function(msgId){
 		// console.log(Messages.find({id:msgId}));
 		var weight = (15)*(60)*(1000);
-		var maxLife = (2)*(5)*(1000);
+		var maxLife = (5)*(60)*(1000);
 		var now = Date.now();
 		console.log('messageVote');
 		console.log(msgId);
@@ -28,7 +43,9 @@ Meteor.methods({
 		console.log(maxLife - (Date.now()-data.timestamp));
 		var now = Date.now();
 		Messages.update({_id:data._id},
-			{$set:{life: maxLife - (now - data.timestamp) + weight*data.votes }
+			{
+				$set:{life: maxLife - (now - data.timestamp) + weight*data.votes},
+				$inc:{votes:1}
 		});
 	});
 		// console.log(Messages.find({id:msgId}));

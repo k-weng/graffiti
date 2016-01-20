@@ -41,6 +41,7 @@ Template.addUser.onCreated(function() {
 });
 
 Template.addUser.helpers({
+
 	amessage: function() {
 		console.log("In message helper, session is " + Session.get('addUserMessages'));
 		return Session.get('addUserMessages');

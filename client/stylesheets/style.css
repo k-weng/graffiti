@@ -1,11 +1,31 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 .logo
 {
 	font-size: 30pt;
 	text-decoration: none;
 	color: "black";
-	font-family: "Cookie";
+	font-family: "Fjalla One";
 	font-style: "bold";
+}
+a:link {
+    text-decoration: none;
+    color: "black";
+}
+
+a:visited {
+    text-decoration: none;
+    color: "black";
+}
+
+a:hover {
+    text-decoration: none;
+    color: "black";
+}
+
+a:active {
+    text-decoration: none;
+    color: "black";
 }
 .textClass
 {   
@@ -13,14 +33,16 @@
     font-family: "Merriweather";
     color: "white";
     white-space: pre-wrap;
-
+    cursor: pointer; cursor: hand; 
+    
 }
 .textClass2
 {   
     width: 150px;
-    font-family: "Merriweather";
+    font-family: "Cookie";
     color: "white";
     white-space: pre-wrap;
+    cursor: pointer; cursor: hand; 
     /*text-anchor:middle;*/
 
 }
@@ -51,3 +73,38 @@ ul
 {
 	fill:"white";
 }*/
+
+@keyframes fadeOut { 
+	0% {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.alert {
+	animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	width: 250px;
+	float: right;
+	clear: both;
+	margin-bottom: 5px;
+	pointer-events: auto;
+}
+.tooltip {	
+    position: fixed;	
+    top: 100;
+    left: 2000;	
+    bottom:100;	
+    /*text-align: center;			*/
+    width: 200px;					
+    height: 100%;					
+    padding: 2px;				
+    font: 20px sans-serif;	
+    /*color:"red";	*/
+  	overflow: hidden;
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;
+    /*overflow:scroll;			*/
+}
