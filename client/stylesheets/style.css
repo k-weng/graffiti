@@ -157,9 +157,10 @@ ul
     /*overflow:scroll;			*/
 }
 
-#main {
-	padding-top: 50px;
-}
-.content: {
+.content {
 	padding-top: 100px;
+}
+
+.spinner {
+    padding-top: 100px;
 }
