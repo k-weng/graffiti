@@ -1,5 +1,5 @@
 Template.nav.events({
-	'click button':function(e){
+	'click #signOut':function(e){
 		AccountsTemplates.logout();
 	}
 });
