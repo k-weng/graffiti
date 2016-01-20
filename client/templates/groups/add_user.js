@@ -30,8 +30,6 @@ Template.addUser.events({
 				Session.set('addUserMessages', "User does not exist");
 			}
 		});
-
-		
 	}
 });
 

@@ -1,15 +1,29 @@
 <template name = "groupPage">
+
 	{{#if currentUser}}
-	<h1>{{name}}</h1>
-	{{#if ownerOf}}
-		<p>{{> deleteGroup}}</p>
-	{{else}}
-		<p>{{> quitGroup}}</p>
-	{{/if}}
-	<p class = "add-user">{{> addUser}}</p>
-	
+	<h1 class="groupName">{{name}}
+	<small>
+		<span class = "btn-group"> 
+			<div class="dropdown">
+			  <button class="btn btn-primary dropdown-toggle settings" type="image" src="settings.png" data-toggle="dropdown"><img src = "/settings.png"/>
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			  	{{#if ownerOf}}
+					<li>{{> deleteGroup}}</li>
+				{{else}}
+					<li>{{> quitGroup}}</li>
+				{{/if}}
+				<li class = "add-user">{{> addUser}}</li>
+			  </ul>
+			</div>
+		</span>
+	</small>
+	<span class = "groupTop">
+	{{> messageSend}}
+	</span>
+	</h1>
+
 	<!-- <a href={{pathFor "messageSend"}}>Send</a> -->
-		{{> messageSend}}
 	{{else}}
 		<p> Login please </p>
 	{{/if}}
