@@ -3,7 +3,9 @@ Template.messageList.onCreated(function(){
   Session.set('loaded',false);
 	self.autorun(function(){
 		Meteor.subscribe('messages', Router.current().params._id, function(){
+      console.log("params id "+Router.current().params._id);
       Session.set('loaded',true);
+      console.log("subscribe 2");
     });
 	});
 });
@@ -19,14 +21,14 @@ Template.messageList.events({
 	'click .textClass':function(e, template){
     console.log($(e.currentTarget).data("id"));
     Meteor.call("messageVote",$(e.currentTarget).data("id"));
-    // alert('id: ' + $(e.currentTarget).("votes"));
+    alert('id: ' + $(e.currentTarget).data("votes"));
 	}
 });
 
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
-var maxLife = (5)*(2)*(1000);
+var maxLife = (5)*(60)*(1000);
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {
@@ -41,6 +43,11 @@ Messages.find().observe({
 });
 
 function myGraph(el){
+  // Define the div for the tooltip
+  var div = d3.select("#tool")
+    .attr("class", "tooltip")       
+    .style("opacity", 0);
+
 
   this.updateNode = function(updated, old){
     console.log("updateNode"); 
@@ -48,6 +55,7 @@ function myGraph(el){
     var n = findNode(old._id);
     // // debugger
     n.votes = updated.votes;
+    n.life = updated.life;
     // nodes.splice(findNodeIndex(n),1);
     // nodes.push(n);
 //     debugger
@@ -58,16 +66,16 @@ function myGraph(el){
 //     node.transition().duration(100);
 //     node.style("opacity",1);
 // debugger
-    // d3.select("#node-"+old._id)
-    // .transition()
-    // .duration(100)
-    // .style("fill","red");
-    // .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
-    // .transition()
-    // .duration(function(d){console.log("clicked");return 5000;})
-    // .each('end',function(d){
-    //   removeNode(d);
-    // });
+    d3.select("#node-"+old._id)
+    .transition()
+    .duration(10)
+    .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
+    .transition()
+    .duration(function(d){console.log("clicked");return d.life;})
+    .style("opacity",1)
+    .each('end',function(d){
+      removeNode(d);
+    });
   };
 
   this.addNode = function(doc){
@@ -102,8 +110,8 @@ function myGraph(el){
     };
   };
 
-  var w = 500,
-      h = 500;
+  var w = 1000,
+      h = 1000;
   var svg = d3.select(el)
     .append("svg:svg")
     .attr("width", w)
@@ -119,14 +127,16 @@ function myGraph(el){
 
   var nodes = force.nodes();
   
-  var label = d3.select("#bubble-labels");
+  // var label = d3.select("#bubble-labels");
 
 
   var update = function(){
 
   var node = vis.selectAll("g.node")
-    .data(nodes, function(d) { return d._id; })
-    .attr("id",function(d){return "node-"+ d._id});
+    .data(nodes, function(d) { return d._id; });
+
+  // var labels = d3.selectAll(".bubble-label")
+  //   .data(nodes, function(d) { return d._id; });
 
   var nodeEnter = node.enter().append("g")
     .attr("class","node")
@@ -136,13 +146,28 @@ function myGraph(el){
     .attr("r",function(d){return d.radius;})
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
-    .style("fill", function(d, i) { return "white"; })
-    .style("opacity",0);
+    // .style("fill", function(d, i) { return "red"; })
+    .style("opacity",0)
+    .attr("id", function(d){
+        console.log(d.text + " " + d._id + " add id");
+        return "circle-"+d._id;
+    });
 
+
+//the native solution
   nodeEnter.append("svg:text")
     .attr("class","textClass")      
     .style("fill",function(d,i){return color(i%3);})
-    .text(function(d){return d.text})
+    .text(function(d){
+      if(d.text.length>20){
+        console.log(d.text.length);
+        return "\"" + d.text.substring(0,21) + "...\"";
+      }
+      else{
+        return "\"" + d.text + "\"";
+      }
+    })
+    // .call(wrap,30)
     .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
     .transition()
     .duration(function(d){return d.life})
@@ -157,6 +182,63 @@ function myGraph(el){
         console.log(d.text + " " + d._id + " add id");
         return "node-"+d._id;
     });
+
+    node.on("click",function(d){
+      console.log(d.text);
+    })
+    .on("mouseover", function(d) {    
+      div.transition()    
+          .duration(200)    
+          .style("opacity", .9)
+          .style("background-color","red");    
+      div.html(d.text)  
+          .style("font-family","Merriweather")
+          .style("left", d.x + "px")   
+          .style("top", d.y + "px");  
+    })          
+     .on("mouseout", function(d) {   
+       div.transition()    
+        .duration(500)    
+        .style("opacity", 0); 
+      });
+
+  // for(var i = 0; i<nodes.length; i++){
+  //   console.log(nodes[i]._id + " nodes");
+  //   d3plus.textwrap()
+  //     .container(d3.select("#circle-"+nodes[i]._id))
+  //     .resize(true)
+  //     .draw();
+  // }
+
+// the foreign solution
+  // nodeEnter.append("foreignObject")
+  //   .attr("width", function(d){return d.radius*2 + 5;} )
+  //   .attr("height", function(d){return d.radius*2 + 5;} )
+  //   .attr("x",function(d){return -d.radius + 5 + "";})
+  //   .attr("y",function(d){return -d.radius + 5 + "";})
+  //   // .transition()
+  //   // .duration(5000)
+  //   // .style("opacity",.5)
+  //   .append("xhtml:body")
+  //   .style("font", "14px 'Helvetica Neue'")
+  //   .html(function(d){return "<p>"+d.text +"</p>";});
+    // .transition()
+    // .duration(5000)
+    // .style("opacity",.5);
+    // .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
+    // .transition()
+    // .duration(function(d){return 5000})
+    // .style("opacity",0)
+    // .each('end',function(d){
+    //   removeNode(d);
+    // })
+    // .attr("data-id", function(d){
+    //     return d._id;
+    // })
+    // .attr("id", function(d){
+    //     console.log(d.text + " " + d._id + " add id");
+    //     return "node-"+d._id;
+    // });
 
 //foreign object solution
   // nodeEnter.append("foreignObject")
@@ -184,10 +266,6 @@ function myGraph(el){
 
     while (++i < n) q.visit(collide(nodes[i]));
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-    d3.select("#bubble-labels").selectAll(".bubble-label")
-      .style("left", function(d){return ( d.x  - d.radius/2 + "px" );})
-      .style("top", function(d){return (  d.y + 120 - d.radius/2 + "px" ); });
   });
 
     function collide(node) {
@@ -214,6 +292,7 @@ function myGraph(el){
         return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
       };
     }
+
 
       force
         .gravity(.05)

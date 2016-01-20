@@ -13,14 +13,16 @@
     font-family: "Merriweather";
     color: "white";
     white-space: pre-wrap;
-
+    cursor: pointer; cursor: hand; 
+    
 }
 .textClass2
 {   
     width: 150px;
-    font-family: "Merriweather";
+    font-family: "Cookie";
     color: "white";
     white-space: pre-wrap;
+    cursor: pointer; cursor: hand; 
     /*text-anchor:middle;*/
 
 }
@@ -69,3 +71,18 @@ ul
 	margin-bottom: 5px;
 	pointer-events: auto;
 }
+.tooltip {	
+    position: relative;			
+    /*text-align: center;			*/
+    width: 200px;					
+    height: 100px;					
+    padding: 2px;				
+    font: 20px sans-serif;	
+    /*color:"red";	*/
+  	overflow: hidden;
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;
+    /*overflow:scroll;			*/
+}
+

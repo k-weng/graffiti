@@ -4,8 +4,8 @@ Meteor.publish('groups',function(){
 
 Meteor.publish('messages',function(group){
 	console.log("publications **** " + group);
-	var weight = (-15)*(60)*(1000);
-	var maxLife = (2)*(5)*(1000);
+	var weight = (15)*(60)*(1000);
+	var maxLife = (5)*(60)*(1000);
 	// Messages.aggregate(
 	// [{$project:
 	// 	{
