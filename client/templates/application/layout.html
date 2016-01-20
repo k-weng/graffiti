@@ -1,18 +1,7 @@
 <template name="layout">
 	<div class="container">
 		{{> yield region='nav'}}
-		{{#unless currentUser}}
-		<div class="col-md-3">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						{{> atForm}}
-					</div>
-				</div>
-			</div>
-		</div>
-		{{/unless}}
-		<div class="row" id="main">
+		<div class="row content">
 			<div class="col-md-3">
 				{{> yield}}
 			</div>
