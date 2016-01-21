@@ -33,11 +33,10 @@ input.form-control
 .groupName
 {
 	/*position:fixed;*/
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-left: 19px;
+	padding-left: 20px;
 
 }
+
 #signOut
 {
 /*	margin:5px;*/
@@ -46,28 +45,29 @@ svg
 {
 	height:50%;
 }
-.btn-group
-{
-	display: inline-block;
-}
+
 .settings
 {
 	height:30px;
 	width: 50px;
 	/*position:fixed;*/
-	margin-bottom: 15px;
-	display: inline-block;
+	/*margin-bottom: 15px;*/
+	/*display: inline-block;*/
 	/*right:0px;*/
 }
 .dropdown-menu
 {
 	/*right:0px;*/
-	padding: 0px 0px 0px 0px;
+	padding: 0px;
+    width: 350px;
 }
 .dropdown
 {
-	padding:0px;
-	margin:0px;
+	/*padding:0px;*/
+	/*margin:0px;*/
+    height: 30px;
+    position: relative;
+    top: 22px;
 }
 .submit-message
 {
@@ -93,10 +93,6 @@ div
     display: block;
 }
 
-.dropdown
-{
-	margin:5px;
-}
 .logonav
 {
 	font-size: 20pt;
@@ -209,8 +205,9 @@ ul
     font-weight: 300;
 }
 
-.input-group {
-    width: auto;
+#wall {
+    width: 210px;
+    padding-right: 0px;
 }
 .add-user{
     margin:5px;
