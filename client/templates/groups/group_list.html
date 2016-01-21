@@ -1,10 +1,6 @@
 <template name = "groupList">
+	{{#if currentUser}}
 	<div class="row">
-	{{#unless currentUser}}
-  		
-  	{{else}}
-  	
-
 		<h1 >Your Walls
 		<small>
 			<span class = "btn-group"> 
@@ -24,6 +20,6 @@
 				<li>{{> group}}</li>
 			{{/each}}
 		</ul>
-	{{/unless}}
 	</div>
+	{{/if}}
 </template>
