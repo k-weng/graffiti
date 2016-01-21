@@ -62,12 +62,7 @@ input
 	box-shadow: none;
 	font-family: "Bitter";
 }
-form
-{
-	position:fixed;
-	display:block;
-	margin:5px;
-}
+
 .dropdown
 {
 	margin:5px;
