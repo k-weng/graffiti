@@ -7,6 +7,6 @@ Template.nav.events({
 
 Template.nav.helpers({
 	username: function() {
-		return Meteor.user().username;
+		if(Meteor.user()) return Meteor.user().username;
 	}
 })

@@ -1,14 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+<<<<<<< HEAD
+
+.groupTop
+{
+	display: block;
+}
+
 input.form-control
 {
 	margin-left: 0
 }
-h1
-{
-	margin-top:5px;
-	padding-bottom: 0px;
-}
+
 .groupName
 {
 	/*position:fixed;*/
@@ -66,17 +69,27 @@ input
 	box-shadow: none;
 	font-family: "Bitter";
 }
+
+div
+{
+    display: block;
+}
+
 .dropdown
 {
 	margin:5px;
 }
-.logo
+.logonav
 {
-	font-size: 30pt;
+	font-size: 20pt;
 	text-decoration: none;
 	color: "black";
-	font-family: "Fjalla One";
-	font-style: "bold";
+	
+}
+.logo
+{
+    font-family: "Fjalla One";
+    font-style: "bold";
 }
 a:link {
     text-decoration: none;
@@ -131,16 +144,6 @@ ul
 {
 	list-style-type:none
 }
-.login
-{
-	position: relative;
-	margin-right: 200px;
-	float: right;
-}
-/*.circle
-{
-	fill:"white";
-}*/
 
 .tooltip {	
     position: fixed;	
@@ -160,10 +163,17 @@ ul
     /*overflow:scroll;			*/
 }
 
-.content {
-	padding-top: 100px;
-}
-
 .spinner {
     padding-top: 100px;
+}
+
+.body-home {
+    background-position: 50% 50px;
+    background-size: cover;
+    padding-top: 50px;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 300;
 }

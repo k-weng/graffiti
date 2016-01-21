@@ -1,8 +1,3 @@
-// if (Messages.find().count() == 0){
-// 	Messages.insert({name: "chris",
-// 	text: "test",
-// 	});
-// }
 if (Groups.find().count() == 0){
 	Groups.insert({name: "PublicGroup", people: []});
 	Groups.insert({name: "SecondGroup", people: []});
@@ -54,6 +49,12 @@ Meteor.methods({
 		// console.log(Messages.find({id:msgId}));
 	}
 });
+
+// if (Messages.find().count() == 0){
+// 	Messages.insert({name: "chris",
+// 	text: "test",
+// 	});
+// }
 // if (Messages.find().count() == 0){
 // 	var message = {
 // 			text: "root",
