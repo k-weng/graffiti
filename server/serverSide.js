@@ -45,6 +45,17 @@ Meteor.methods({
 						$push:{voters:username}
 				});
 			});
+		}else{
+			console.log("already");
+			Messages.find({_id:msgId}).forEach(function(data){
+				var now = Date.now();
+				Messages.update({_id:data._id},
+				{
+						$set:{life: maxLife - (now - data.timestamp) + (weight*(data.votes-1))},
+						$inc:{votes:-1},
+						$pull:{voters:username}
+				});
+			});
 		}
 		// console.log(Messages.find({id:msgId}));
 	}
