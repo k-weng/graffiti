@@ -1,27 +1,29 @@
 <template name="nav">
-	<nav class="navbar navbar-fixed-top navbar-inverse">
-		<div class="container-fluid">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-10">
-				<div class="navbar-header">
- 					<a class="navbar-brand logo" href="/">Graffiti</a>
+	<header>
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container-fluid">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-controls" aria-expanded="true">
+          					<span class="sr-only">Toggle navigation</span>
+         					<span class="icon-bar"></span>
+          					<span class="icon-bar"></span>
+          					<span class="icon-bar"></span>
+        				</button>
+	 					<a class="navbar-brand logonav logo" href="/">Graffiti</a>
+					</div>
+					<div class="navbar-collapse collapse" id="user-controls" aria-expanded="false" style="height: 1px;">
+						<ul class="nav navbar-nav navbar-right">
+		  					<li><a href="#">About</a></li>
+		  					<li><a href="#">{{ username }}</a></li>
+		  					{{#if currentUser}}
+		  					<li><button type="button" id = "signOut" class="navbar-btn btn-default">Sign Out</button></li>
+							{{/if}}
+						</ul>
+					</div>
 				</div>
-				<ul class="nav navbar-nav navbar-right nav-pills">
-  					<li><a href="#">About</a></li>
-  					<li><a href="#">{{ username }}</a></li>
-  					{{#if currentUser}}
-  					<li><button type="button" id = "signOut" class="navbar-btn btn-default">Sign Out</button></li>
-					{{/if}}
-				</ul>
 			</div>
-			<!-- <div class="col-xs-1"></div>
-			<div class="col-xs-10">	
-				<p class="logo">Fade</p>
-				<div class="login navbar-nav navbar-right">
-					<p>{{> loginButtons}}</p>
-				</div>
-			</div> -->
-		</div>
-	</nav>
+		</nav>
+	</header>
 </template>
-<!-- <a class="logo" href= "{{pathFor 'groupList'}}">Fade</a> -->
