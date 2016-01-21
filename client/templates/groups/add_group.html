@@ -1,6 +1,22 @@
 <template name="addGroup">
-	<form class="add-group">
+	<div class="row">
+		<div class="col-xs-8 col-sm-6 col-md-4">
+			<form class="add-group">
+			<div class="input-group">
+		  		<span class="input-group-addon">
+		    		<input type="checkbox" aria-label="addGroup">
+		  		</span>
+		  		<input type="text" id="groupName" class="form-control" aria-label="addGroup" placeholder="Group Name">
+		  		<span class="input-group-btn">
+					<button class="btn btn-default" type="submit">Create Group</button>
+					</span>
+				</div>
+		</form>
+		</div>
+	</div>
+	<!-- <form class="add-group">
 		<input type="text" id="groupName" placeholder="Group Name">
 		<input type="submit" value="Create Group">
-	</form>
+		<label class="radio-inline"><input type="radio" class="active">Public</label>
+	</form> -->
 </template>

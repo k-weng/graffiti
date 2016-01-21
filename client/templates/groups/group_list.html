@@ -1,16 +1,15 @@
 <template name = "groupList">
+	{{#if currentUser}}
 	<div class="row">
-	{{#unless currentUser}}
-  		
-  	{{else}}
-  	
-	<h1>Groups</h1>
-	<span class="add-group">{{> addGroup}}</span>
+		<h1>Groups</h1>
+		<div class="add-group">{{> addGroup}}</div>
+	</div>
+	<div class="row">
   		<ul>
 			{{#each groups}}
 				<li>{{> group}}</li>
 			{{/each}}
 		</ul>
-	{{/unless}}
 	</div>
+	{{/if}}
 </template>

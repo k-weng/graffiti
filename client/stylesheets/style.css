@@ -8,7 +8,7 @@
 
 input.form-control
 {
-	margin-left: 0
+	margin-left: 0;
 }
 
 .groupName
@@ -64,7 +64,7 @@ img
 }
 input
 {
-	margin:5px;
+	/*margin:5px;*/
 	box-shadow: none;
 	font-family: "Bitter";
 }
@@ -175,4 +175,8 @@ ul
 .title {
     font-size: 60px;
     font-weight: 300;
+}
+
+.input-group {
+    width: auto;
 }
