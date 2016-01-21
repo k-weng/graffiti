@@ -1,29 +1,40 @@
 <template name = "groupPage">
-<body>
-	{{#if currentUser}}
-	<h1 class="groupName">{{name}}
-	<small>
-		<span class = "btn-group"> 
-			<div class="dropdown">
-			  <button class="btn btn-primary dropdown-toggle settings" type="image" src="settings.png" data-toggle="dropdown"><img src = "/settings.png"/>
-			  <span class="caret"></span></button>
-			  <ul class="dropdown-menu">
-			  	{{#if ownerOf}}
-					<li>{{> deleteGroup}}</li>
+	<div class="row">
+		<div class="col-sm-4" id="wall">
+			<h1 class="groupName">{{name}}</h1>
+		</div>
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle settings" type="image" src="settings.png" data-toggle="dropdown"><img src = "/settings.png"/>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				{{#if ownerOf}}
+				<li>{{> deleteGroup}}</li>
 				{{else}}
-					<li>{{> quitGroup}}</li>
+				<li>{{> quitGroup}}</li>
 				{{/if}}
 				<li class = "add-user">{{> addUser}}</li>
-			  </ul>
-			</div>
-		</span>
-	</small>
-	</h1>
+			</ul>
+		</div>
+	</div>
 	{{> messageSend}}
-	{{else}}
-		<p> Login please </p>
-	{{/if}}
 
 	{{> messageList}}
-</body>
 </template>
+<!-- 
+<div class="row fixed">
+		<div class="col-sm-4" id="wall">
+			<h1>Your Walls</h1>
+		</div>
+
+				<div class="dropdown">
+			  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
+			  		<span class="caret"></span>
+			  	</button>
+			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+			  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
+			  	</ul>
+				</div>
+
+
+	</div> -->

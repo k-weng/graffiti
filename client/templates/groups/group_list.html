@@ -1,25 +1,27 @@
 <template name = "groupList">
-	{{#if currentUser}}
 	<div class="row">
-		<h1 >Your Walls
-		<small>
-			<span class = "btn-group"> 
+		<div class="col-sm-4" id="wall">
+			<h1>Your Walls</h1>
+		</div>
+
 				<div class="dropdown">
-				  <button class="btn btn-primary dropdown-toggle settings" type="image" src="settings.png" data-toggle="dropdown"><img src = "/settings.png"/>
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				  	<li><span class="add-group">{{> addGroup}}</span></li>
-				  </ul>
+			  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
+			  		<span class="caret"></span>
+			  	</button>
+			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+			  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
+			  	</ul>
 				</div>
-			</span>
-		</small>
-		</h1>
-		<hr class = "group-title">
-  		<ul>
-			{{#each groups}}
-				<li>{{> group}}</li>
-			{{/each}}
-		</ul>
+
+
 	</div>
-	{{/if}}
+	<div class="row">
+			<hr class = "group-title">
+			<br>
+	  		<ul>
+				{{#each groups}}
+					<li>{{> group}}</li>
+				{{/each}}
+			</ul>
+		</div>
 </template>
