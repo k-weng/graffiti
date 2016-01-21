@@ -1,4 +1,4 @@
-var linearScale = d3.scale.linear().domain([0,20]).range([10,70]);
+var linearScale = d3.scale.linear().domain([0,20]).range([15,70]);
 
 Template.messageSend.events({
 	"submit .submit-message": function(e, t){

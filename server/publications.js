@@ -14,7 +14,7 @@ Meteor.publish('messages',function(group){
 	// }
 	// ]);
 	Messages.find().forEach(function(data){
-		console.log(maxLife - (Date.now()-data.timestamp));
+		// console.log(maxLife - (Date.now()-data.timestamp));
 		var now = Date.now();
 		Messages.update({_id:data._id},
 			{$set:{life: maxLife - (now - data.timestamp) + weight*data.votes }

@@ -1,3 +1,5 @@
+// var dateFormat = require('dateformat');
+
 Template.messageList.onCreated(function(){
 	var self = this;
   Session.set('loaded',false);
@@ -20,7 +22,21 @@ Template.messageList.helpers({
 Template.messageList.events({
 	'click .textClass':function(e, template){
     console.log($(e.currentTarget).data("id"));
-    Meteor.call("messageVote",$(e.currentTarget).data("id"));
+    Meteor.call("messageVote",$(e.currentTarget).data("id"),Meteor.user(),function(res,err){
+      console.log(res);
+      console.log(err);
+        if(err){
+          Errors.throw(err.reason);
+        }
+        else{
+          if(res==="already"){
+            alert("Already Voted");
+          }
+          else{
+            console.log("successfully voted");
+          }
+        }
+    });
     // alert('id: ' + $(e.currentTarget).data("id"));
 	}
 });
@@ -192,8 +208,9 @@ function myGraph(el){
           .duration(200)    
           .style("opacity", .9)
           .style("background-color","red");    
-      div.html(d.text)  
-          .style("font-family","Merriweather");
+      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<div>-" + d.username + "</div>")  
+          .style("font-family","Merriweather")
+          .style("font-size","12pt");
     })          
      .on("mouseout", function(d) {   
        div.transition()    
@@ -257,14 +274,29 @@ function myGraph(el){
 
   node.exit().remove();
 
-  force.on("tick", function() {
+  force.on("tick", function(e) {
     var q = d3.geom.quadtree(nodes),
         i = 0,
         n = nodes.length;
 
+    node.each(gravity(e.alpha));
+
     while (++i < n) q.visit(collide(nodes[i]));
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
+
+  function gravity(alpha){
+    // console.log(alpha);
+    var cx = w/2,
+      cy = h/2,
+      ax = alpha/16,
+      ay = alpha/4;
+
+      return function(d){
+        d.x += (cx - d.x)*ax;
+        d.y += (cy - d.y)*ay;
+      }
+  }
 
     function collide(node) {
       // console.log("collide");
@@ -293,7 +325,7 @@ function myGraph(el){
 
 
       force
-        .gravity(.05)
+        .gravity(0)
         .size([w, h])
         .start();
   };
