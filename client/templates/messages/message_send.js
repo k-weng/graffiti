@@ -8,6 +8,8 @@ Template.messageSend.events({
 		e.preventDefault();
 		var input = $("#message-input").val();
 
+		if(input && input.length){
+
 		console.log(input);
 		console.log("submitted");
 
@@ -36,8 +38,13 @@ Template.messageSend.events({
 			}
 			// Router.go('groupPage',{_id: this._id});
 		});
-
 		$("#message-input").val("");
+		$("#message-input").attr("placeholder","Say something!");
+
+		}
+		else{
+			$("#message-input").attr("placeholder","You can't say nothing!");
+		}
 		// Router.go('groupPage',)
 		// debugger
 	}

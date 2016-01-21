@@ -1,6 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
-
+.sign-in
+{
+    background-color: rgba(189, 195, 199, .8);
+    border-radius: 6px;
+}
+body.home
+{
+    background-image: url("tunnel.jpg");
+}
+.logo-pic
+{
+    margin:10px;
+}
 .group-list-name
 {
     margin:0px;
@@ -89,33 +101,39 @@ div
 {
 	font-size: 20pt;
 	text-decoration: none;
-	color: "black";
+	color: #e74c3c;
 	
+}
+.subtitle{
+    color:#e74c3c;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .logo
 {
     font-family: "Fjalla One";
     font-style: "bold";
     font-size:30pt;
+    color:#e74c3c;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 a:link {
     text-decoration: none;
-    color: "black";
+    color: #e74c3c;
 }
 
 a:visited {
     text-decoration: none;
-    color: "black";
+    color: gray;
 }
 
 a:hover {
     text-decoration: none;
-    color: "black";
+    color: #e74c3c;
 }
 
 a:active {
     text-decoration: none;
-    color: "black";
+    color: #e74c3c;
 }
 .textClass
 {   
@@ -159,10 +177,10 @@ ul
 }
 
 .tooltip {	
-    position: fixed;	
-    top: 200;
+  /*  position: fixed;	
+    top: 220px;
     right:10px;
-    bottom:100;	
+    bottom:100;	*/
     /*text-align: center;			*/
     width: 250px;					
     height: 100%;					
@@ -193,4 +211,13 @@ ul
 
 .input-group {
     width: auto;
+}
+.add-user{
+    margin:5px;
+}
+.delete-group{
+    margin: 7px;
+}
+.quit-group{
+    margin:5px;
 }

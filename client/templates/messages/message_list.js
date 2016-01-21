@@ -85,9 +85,9 @@ function myGraph(el){
     d3.select("#node-"+old._id)
     .transition()
     .duration(10)
-    .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
+    .style("opacity",function(d){console.log("new opacity "+d.life/maxLife);return d.life/maxLife;})
     .transition()
-    .duration(function(d){console.log("clicked");return d.life;})
+    .duration(function(d){console.log(d.life, maxLife);return d.life;})
     .style("opacity",0)
     .each('end',function(d){
       removeNode(d);
@@ -96,10 +96,10 @@ function myGraph(el){
     div.style("background-color",function(){
         var username = Meteor.user().username;
         if(Messages.find({_id:old._id,voters:username}).count()===0){
-          return "#e74c3c";
+          return "#95a5a6";
         }
         else{
-          return "#2ecc71";
+          return "#e74c3c";
         }
     });
   };
@@ -217,16 +217,25 @@ function myGraph(el){
       div.transition()    
           .duration(200)    
           .style("opacity", .9)
+          .style("position","fixed")
+          .style("top", "250px")
+          .style("left",function(){
+            if(d.x>w/2){
+              return "10px";
+            }else{
+              return w+"px";
+            }
+          })
           .style("background-color",function(){
             var username = Meteor.user().username;
             if(Messages.find({_id:d._id,voters:username}).count()===0){
-              return "#e74c3c";
+              return "#95a5a6";
             }
             else{
-              return "#2ecc71";
+              return "#e74c3c";
             }
           });    
-      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<div>-" + d.username + "</div>")  
+      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<div>   -" + d.username + "</div>")  
           .style("font-family","Merriweather")
           .style("font-size","12pt");
     })          
@@ -351,7 +360,6 @@ function myGraph(el){
         return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
       };
     }
-
 
       force
         .gravity(0)

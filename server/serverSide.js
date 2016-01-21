@@ -40,8 +40,8 @@ Meteor.methods({
 				var now = Date.now();
 				Messages.update({_id:data._id},
 				{
-						$set:{life: maxLife - (now - data.timestamp) + weight*data.votes},
 						$inc:{votes:1},
+						$set:{life: maxLife - (now - data.timestamp) + weight*data.votes},
 						$push:{voters:username}
 				});
 			});
@@ -51,9 +51,9 @@ Meteor.methods({
 				var now = Date.now();
 				Messages.update({_id:data._id},
 				{
-						$set:{life: maxLife - (now - data.timestamp) + (weight*(data.votes-1))},
 						$inc:{votes:-1},
-						$pull:{voters:username}
+						$pull:{voters:username},
+						$set:{life: maxLife - (now - data.timestamp) + (weight*(data.votes-1))}
 				});
 			});
 		}
