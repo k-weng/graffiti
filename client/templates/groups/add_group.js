@@ -11,12 +11,9 @@ Template.addGroup.events({
 				createdBy: currentUser
 			});
 			console.log(Groups.findOne({name: groupName, createdBy: currentUser}));
-			console.log("New group added");
-
-			
+			console.log("New group added");	
 		} else {
 			console.log("Didn't happen");
 		}
-		
 	}
 });
