@@ -1,7 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
 <<<<<<< HEAD
-
+.group-list-name
+{
+    margin:0px;
+}
+hr.group-title{
+    margin: 0px;
+}
 .groupTop
 {
 	display: block;
@@ -90,6 +96,7 @@ div
 {
     font-family: "Fjalla One";
     font-style: "bold";
+    font-size:30pt;
 }
 a:link {
     text-decoration: none;
@@ -130,6 +137,12 @@ a:active {
 
 }
 h1
+{
+	font-family:"Bitter";
+	/*background-color: red;*/
+	width:100%;
+}
+h2
 {
 	font-family:"Bitter";
 	/*background-color: red;*/

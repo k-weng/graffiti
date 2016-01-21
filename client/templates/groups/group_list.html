@@ -4,8 +4,21 @@
   		
   	{{else}}
   	
-	<h1>Groups</h1>
-	<span class="add-group">{{> addGroup}}</span>
+
+		<h1 >Your Walls
+		<small>
+			<span class = "btn-group"> 
+				<div class="dropdown">
+				  <button class="btn btn-primary dropdown-toggle settings" type="image" src="settings.png" data-toggle="dropdown"><img src = "/settings.png"/>
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				  	<li><span class="add-group">{{> addGroup}}</span></li>
+				  </ul>
+				</div>
+			</span>
+		</small>
+		</h1>
+		<hr class = "group-title">
   		<ul>
 			{{#each groups}}
 				<li>{{> group}}</li>

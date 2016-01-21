@@ -92,8 +92,17 @@ function myGraph(el){
     .each('end',function(d){
       removeNode(d);
     });
-  };
 
+    div.style("background-color",function(){
+        var username = Meteor.user().username;
+        if(Messages.find({_id:old._id,voters:username}).count()===0){
+          return "#e74c3c";
+        }
+        else{
+          return "#2ecc71";
+        }
+    });
+  };
   this.addNode = function(doc){
     nodes.push(doc);
     update();
@@ -144,6 +153,7 @@ function myGraph(el){
   var nodes = force.nodes();
   
   // var label = d3.select("#bubble-labels");
+
 
 
   var update = function(){
@@ -200,14 +210,22 @@ function myGraph(el){
         return "node-"+d._id;
     });
 
-    node.on("click",function(d){
+  node.on("click",function(d){
       console.log(d.text);
     })
     .on("mouseover", function(d) {    
       div.transition()    
           .duration(200)    
           .style("opacity", .9)
-          .style("background-color","red");    
+          .style("background-color",function(){
+            var username = Meteor.user().username;
+            if(Messages.find({_id:d._id,voters:username}).count()===0){
+              return "#e74c3c";
+            }
+            else{
+              return "#2ecc71";
+            }
+          });    
       div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<div>-" + d.username + "</div>")  
           .style("font-family","Merriweather")
           .style("font-size","12pt");
@@ -218,6 +236,17 @@ function myGraph(el){
         .style("opacity", 0); 
       });
 
+  // svg.append("rect")
+  //   .attr("width",w)
+  //   .attr("height",h)
+  //   .style("opacity",0)
+  //   .on("click",function(){
+  //     console.log("click");
+  //     div
+  //     .transition()
+  //     .duration(500)
+  //     .style("opacity",0);
+  //   });
   // for(var i = 0; i<nodes.length; i++){
   //   console.log(nodes[i]._id + " nodes");
   //   d3plus.textwrap()
