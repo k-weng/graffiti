@@ -66,11 +66,6 @@ input
 	box-shadow: none;
 	font-family: "Bitter";
 }
-form
-{
-	/*position:fixed;*/
-	margin:5px;
-}
 .dropdown
 {
 	margin:5px;
