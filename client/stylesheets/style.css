@@ -144,11 +144,11 @@ ul
 
 .tooltip {	
     position: fixed;	
-    top: 100;
+    top: 200;
     right:10px;
     bottom:100;	
     /*text-align: center;			*/
-    width: 200px;					
+    width: 250px;					
     height: 100%;					
     padding: 2px;				
     font: 20px sans-serif;	
