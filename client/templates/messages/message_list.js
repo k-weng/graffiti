@@ -21,7 +21,7 @@ Template.messageList.events({
 	'click .textClass':function(e, template){
     console.log($(e.currentTarget).data("id"));
     Meteor.call("messageVote",$(e.currentTarget).data("id"));
-    alert('id: ' + $(e.currentTarget).data("votes"));
+    // alert('id: ' + $(e.currentTarget).data("id"));
 	}
 });
 
@@ -72,7 +72,7 @@ function myGraph(el){
     .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
     .transition()
     .duration(function(d){console.log("clicked");return d.life;})
-    .style("opacity",1)
+    .style("opacity",0)
     .each('end',function(d){
       removeNode(d);
     });
@@ -111,7 +111,7 @@ function myGraph(el){
   };
 
   var w = 1000,
-      h = 1000;
+      h = 600;
   var svg = d3.select(el)
     .append("svg:svg")
     .attr("width", w)
@@ -147,7 +147,7 @@ function myGraph(el){
     .attr("id", function(d){return "Node;" + d.id})
     .attr("class","nodeStrokeClass")
     // .style("fill", function(d, i) { return "red"; })
-    .style("opacity",.5)
+    .style("opacity",0)
     .attr("id", function(d){
         console.log(d.text + " " + d._id + " add id");
         return "circle-"+d._id;

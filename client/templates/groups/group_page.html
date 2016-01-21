@@ -1,5 +1,5 @@
 <template name = "groupPage">
-
+<body>
 	{{#if currentUser}}
 	<h1 class="groupName">{{name}}
 	<small>
@@ -18,15 +18,13 @@
 			</div>
 		</span>
 	</small>
-	<span class = "groupTop">
-	{{> messageSend}}
-	</span>
 	</h1>
-
+	{{> messageSend}}
 	<!-- <a href={{pathFor "messageSend"}}>Send</a> -->
 	{{else}}
 		<p> Login please </p>
 	{{/if}}
 
 	{{> messageList}}
+</body>
 </template>

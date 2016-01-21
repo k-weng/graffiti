@@ -1,13 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+<<<<<<< HEAD
 
 .groupTop
 {
-	display: block;	
+	display: block;
 }
+
+input.form-control
+{
+	margin-left: 0
+}
+
 .groupName
 {
-	position:fixed;
+	/*position:fixed;*/
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-left: 19px;
@@ -15,7 +22,11 @@
 }
 #signOut
 {
-	margin:5px;
+/*	margin:5px;*/
+}
+svg
+{
+	height:50%;
 }
 .btn-group
 {
@@ -42,9 +53,9 @@
 }
 .submit-message
 {
-	position:fixed;
+	/*position:fixed;*/
 	display: block;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 img
 {
@@ -58,10 +69,12 @@ input
 	box-shadow: none;
 	font-family: "Bitter";
 }
+
 div
 {
     display: block;
 }
+
 .dropdown
 {
 	margin:5px;
@@ -135,7 +148,7 @@ ul
 .tooltip {	
     position: fixed;	
     top: 100;
-    left: 2000;	
+    right:10px;
     bottom:100;	
     /*text-align: center;			*/
     width: 200px;					
