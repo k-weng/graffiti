@@ -137,6 +137,7 @@ function myGraph(el){
 
   var w = 1000,
       h = 600;
+      console.log(window.innerHeight,window.innerWidth);
   var svg = d3.select(el)
     .append("svg:svg")
     .attr("width", w)

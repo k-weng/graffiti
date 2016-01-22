@@ -1,13 +1,35 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+.main-container.container-fluid{
+    padding: 0;
+}
 .sign-in
 {
     background-color: rgba(189, 195, 199, .8);
     border-radius: 6px;
 }
+.container-fluid.full-width {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+}
 body.home
 {
-    background-image: url("tunnel.jpg");
+
+}
+.row.background-home{
+    background-image: url("/underpass.jpg");
+    background-size: cover;
+    z-index: -1;
+    padding: 10px;
+}
+.row.how-to{
+    background-color: red;
+}
+.group-list-name
+{
+  /*  padding-left: 50px;
+    padding-right:50px;*/
 }
 .logo-pic
 {
@@ -33,7 +55,8 @@ input.form-control
 .groupName
 {
 	/*position:fixed;*/
-	padding-left: 20px;
+	/*padding-left: 20px;*/
+    width: 400em;
 
 }
 
@@ -58,16 +81,15 @@ svg
 .dropdown-menu
 {
 	/*right:0px;*/
-	padding: 0px;
+	/*padding: 0px;*/
     width: 350px;
 }
 .dropdown
 {
 	/*padding:0px;*/
-	/*margin:0px;*/
+	margin-bottom:10px;
     height: 30px;
-    position: relative;
-    top: 22px;
+    /*display: inline-block;*/
 }
 .submit-message
 {
@@ -206,7 +228,7 @@ ul
 }
 
 #wall {
-    width: 210px;
+    width: 400em;
     padding-right: 0px;
 }
 .add-user{
