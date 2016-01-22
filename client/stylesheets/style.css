@@ -5,8 +5,9 @@
     overflow: auto;
     border-radius: 6px;
     background-color: rgba(189, 195, 199, .8);
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 5px;
+    padding-right: 10px;
 }
 .sprays
 {
@@ -41,7 +42,7 @@ body.home
     padding: 20px;
 }
 .row.how-to{
-    background-color: red;
+    background-color: #e74c3c;
 }
 .group-list-name
 {
@@ -72,7 +73,7 @@ input.form-control
 {
 	/*position:fixed;*/
 	/*padding-left: 20px;*/
-    width: 150em;
+    /*width: 150em;*/
 
 }
 
@@ -135,12 +136,21 @@ input
 	box-shadow: none;
 	font-family: "Bitter";
 }
-
+.explanation
+{
+    text-indent: 50px;
+    padding:15px;
+    font-family: "Bitter";
+    font-size: 13pt;
+    text-align: left;
+}
 div
 {
     display: block;
 }
-
+.group-line{
+    padding:0px;
+}
 .logonav
 {
 	font-size: 20pt;
@@ -149,9 +159,11 @@ div
 	
 }
 .subtitle{
-    color:#e74c3c;
+    color:#ecf0f1;
+    font-family: "Fjalla One";
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 34pt;
+    padding-top: 0px;
 }
 .logo
 {
@@ -191,7 +203,7 @@ a:active {
 }
 .textClass2
 {   
-    width: 150px;
+    width: 100px;
     font-family: "Cookie";
     color: "white";
     white-space: pre-wrap;
@@ -243,20 +255,28 @@ ul
     width: 50%;
     height: 50%;
 }
-
+.cloud
+{
+    width: 100%;
+    height:auto;
+}
 .body-home {
     background-position: 50% 50px;
     background-size: cover;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
+.userList
+{
+    margin-bottom:5px;
+}
 .title {
     font-size: 60px;
     font-weight: 300;
 }
 
 #wall {
+    /*width: 100em;*/
     padding-right: 0px;
     padding-left: 0px;
 }

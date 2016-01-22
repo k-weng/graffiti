@@ -12,7 +12,7 @@ Template.addGroup.events({
 		e.stopPropagation();
 		$("#groupName").val("");	
 		if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
-			Meteor.call('addGroup',input,currentUser,isPrivate, msgTime: Session.get("msgTime"), function(err,res){
+			Meteor.call('addGroup',input,currentUser,isPrivate,Session.get("msgTime"),function(err,res){
 				Router.go('groupPage',{_id:res._id});
 			});
 			console.log(Groups.findOne({name: input, createdBy: currentUser}));

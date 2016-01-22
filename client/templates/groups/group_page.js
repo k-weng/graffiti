@@ -1,4 +1,8 @@
 Template.groupPage.helpers({
+	users: function(){
+		return this.people.join(", ");
+	},
+
 	ownerOf: function() {
 		return this.createdBy === Meteor.user().username;
 	},
