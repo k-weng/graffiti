@@ -2,14 +2,15 @@ Template.groupList.onCreated(
 	function(){
 		// debugger
 		Session.set("sort","sprays");
+		Session.set("sort-pub","sprays");
 		Session.set("order",1)
 		var self=this;
 		// debugger
-		self.autorun(function(){
-			// debugger
-			console.log(Session.get("sort"),Session.get("order"));
-			self.subscribe('groups',Session.get("sort"),Session.get("order"));
-		});
+		// self.autorun(function(){
+		// 	// debugger
+		// 	console.log(Session.get("sort"),Session.get("order"));
+		// 	self.subscribe('groups',Session.get("sort"),Session.get("order"));
+		// });
 	}
 );
 
@@ -18,6 +19,9 @@ Template.groupList.helpers({
 		return Session.get("sort")
 	},
 
+	sortButtonPub: function(){
+		return Session.get("sort-pub")
+	},
 	privateGroups: function() {
 		var currentUser = Meteor.user().username;
 		var s = Session.get("sort");
@@ -25,19 +29,33 @@ Template.groupList.helpers({
 		// return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{s:o}});
 		if(s==="sprays"){
 			console.log("here")
-			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{sprays:1}});
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{sprays:-1}});
 		}
-		else if(s==="name"){
+		else if(s==="oldest"){
 			console.log("here")
-			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{name:-1}});
-		}else if(s==="createdBy"){
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{timestamp:1}});
+		}else if(s==="recent"){
 			console.log("here")
-			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{createdBy:1}});
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{timestamp:-1}});
 		}
 	},
 
 	publicGroups: function() {
-		return Groups.find({privateGroup: false});
+		var currentUser = Meteor.user().username;
+		var s = Session.get("sort-pub");
+		var o = Session.get("order");
+		// return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{s:o}});
+		if(s==="sprays"){
+			console.log("here")
+			return Groups.find({privateGroup: false},{sort:{sprays:-1}});
+		}
+		else if(s==="oldest"){
+			console.log("here")
+			return Groups.find({privateGroup: false},{sort:{timestamp:1}});
+		}else if(s==="recent"){
+			console.log("here")
+			return Groups.find({privateGroup: false},{sort:{timestamp:-1}});
+		}
 	}
 });
 
@@ -48,14 +66,32 @@ Template.groupList.events({
 
 		console.log(Session.get("sort"))
 	},
-	"click #createdBy":function(event){
-		Session.set("sort","createdBy");
+	"click #oldest":function(event){
+		Session.set("sort","oldest");
 		Session.set("order",1)
 
 		console.log(Session.get("sort"))
 	},
-	"click #name":function(event){
-		Session.set("sort","name");
+	"click #recent":function(event){
+		Session.set("sort","recent");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
+	},
+	"click #sprays-pub":function(event){
+		Session.set("sort-pub","sprays");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
+	},
+	"click #oldest-pub":function(event){
+		Session.set("sort-pub","oldest");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
+	},
+	"click #recent-pub":function(event){
+		Session.set("sort-pub","recent");
 		Session.set("order",1)
 
 		console.log(Session.get("sort"))

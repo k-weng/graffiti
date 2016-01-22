@@ -24,9 +24,9 @@
 		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButton}}
 		    <span class="caret"></span></button>
 		    <ul class="dropdown-menu">
-		      <li class="drop-item" id="sprays">Total Sprays</li>
-		      <li class="drop-item" id="name">name</li>
-		      <li class="drop-item" id="createdBy">createdBy</li>
+		      <li class="drop-item" id="sprays"><a href="#">Total Sprays</a></li>
+		      <li class="drop-item" id="oldest"><a href="#">Oldest</a></li>
+		      <li class="drop-item" id="recent"><a href="#">Recent</a></li>
 		    </ul>
   		</div>
 		<hr>
@@ -46,6 +46,15 @@
 				<h1>Public Walls</h1>
 			</div>
 		</div>
+		<div class="dropdown">
+		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButtonPub}}
+		    <span class="caret"></span></button>
+		    <ul class="dropdown-menu">
+		      <li class="drop-item" id="sprays-pub"><a href="#">Total Sprays</a></li>
+		      <li class="drop-item" id="oldest-pub"><a href="#">Oldest</a></li>
+		      <li class="drop-item" id="recent-pub"><a href="#">Recent</a></li>
+		    </ul>
+  		</div>
 		<hr>
 		<div class="scrollable">
 		<ul>

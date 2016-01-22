@@ -11,7 +11,8 @@ Meteor.methods({
 			people: [currentUser],
 			createdBy: currentUser,
 			privateGroup: isPrivate,
-			sprays:0
+			sprays:0,
+			timestamp: Date.now()
 		});
 
 		return{_id:groupId};
