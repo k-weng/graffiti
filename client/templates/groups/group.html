@@ -1,5 +1,9 @@
 <template name = "group">
-	<li><h3 class = "group-list-name"><a class = "group" href="{{pathFor 'groupPage'}}">{{name}}</a></h3> 
+	<li>
+		<h3 class = "group-list-name">
+			<a class = "group" href="{{pathFor 'groupPage'}}">{{name}}</a>
+			<small>{{mine}}</small>
+		</h3> 
 		<span class = "sprays">Total sprays: {{sprays}}</span>
 	</li>
 </template>
