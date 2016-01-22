@@ -236,7 +236,7 @@ function myGraph(el){
               return "#e74c3c";
             }
           });    
-      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
+      div.html("<small>" + new Date(d.timestamp) + "<div> Clicks: " + d.votes + " </div>" + "</small>"  + " <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
           .style("font-family","Merriweather")
           .style("font-size","11pt");
     })          

@@ -15,20 +15,21 @@ Template.groupList.onCreated(
 );
 
 Template.groupList.helpers({
+	hasPrivate: function(){
+		console.log("alright");
+		var currentUser = Meteor.user().username;
+		return Groups.find({people: {$in: [currentUser]}, privateGroup: true}).count() > 0;
+	},
+
 	sortButton: function(){
 		var s = Session.get("sort");
-		if (s === "sprays") {
-			return "Sort by Sprays";
-		} else if (s === "name") {
-			return "Sort by Name";
-		} else if (s === "createdBy") {
-			return "Sort by Creator";
-		}
+		return s;
 	},
 
 	sortButtonPub: function(){
 		return Session.get("sort-pub")
 	},
+
 	privateGroups: function() {
 		var currentUser = Meteor.user().username;
 		var s = Session.get("sort");
