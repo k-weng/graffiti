@@ -2,13 +2,8 @@
 	<div class = "container">
 	<div class="row">
 		<div class="col-sm-4" id="wall">
-			<h1>Your Walls</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4" id="wall">
 			<div class="dropdown">
-		  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/plus.png"/>
+		  	<button class="btn btn-primary dropdown-toggle plus" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/plus.png"/>
 		  		<span class="caret"></span>
 		  	</button>
 		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
@@ -17,20 +12,36 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<hr class = "group-title">
 		<div class="row">
-			<hr class = "group-title">
-			<br>
-	  		<ul>
-				{{#each privateGroups}}
-					<li>{{> group}}</li>
-				{{/each}}
-			</ul>
-			<br>
-			<ul>
-				{{#each publicGroups}}
-					<li>{{> group}}</li>
-				{{/each}}
-			</ul>
+			<div class="col-sm-4" id="wall">
+				<h1>Your Walls</h1>
+			</div>
 		</div>
+		<hr>
+  		<ul>
+			{{#each privateGroups}}
+				<li>{{> group}}</li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div class = "rpw">
+		<hr class = "group-title">
+		<div class="row">
+			<div class="col-sm-4" id="wall">
+				<h1>Public Walls</h1>
+			</div>
+		</div>
+		<hr>
+		<ul>
+			{{#each publicGroups}}
+				<li>{{> group}}</li>
+			{{/each}}
+		</ul>
+	</div>
+
 	</div>
 </template>
