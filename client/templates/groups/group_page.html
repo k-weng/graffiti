@@ -11,7 +11,9 @@
 				{{#if ownerOf}}
 				<li>{{> deleteGroup}}</li>
 				{{else}}
-				<li>{{> quitGroup}}</li>
+					{{#if isPublic}}
+					<li>{{> quitGroup}}</li>
+					{{/if}}
 				{{/if}}
 				<!-- <hr> -->
 				<li class = "add-user">{{> addUser}}</li>

@@ -3,23 +3,27 @@
 		<div class="col-sm-4" id="wall">
 			<h1>Your Walls</h1>
 		</div>
-
-				<div class="dropdown">
-			  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
-			  		<span class="caret"></span>
-			  	</button>
-			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
-			  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
-			  	</ul>
-				</div>
-
-
+		
+			<div class="dropdown">
+		  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
+		  		<span class="caret"></span>
+		  	</button>
+		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+		  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
+		  	</ul>
+		</div>
 	</div>
 	<div class="row">
-			<hr class = "group-title">
+			<hr class="group-title">
 			<br>
 	  		<ul>
-				{{#each groups}}
+				{{#each privateGroups}}
+					<li>{{> group}}</li>
+				{{/each}}
+			</ul>
+			<br>
+			<ul>
+				{{#each publicGroups}}
 					<li>{{> group}}</li>
 				{{/each}}
 			</ul>
