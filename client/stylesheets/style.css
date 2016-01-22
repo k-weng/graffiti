@@ -46,7 +46,10 @@ hr.group-title{
 {
 	display: block;
 }
-
+.dropdown-menu
+{
+    padding:5px;
+}
 input.form-control
 {
 	margin-left: 0;
@@ -56,7 +59,7 @@ input.form-control
 {
 	/*position:fixed;*/
 	/*padding-left: 20px;*/
-    /*width: 150em;*/
+    width: 150em;
 
 }
 
@@ -77,6 +80,15 @@ svg
 	/*margin-bottom: 15px;*/
 	/*display: inline-block;*/
 	/*right:0px;*/
+}
+.plus
+{
+    height:35px;
+    width: 50px;
+    /*position:fixed;*/
+    margin-top: 15px;
+    /*display: inline-block;*/
+    /*right:0px;*/
 }
 .dropdown-menu
 {
@@ -228,7 +240,7 @@ ul
 }
 
 #wall {
-    width: 400em;
+    width: 150em;
     padding-right: 0px;
 }
 .add-user{
