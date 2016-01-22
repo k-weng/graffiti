@@ -1,10 +1,10 @@
 if (Groups.find().count() == 0){
-	Groups.insert({name: "Public Group 1", people: [], privateGroup: false, sprays: 0});
-	Groups.insert({name: "Public Group 2", people: [], privateGroup: false, sprays: 0});
+	Groups.insert({name: "Public Group 1", people: [], privateGroup: false, sprays: 0, msgTime: (5 * 60 * 1000)});
+	Groups.insert({name: "Public Group 2", people: [], privateGroup: false, sprays: 0, msgTime: (5 * 60 * 1000)});
 }
 
 Meteor.methods({
-	addGroup: function(groupName, currentUser, isPrivate)
+	addGroup: function(groupName, currentUser, isPrivate, msgTime)
 	{		
 		var groupId = Groups.insert({
 			name: groupName,
@@ -12,7 +12,8 @@ Meteor.methods({
 			createdBy: currentUser,
 			privateGroup: isPrivate,
 			sprays:0,
-			timestamp: Date.now()
+			timestamp: Date.now(),
+			msgTime: msgTime
 		});
 
 		return{_id:groupId};

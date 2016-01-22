@@ -64,10 +64,6 @@ hr.group-title{
 {
 	display: block;
 }
-.dropdown-menu
-{
-    padding:5px;
-}
 input.form-control
 {
 	margin-left: 0;
@@ -112,7 +108,8 @@ svg
 {
 	/*right:0px;*/
 	/*padding: 0px;*/
-    width: 420px;
+    width: 500px;
+    padding:5px;
 }
 .userDropdown
 {
@@ -297,4 +294,8 @@ ul
     color: red;
     opacity: 0.4;
     font-size: 50%;
+}
+.toggling {
+    border-left: 0px;
+    border-right: 0px;
 }
