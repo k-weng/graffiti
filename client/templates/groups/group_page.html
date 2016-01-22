@@ -2,7 +2,10 @@
 	<div class="container">
 	<div class="row">
 		<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
-			<h1 class="groupName">{{name}}</h1>
+			<h1 class="groupName">
+				{{name}}
+				<small id="{{colorOfGroup}}">{{typeOfGroup}}</small>
+			</h1>
 		</div>
 	</div>
 	{{#if requireDropdown}}
@@ -21,7 +24,7 @@
 					{{/if}}
 				{{/if}}
 				<!-- <hr> -->
-				{{#if isPublic}}
+				{{#if isPrivate}}
 				<li class = "add-user">{{> addUser}}</li>
 				{{/if}}
 			</ul>

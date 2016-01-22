@@ -276,3 +276,13 @@ ul
     padding-left:0px;
     padding-right:0px;
 }
+#publicColor {
+    color: green;
+    opacity: 0.4;
+    font-size: 50%;
+}
+#privateColor {
+    color: red;
+    opacity: 0.4;
+    font-size: 50%;
+}

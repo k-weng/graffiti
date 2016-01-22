@@ -5,7 +5,7 @@ Template.group.events({
 });
 
 Template.group.helpers({
-	mine: function() {
-		return this.createdBy === Meteor.user().username ? "mine" : "";
+	created: function() {
+		return this.createdBy === Meteor.user().username ? "me" : this.createdBy;
 	}
 });
