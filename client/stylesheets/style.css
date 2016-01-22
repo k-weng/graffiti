@@ -259,6 +259,7 @@ ul
 #wall {
     width: 150em;
     padding-right: 0px;
+    padding-left: 0px;
 }
 .add-user{
     margin:5px;
@@ -268,4 +269,8 @@ ul
 }
 .quit-group{
     margin:5px;
+}
+#message-send{
+    padding-left:0px;
+    padding-right:0px;
 }
