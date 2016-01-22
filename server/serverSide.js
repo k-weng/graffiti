@@ -4,7 +4,7 @@ if (Groups.find().count() == 0){
 }
 
 Meteor.methods({
-	addGroup: function(groupName, currentUser, isPrivate)
+	addGroup: function(groupName, currentUser, isPrivate, msgTime)
 	{		
 		var groupId = Groups.insert({
 			name: groupName,
@@ -13,7 +13,7 @@ Meteor.methods({
 			privateGroup: isPrivate,
 			sprays:0,
 			timestamp: Date.now(),
-			msgTime: Session.get("msgTime")
+			msgTime: msgTime
 		});
 
 		return{_id:groupId};
