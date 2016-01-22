@@ -15,7 +15,14 @@ Template.groupList.onCreated(
 
 Template.groupList.helpers({
 	sortButton: function(){
-		return Session.get("sort")
+		var s = Session.get("sort");
+		if (s === "sprays") {
+			return "Sort by Sprays";
+		} else if (s === "name") {
+			return "Sort by Name";
+		} else if (s === "createdBy") {
+			return "Sort by Creator";
+		}
 	},
 
 	privateGroups: function() {
@@ -25,11 +32,11 @@ Template.groupList.helpers({
 		// return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{s:o}});
 		if(s==="sprays"){
 			console.log("here")
-			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{sprays:1}});
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{sprays:-1}});
 		}
 		else if(s==="name"){
 			console.log("here")
-			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{name:-1}});
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{name:1}});
 		}else if(s==="createdBy"){
 			console.log("here")
 			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{createdBy:1}});

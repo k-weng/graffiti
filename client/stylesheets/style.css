@@ -242,13 +242,15 @@ ul
 }
 
 .spinner {
-    padding-top: 100px;
+    width: 50%;
+    height: 50%;
 }
 
 .body-home {
     background-position: 50% 50px;
     background-size: cover;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .title {

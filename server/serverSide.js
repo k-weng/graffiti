@@ -1,6 +1,6 @@
 if (Groups.find().count() == 0){
-	Groups.insert({name: "PublicGroup", people: [], privateGroup: false});
-	Groups.insert({name: "SecondGroup", people: [], privateGroup: false});
+	Groups.insert({name: "Public Group 1", people: [], privateGroup: false, sprays: 0});
+	Groups.insert({name: "Public Group 2", people: [], privateGroup: false, sprays: 0});
 }
 
 Meteor.methods({
