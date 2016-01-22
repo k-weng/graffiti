@@ -85,11 +85,17 @@ function myGraph(el){
     d3.select("#node-"+old._id)
     .transition()
     .duration(10)
-    .style("opacity",function(d){console.log("new opacity "+d.life/maxLife);return d.life/maxLife;})
+    .style("opacity",function(d){
+      console.log("life "+d.life/1000);
+      console.log("new opacity "+d.life/maxLife);
+      return d.life/maxLife;})
     .transition()
     .duration(function(d){console.log(d.life, maxLife);return d.life;})
     .style("opacity",0)
     .each('end',function(d){
+      div.transition()    
+        .duration(500)    
+        .style("opacity", 0); 
       removeNode(d);
     });
 
@@ -135,8 +141,8 @@ function myGraph(el){
     };
   };
 
-  var w = 1000,
-      h = 600;
+  var w = window.innerWidth - 200,
+      h = window.innerHeight - 50;
       console.log(window.innerHeight,window.innerWidth);
   var svg = d3.select(el)
     .append("svg:svg")
@@ -180,7 +186,6 @@ function myGraph(el){
         return "circle-"+d._id;
     });
 
-
 //the native solution
   nodeEnter.append("svg:text")
     .attr("class","textClass")      
@@ -201,6 +206,9 @@ function myGraph(el){
     .duration(function(d){return d.life})
     .style("opacity",0)
     .each('end',function(d){
+      div.transition()    
+        .duration(500)    
+        .style("opacity", 0); 
       removeNode(d);
     })
     .attr("data-id", function(d){
@@ -245,6 +253,7 @@ function myGraph(el){
         .duration(500)    
         .style("opacity", 0); 
       });
+
 
   // svg.append("rect")
   //   .attr("width",w)

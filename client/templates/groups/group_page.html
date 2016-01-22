@@ -32,6 +32,11 @@
 		</div>
 	</div>
 	{{/if}}
+	{{#if isPrivate}}
+	<div class="row">
+		<div class="userlist"> {{users}}</div>
+	</div>
+	{{/if}}
 <div class="row">
 	{{> messageSend}}
 </div>

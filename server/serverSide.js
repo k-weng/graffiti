@@ -60,7 +60,7 @@ Meteor.methods({
 				Messages.update({_id:data._id},
 				{
 						$inc:{votes:1},
-						$set:{life: maxLife - (now - data.timestamp) + weight*data.votes},
+						$set:{life: maxLife - (now - data.timestamp) + weight*(data.votes+1)},
 						$push:{voters:username}
 				});
 			});
