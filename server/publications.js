@@ -1,5 +1,6 @@
-Meteor.publish('groups',function(){
-	return Groups.find();
+Meteor.publish('groups',function(sortby,order){
+	console.log(sortby,order);
+	return Groups.find({},{sort:{sortby:order}});
 });
 
 Meteor.publish('messages',function(group){
