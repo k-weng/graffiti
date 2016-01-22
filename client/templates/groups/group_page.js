@@ -2,8 +2,15 @@ Template.groupPage.helpers({
 	ownerOf: function() {
 		return this.createdBy === Meteor.user().username;
 	},
-	isPublic: function() {
-		console.log(Groups.find({_id: this._id, privateGroup: true}).count());
-		return !(Groups.find({_id: this._id, privateGroup: true}).count() === 0);
+	isPrivate: function() {
+		return this.privateGroup;
+	},
+	requireDropdown: function() {
+		var isPrivate = this.privateGroup;
+		var ownerOf = this.createdBy === Meteor.user().username;
+		var check = !isPrivate && ownerOf;
+		console.log("Check is: " + check);
+		return isPrivate || check;
 	}
+
 })
