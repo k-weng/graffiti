@@ -22,6 +22,34 @@ Template.addGroup.events({
 			if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
 			if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
 		}
+	},
+	"change .selectpicker": function(event) {
+		var timeChoice = $(event.target).val();
+		switch(timeChoice) {
+			case "b":
+				Session.set("msgTime", (30 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+				break;
+			case "c":
+				Session.set("msgTime", (60 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+				break;
+			case "d":
+				Session.set("msgTime", (4 * 60 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+				break;
+			case "e":
+				Session.set("msgTime", (12 * 60 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+				break;
+			case "f":
+				Session.set("msgTime", (24 * 60 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+				break;
+			default:
+				Session.set("msgTime", (5 * 1000 * 60));
+				console.log(Session.get("msgTime"));
+		}
 	}
 });
 
@@ -29,4 +57,8 @@ Template.addGroup.helpers({
 	hideCompleted: function () {
     	return Session.get("isPrivate");
     }
+});
+
+Template.addGroup.onRendered(function() {
+	Session.set("msgTime", (5 * 1000 * 60));
 });
