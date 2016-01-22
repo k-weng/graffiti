@@ -1,7 +1,15 @@
 Template.groupList.onCreated(
 	function(){
-		Session.set('sortby', "profile.email");
-		Session.set('sortorder', "-1");	
+		// debugger
+		Session.set("sort","sprays");
+		Session.set("order",1)
+		var self=this;
+		// debugger
+		self.autorun(function(){
+			// debugger
+			console.log(Session.get("sort"),Session.get("order"));
+			self.subscribe('groups',Session.get("sort"),Session.get("order"));
+		});
 	}
 );
 
@@ -11,11 +19,21 @@ Template.groupList.helpers({
 	},
 
 	privateGroups: function() {
-		var filter = {sort: {}};
 		var currentUser = Meteor.user().username;
 		var s = Session.get("sort");
-		filter.sort[Session.get('sortby')] = Session.get('sortorder');
-		return Groups.find({people: {$in: [currentUser]}, privateGroup: true},filter);
+		var o = Session.get("order");
+		// return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{s:o}});
+		if(s==="sprays"){
+			console.log("here")
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{sprays:1}});
+		}
+		else if(s==="name"){
+			console.log("here")
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{name:-1}});
+		}else if(s==="createdBy"){
+			console.log("here")
+			return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{createdBy:1}});
+		}
 	},
 
 	publicGroups: function() {
@@ -24,19 +42,22 @@ Template.groupList.helpers({
 });
 
 Template.groupList.events({
-	"click #recent":function(event){
-		Session.set("sortby","timestamp");
-		Session.set("sortorder","-1");
-		console.log(Session.get("sortby"));
+	"click #sprays":function(event){
+		Session.set("sort","sprays");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
 	},
-	"click #oldest":function(event){
-		Session.set("sortby","timestamp");
-		Session.set("sortorder","1");
-		console.log(Session.get("sortby"))
+	"click #createdBy":function(event){
+		Session.set("sort","createdBy");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
 	},
-	"click #total":function(event){
-		Session.set("sortby","sprays");
-		Session.set("sortorder","1");
-		console.log(Session.get("sortby"))
+	"click #name":function(event){
+		Session.set("sort","name");
+		Session.set("order",1)
+
+		console.log(Session.get("sort"))
 	}
 });
