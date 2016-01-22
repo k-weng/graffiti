@@ -4,6 +4,19 @@ if (Groups.find().count() == 0){
 }
 
 Meteor.methods({
+	addGroup: function(groupName, currentUser, isPrivate)
+	{		
+		var groupId = Groups.insert({
+			name: groupName,
+			people: [currentUser],
+			createdBy: currentUser,
+			privateGroup: isPrivate,
+			sprays:0
+		});
+
+		return{_id:groupId};
+	},
+
 	doesUserExist: function (userName) {
 		console.log("doesUserExist is being called.");
 		console.log("The return for the method is " + Meteor.users.find({username: userName}).count());
@@ -21,7 +34,12 @@ Meteor.methods({
 			voters:[]
 			// groupName: Groups.find({_id:message.groupId})
 		});
+
 		var id = Messages.insert(newMsg);
+		Groups.update({_id:message.groupId},
+		{
+			$inc:{sprays:1}
+		});
 		return {_id: id};
 	},
 

@@ -20,15 +20,26 @@
 				<h1>Your Walls</h1>
 			</div>
 		</div>
+		<div class="dropdown">
+		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButton}}
+		    <span class="caret"></span></button>
+		    <ul class="dropdown-menu">
+		      <li class="drop-item" id="total">Total Sprays</li>
+		      <li class="drop-item" id="recent">Recent</li>
+		      <li class="drop-item" id="oldest">Oldest</li>
+		    </ul>
+  		</div>
 		<hr>
+		<div class="scrollable">
   		<ul>
 			{{#each privateGroups}}
 				<li>{{> group}}</li>
 			{{/each}}
 		</ul>
+		</div>
 	</div>
 
-	<div class = "rpw">
+	<div class = "row">
 		<hr class = "group-title">
 		<div class="row">
 			<div class="col-sm-4" id="wall">
@@ -36,11 +47,13 @@
 			</div>
 		</div>
 		<hr>
+		<div class="scrollable">
 		<ul>
 			{{#each publicGroups}}
 				<li>{{> group}}</li>
 			{{/each}}
 		</ul>
+		</div>
 	</div>
 
 	</div>

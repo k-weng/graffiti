@@ -1,5 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+.scrollable{
+    height:200px;
+    overflow: auto;
+    border-radius: 6px;
+    background-color: rgba(189, 195, 199, .8);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.sprays
+{
+    font-family: "Bitter";
+    /*display:inline-block;*/
+}
 .main-container.container-fluid{
     padding: 0;
 }
@@ -17,11 +30,15 @@ body.home
 {
 
 }
+.drop-item{
+    cursor: pointer; cursor: hand; 
+}
+
 .row.background-home{
     background-image: url("/underpass.jpg");
     background-size: cover;
     z-index: -1;
-    padding: 10px;
+    padding: 20px;
 }
 .row.how-to{
     background-color: red;
@@ -212,7 +229,7 @@ ul
     right:10px;
     bottom:100;	*/
     /*text-align: center;			*/
-    width: 250px;					
+    width: 300px;					
     height: 100%;					
     padding: 2px;				
     font: 20px sans-serif;	

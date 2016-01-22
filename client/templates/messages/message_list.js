@@ -187,9 +187,9 @@ function myGraph(el){
     .style("fill",function(d,i){return color(i%3);})
     .style("text-anchor","middle")
     .text(function(d){
-      if(d.text.length>20){
+      if(d.text.length>15){
         console.log(d.text.length);
-        return "\"" + d.text.substring(0,21) + "...\"";
+        return "\"" + d.text.substring(0,16) + "...\"";
       }
       else{
         return "\"" + d.text + "\"";
@@ -222,9 +222,9 @@ function myGraph(el){
           .style("top", "250px")
           .style("left",function(){
             if(d.x>w/2){
-              return "10px";
+              return w/8+"px";
             }else{
-              return w+"px";
+              return 5*w/6+"px";
             }
           })
           .style("background-color",function(){
@@ -236,9 +236,9 @@ function myGraph(el){
               return "#e74c3c";
             }
           });    
-      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<div>   -" + d.username + "</div>")  
+      div.html("<small>" + new Date(d.timestamp) + "</small> <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
           .style("font-family","Merriweather")
-          .style("font-size","12pt");
+          .style("font-size","11pt");
     })          
      .on("mouseout", function(d) {   
        div.transition()    
