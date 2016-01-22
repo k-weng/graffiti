@@ -16,7 +16,14 @@ Template.groupList.onCreated(
 
 Template.groupList.helpers({
 	sortButton: function(){
-		return Session.get("sort")
+		var s = Session.get("sort");
+		if (s === "sprays") {
+			return "Sort by Sprays";
+		} else if (s === "name") {
+			return "Sort by Name";
+		} else if (s === "createdBy") {
+			return "Sort by Creator";
+		}
 	},
 
 	sortButtonPub: function(){

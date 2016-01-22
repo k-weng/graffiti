@@ -11,6 +11,12 @@ Template.groupPage.helpers({
 		var check = !isPrivate && ownerOf;
 		console.log("Check is: " + check);
 		return isPrivate || check;
+	},
+	typeOfGroup: function() {
+		return this.privateGroup ? "Private" : "Public";
+	},
+	colorOfGroup: function() {
+		return this.privateGroup ? "privateColor" : "publicColor";
 	}
 
 })

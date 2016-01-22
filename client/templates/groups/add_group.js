@@ -1,23 +1,26 @@
 Template.addGroup.events({
-	"change .private input": function (event) {
+	'change .private input': function (event) {
     	Session.set("isPrivate", event.target.checked);
     	console.log("Private: " + event.target.checked);
     },
 	'submit .add-group': function(e) {
 		e.preventDefault();
-		var groupName = $("#groupName").val();
+		var input = $("#groupName").val();
 		var currentUser = Meteor.user().username;
 		var isPrivate = Session.get("isPrivate");
 		console.log(Session.get("isPrivate"));
 		e.stopPropagation();
-		if (Groups.findOne({name: groupName, createdBy: currentUser}) == null) {
-			Meteor.call('addGroup',groupName,currentUser,isPrivate,function(err,res){
+		$("#groupName").val("");	
+		if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
+			Meteor.call('addGroup',input,currentUser,isPrivate,function(err,res){
 				Router.go('groupPage',{_id:res._id});
 			});
-			console.log(Groups.findOne({name: groupName, createdBy: currentUser}));
-			console.log("New group added");	
+			console.log(Groups.findOne({name: input, createdBy: currentUser}));
+			console.log("New group added");
+			
 		} else {
-			console.log("Didn't happen");
+			if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
+			if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
 		}
 	}
 });
