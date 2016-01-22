@@ -1,4 +1,4 @@
-var linearScale = d3.scale.linear().domain([0,20]).range([15,70]);
+var linearScale = d3.scale.linear().domain([0,15]).range([15,60]);
 
 Template.messageSend.events({
 	"submit .submit-message": function(e, t){
@@ -15,11 +15,11 @@ Template.messageSend.events({
 
 		// e.stopPropagation();
 		var r = 0;
-		if(input.length<20){
+		if(input.length<15){
 			r = linearScale(input.length);
 		}
 		else{
-			r = 70;
+			r = 60;
 		}
 		var message = {
 			userId:Meteor.userId(), 

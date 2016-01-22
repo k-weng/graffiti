@@ -11,11 +11,8 @@ Template.addGroup.events({
 		console.log(Session.get("isPrivate"));
 		e.stopPropagation();
 		if (Groups.findOne({name: groupName, createdBy: currentUser}) == null) {
-			Groups.insert({
-				name: groupName,
-				people: [currentUser],
-				createdBy: currentUser,
-				privateGroup: isPrivate
+			Meteor.call('addGroup',groupName,currentUser,isPrivate,function(err,res){
+				Router.go('groupPage',{_id:res._id});
 			});
 			console.log(Groups.findOne({name: groupName, createdBy: currentUser}));
 			console.log("New group added");	
