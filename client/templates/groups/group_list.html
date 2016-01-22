@@ -1,9 +1,12 @@
 <template name = "groupList">
+	<div class = "container">
 	<div class="row">
 		<div class="col-sm-4" id="wall">
 			<h1>Your Walls</h1>
 		</div>
-		
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="wall">
 			<div class="dropdown">
 		  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
 		  		<span class="caret"></span>
@@ -11,10 +14,11 @@
 		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
 		  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
 		  	</ul>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-			<hr class="group-title">
+		<div class="row">
+			<hr class = "group-title">
 			<br>
 	  		<ul>
 				{{#each privateGroups}}
@@ -28,4 +32,5 @@
 				{{/each}}
 			</ul>
 		</div>
+	</div>
 </template>
