@@ -26,7 +26,8 @@ Meteor.methods({
 	},
 
 	messageSend: function(message){
-		var maxLife = (5)*(60)*(1000);
+		var maxLife = Groups.findOne({_id:message.groupId}).msgTime;
+		console.log(maxLife);
 		var newMsg = _.extend(message,{
 			uderID: Meteor.user()._id,
 			username: Meteor.user().username,
@@ -47,8 +48,8 @@ Meteor.methods({
 
 	messageVote: function(msgId,user){
 		// console.log(Messages.find({id:msgId}));
-		var weight = (15)*(60)*(1000);
-		var maxLife = (5)*(60)*(1000);
+		// var weight = (15)*(60)*(1000);
+		// var maxLife = (5)*(60)*(1000);
 		var now = Date.now();
 		console.log('messageVote');
 		console.log(msgId);
@@ -56,6 +57,9 @@ Meteor.methods({
 		// console.log()
 		if(Messages.find({_id:msgId,voters:username}).count()===0){
 				Messages.find({_id:msgId}).forEach(function(data){
+				var maxLife = Groups.findOne({_id:data.groupId}).msgTime;
+				console.log("vote " + maxLife);
+				var weight = maxLife/2;
 				console.log(maxLife - (Date.now()-data.timestamp));
 				var now = Date.now();
 				Messages.update({_id:data._id},
@@ -69,6 +73,9 @@ Meteor.methods({
 			console.log("already");
 			Messages.find({_id:msgId}).forEach(function(data){
 				var now = Date.now();
+				var maxLife = Groups.findOne({_id:data.groupId}).msgTime;
+				console.log("vote " + maxLife);
+				var weight = maxLife/2;
 				Messages.update({_id:data._id},
 				{
 						$inc:{votes:-1},

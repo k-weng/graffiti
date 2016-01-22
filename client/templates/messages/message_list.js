@@ -44,7 +44,8 @@ Template.messageList.events({
 Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
-var maxLife = (5)*(60)*(1000);
+var maxLife = Groups.findOne({_id:Router.current().params._id}).msgTime;
+console.log("MAXLIFE " + maxLife)
 graph = new myGraph("#vis");
 Messages.find().observe({
   added: function (doc) {

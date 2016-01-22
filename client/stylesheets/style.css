@@ -138,6 +138,7 @@ input
 }
 .explanation
 {
+    text-indent: 50px;
     padding:15px;
     font-family: "Bitter";
     font-size: 13pt;
@@ -254,14 +255,21 @@ ul
     width: 50%;
     height: 50%;
 }
-
+.cloud
+{
+    width: 100%;
+    height:auto;
+}
 .body-home {
     background-position: 50% 50px;
     background-size: cover;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
+.userList
+{
+    margin-bottom:5px;
+}
 .title {
     font-size: 60px;
     font-weight: 300;

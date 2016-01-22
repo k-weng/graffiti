@@ -1,6 +1,6 @@
 Template.groupPage.helpers({
 	users: function(){
-		return this.people;
+		return this.people.join(", ");
 	},
 
 	ownerOf: function() {
