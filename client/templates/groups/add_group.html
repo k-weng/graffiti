@@ -2,7 +2,9 @@
 			<form class="add-group">
 			<div class="input-group">
 		  		<span class="input-group-addon">
-		    		<input type="checkbox" aria-label="addGroup">
+		  			<label class="private">
+		    			<input type="checkbox" aria-label="addGroup" checked="{{isPrivate}}">
+		    		</label>
 		  		</span>
 		  		<input type="text" id="groupName" class="form-control" aria-label="addGroup" placeholder="Group Name">
 		  		<span class="input-group-btn">

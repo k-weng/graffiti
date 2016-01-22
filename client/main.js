@@ -3,5 +3,6 @@ Meteor.subscribe('groups');
 
 Meteor.startup(function(){
 	Session.set("currentGroup", this.name);
+	Session.set("isPrivate", false);
 });
 

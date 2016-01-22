@@ -21,7 +21,13 @@
 			<hr class = "group-title">
 			<br>
 	  		<ul>
-				{{#each groups}}
+				{{#each privateGroups}}
+					<li>{{> group}}</li>
+				{{/each}}
+			</ul>
+			<br>
+			<ul>
+				{{#each publicGroups}}
 					<li>{{> group}}</li>
 				{{/each}}
 			</ul>
