@@ -18,9 +18,9 @@ Template.messageSend.events({
 
 			// e.stopPropagation();
 			var r = 0;
-			if(input.length<15) {
+			if(input.length < 15) {
 				r = linearScale(input.length);
-			} else{
+			} else {
 				r = 60;
 			}
 
@@ -35,11 +35,10 @@ Template.messageSend.events({
 				live: 1
 			};
 
-			Meteor.call("messageSend", message, function(err, result) {
+			Meteor.call("messageSend", message, function (err, result) {
 				if(err) {
 					return alert("there's an error");
 				}
-			// Router.go('groupPage',{_id: this._id});
 			});
 
 			Meteor.call("addCurrent", message, function(err, result) {

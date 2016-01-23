@@ -1,320 +1,315 @@
+/*Fonts*/
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
-.scrollable{
-    height:200px;
-    overflow: auto;
-    border-radius: 6px;
-    background-color: rgba(189, 195, 199, .8);
-    padding-top: 10px;
-    padding-bottom: 5px;
-    padding-right: 10px;
-    margin:10px;
-}
-.nav-item
-{
-    font-size: 12pt;
-    font-family: "Helvetica";
-}
-.sprays
-{
-    font-family: "Bitter";
-    /*display:inline-block;*/
-}
-.main-container.container-fluid{
-    padding: 0;
-}
-.sign-in
-{
-    background-color: rgba(189, 195, 199, .8);
-    border-radius: 6px;
-}
-.container-fluid.full-width {
-    padding-left: 0;
-    padding-right: 0;
-    overflow-x: hidden;
-}
-body.home
-{
-    background-color: #ecf0f1;
-}
-.drop-item{
-    cursor: pointer; cursor: hand; 
-}
 
-.row.background-home{
-    background-image: url("/underpass.jpg");
-    background-size: cover;
-    z-index: -1;
-    padding: 20px;
-}
-.row.how-to{
-    background-color: #e74c3c;
-}
-.group-list-name
-{
-  /*  padding-left: 50px;
-    padding-right:50px;*/
-}
-.logo-pic
-{
-    margin:10px;
-}
-.group-list-name
-{
-    margin:0px;
-}
-hr.group-title{
-    margin-bottom: 10px;
-}
-.groupTop
-{
-	display: block;
-}
-input.form-control
-{
-	margin-left: 0;
-}
-
-.groupName
-{
-	/*position:fixed;*/
-	/*padding-left: 20px;*/
-    /*width: 150em;*/
-
-}
-
-#signOut
-{
-	margin:7.5px 7.5px 7.5px 15px;
-    background-color: gray;
-    /*border-radius: 6px;*/
-}
-svg
-{
-	height:50%;
-}
-
-.settings
-{
-	height:30px;
-	width: 50px;
-	/*position:fixed;*/
-	/*margin-bottom: 15px;*/
-	/*display: inline-block;*/
-	/*right:0px;*/
-}
-.plus
-{
-    height:35px;
-    width: 50px;
-    /*position:fixed;*/
-    margin-top: 15px;
-    /*display: inline-block;*/
-    /*right:0px;*/
-}
-.dropdown-menu
-{
-	/*right:0px;*/
-	/*padding: 0px;*/
-    width: 500px;
-    padding:5px;
-}
-.userDropdown
-{
-	/*padding:0px;*/
-	margin-bottom:10px;
-    height: 30px;
-    /*display: inline-block;*/
-}
-.submit-message
-{
-	/*position:fixed;*/
-	display: block;
-	/*margin: 5px;*/
-}
-img
-{
-	height:100%;
-	margin-bottom: 2px;
-	vertical-align: middle;
-}
-input
-{
-	/*margin:5px;*/
-	box-shadow: none;
-	font-family: "Bitter";
-}
-.explanation
-{
-    text-indent: 50px;
-    padding:15px;
-    font-family: "Bitter";
-    font-size: 13pt;
-    text-align: left;
-
-}
-div
-{
-    display: block;
-}
-.group-line{
-    padding:0px;
-    margin:8px;
-}
-.logonav
-{
-	font-size: 20pt;
-	text-decoration: none;
-	color: #e74c3c;
-	
-}
-.subtitle{
-    color:#ecf0f1;
-    font-family: "Fjalla One";
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-size: 34pt;
-    padding-top: 0px;
-}
-.logo
-{
-    font-family: "Fjalla One";
-    font-style: "bold";
-    font-size:30pt;
-    color:#e74c3c;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-a:link {
-    text-decoration: none;
-    color: #e74c3c;
-}
-
-a:visited {
-    text-decoration: none;
-    color: gray;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #e74c3c;
+/*General*/
+a {
+  font-family: "Merriweather";
+  text-decoration: none;
 }
 
 a:active {
-    text-decoration: none;
-    color: #e74c3c;
-}
-.textClass
-{   
-    width: 10px;
-    font-family: "Merriweather";
-    color: "white";
-    white-space: pre-wrap;
-    cursor: pointer; cursor: hand; 
-    
-}
-.textClass2
-{   
-    width: 100px;
-    font-family: "Cookie";
-    color: "white";
-    white-space: pre-wrap;
-    cursor: pointer; cursor: hand; 
-    /*text-anchor:middle;*/
-
-}
-h1
-{
-	font-family:"Bitter";
-	/*background-color: red;*/
-    color:#e74c3c;
-	width:100%;
-}
-h2
-{
-	font-family:"Bitter";
-	/*background-color: red;*/
-	width:100%;
-}
-a
-{
-	font-family:"Merriweather";
-	text-decoration: none;
-}
-ul
-{
-	list-style-type:none
+  text-decoration: none;
+  color: #e74c3c;
 }
 
-.tooltip {	
-  /*  position: fixed;	
-    top: 220px;
-    right:10px;
-    bottom:100;	*/
-    /*text-align: center;			*/
-    width: 300px;					
-    height: 100%;					
-    padding: 2px;				
-    font: 20px sans-serif;	
-    /*color:"red";	*/
-  	overflow: hidden;
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;
-    /*overflow:scroll;			*/
+a:hover {
+  text-decoration: none;
+  color: #e74c3c;
 }
 
-.spinner {
-    width: 50%;
-    height: 50%;
+a:link {
+  text-decoration: none;
+  color: #e74c3c;
 }
-.cloud
-{
-    width: 100%;
-    height:auto;
+
+a:visited {
+  text-decoration: none;
+  color: gray;
 }
+
 .body-home {
-    background-position: 50% 50px;
-    background-size: cover;
-    padding-top: 50px;
-    /*padding-bottom: 50px;*/
+  background-position: 50% 50px;
+  background-size: cover;
+  padding-top: 50px;
 }
-.userList
-{
-    margin-bottom:5px;
+
+div {
+  display: block;
 }
-.title {
-    font-size: 60px;
-    font-weight: 300;
+
+h1 {
+  font-family: "Bitter";
+  width: 100%;
+  /*background-color: red;*/
+
+}
+
+h2 {
+  font-family: "Bitter";
+  width: 100%;
+  /*background-color: red;*/
+}
+
+img {
+  height: 100%;
+  margin-bottom: 2px;
+  vertical-align: middle;
+}
+
+input {
+  box-shadow: none;
+  font-family: "Bitter";
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*Add Group*/
+input.form-control {
+  margin-left: 0;
+} /*Also in Message Send*/
+
+.toggling {
+  border-left: 0px;
+  border-right: 0px;
+}
+
+/*Add User*/
+.add-user {
+  margin:5px;
+}
+
+/*Delete Group*/
+.delete-group {
+  margin: 7px;
+}
+
+/*Group*/
+.group-line {
+  padding: 0px;
+}
+
+.group-list-name {
+  margin: 0px;
+}
+
+.sprays {
+  font-family: "Bitter";
+}
+
+/*Group List*/
+.drop-item {
+  cursor: pointer;
+  cursor: hand; 
+}
+
+.dropdown-menu {
+  width: 500px;
+  padding: 5px;
+} /*Also in Group Page*/
+
+hr.group-title {
+  margin-bottom: 10px;
+}
+
+.plus {
+  height: 35px;
+  width: 50px;
+  margin-top: 15px;
+}
+
+.scrollable {
+  height: 200px;
+  overflow: auto;
+  border-radius: 6px;
+  background-color: rgba(189, 195, 199, .8);
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-right: 10px;
 }
 
 #wall {
-    /*width: 100em;*/
-    padding-right: 0px;
-    padding-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+} /*Also in Group Page*/
+
+/*Group Page*/
+.groupName {
+  /*position:fixed;*/
+  /*padding-left: 20px;*/
+  /*width: 150em;*/
 }
-.add-user{
-    margin:5px;
-}
-.delete-group{
-    margin: 7px;
-}
-.quit-group{
-    margin:5px;
-}
-#message-send{
-    padding-left:0px;
-    padding-right:0px;
-}
-#publicColor {
-    color: green;
-    opacity: 0.4;
-    font-size: 50%;
-}
+
 #privateColor {
-    color: red;
-    opacity: 0.4;
-    font-size: 50%;
+  color: red;
+  opacity: 0.4;
+  font-size: 50%;
 }
-.toggling {
-    border-left: 0px;
-    border-right: 0px;
+
+#publicColor {
+  color: green;
+  opacity: 0.4;
+  font-size: 50%;
+}
+
+.settings {
+  height: 30px;
+  width: 50px;
+  /*position:fixed;*/
+  /*margin-bottom: 15px;*/
+  /*display: inline-block;*/
+  /*right:0px;*/
+}
+
+.userDropdown {
+  margin-bottom: 10px;
+  height: 30px;
+  /*padding:0px;*/
+  /*display: inline-block;*/
+}
+
+.userList {
+  margin-bottom: 5px;
+}
+
+/*Home*/
+.cloud {
+  width: 100%;
+  height: auto;
+}
+
+.container-fluid .full-width {
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+}
+
+.explanation {
+  text-indent: 50px;
+  padding: 15px;
+  font-family: "Bitter";
+  font-size: 13pt;
+  text-align: left;
+}
+
+.logo {
+  font-family: "Fjalla One";
+  font-style: "bold";
+  font-size: 30pt;
+  color: #e74c3c;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+} /*Also in Navigation*/
+
+.logo-pic {
+  margin: 10px;
+}
+
+.row.background-home {
+  background-image: url("/underpass.jpg");
+  background-size: cover;
+  z-index: -1;
+  padding: 20px;
+}
+
+.row.how-to {
+  background-color: #e74c3c;
+}
+
+.sign-in {
+  background-color: rgba(189, 195, 199, .8);
+  border-radius: 6px;
+}
+
+.subtitle {
+  color: #ecf0f1;
+  font-family: "Fjalla One";
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 34pt;
+  padding-top: 0px;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+/*Layout*/
+.main-container.container-fluid {
+  padding: 0;
+}
+
+/*Loading*/
+.spinner {
+  width: 50%;
+  height: 50%;
+}
+
+/*Message List*/
+svg {
+  height: 50%;
+}
+
+.textClass {   
+  width: 10px;
+  font-family: "Merriweather";
+  color: "white";
+  white-space: pre-wrap;
+  cursor: pointer; cursor: hand; 
+}
+
+.textClass2 {   
+  width: 100px;
+  font-family: "Cookie";
+  color: "white";
+  white-space: pre-wrap;
+  cursor: pointer; cursor: hand; 
+  /*text-anchor:middle;*/
+}
+
+.tooltip {
+  width: 300px;                   
+  height: 100%;                   
+  padding: 2px;               
+  font: 20px sans-serif;
+  overflow: hidden;
+  border: 0px;        
+  border-radius: 8px;         
+  pointer-events: none;
+  /*position: fixed;*/
+  /*top: 220px;*/
+  /*right:10px;*/
+  /*bottom:100;*/
+  /*text-align: center;*/
+  /*color:"red";*/
+  /*overflow:scroll;*/
+}
+
+/*Message Send*/
+#message-send {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.submit-message {
+  display: block;
+  /*position:fixed;*/
+  /*margin: 5px;*/
+}
+
+/*Navigation*/
+.logonav {
+  font-size: 20pt;
+  text-decoration: none;
+  color: #e74c3c;
+  
+}
+
+#signOut {
+}
+
+/*Quit Group*/
+.quit-group {
+  margin: 5px;
 }

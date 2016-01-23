@@ -1,44 +1,40 @@
 // var dateFormat = require('dateformat');
-
-Template.messageList.onCreated(function(){
-	var self = this;
-  Session.set('loaded',false);
-	self.autorun(function(){
-		Meteor.subscribe('messages', Router.current().params._id, function(){
-      console.log("params id "+Router.current().params._id);
-      Session.set('loaded',true);
-      console.log("subscribe 2");
-    });
-	});
+Template.messageList.events({
+    'click .textClass': function(event, template) {
+        console.log($(event.currentTarget).data("id"));
+        Meteor.call("messageVote", $(e.currentTarget).data("id"), Meteor.user(), function (res, err) {
+            console.log(res);
+            console.log(err);
+            if(err) {
+                Errors.throw(err.reason);
+            } else {
+                if(res==="already") {
+                    alert("Already Voted");
+                } else {
+                    console.log("successfully voted");
+                }
+            }
+        });
+    // alert('id: ' + $(e.currentTarget).data("id"));
+    }
 });
-
 
 Template.messageList.helpers({
-	messages: function(){
-		return Messages.find();
-	}
+    messages: function() {
+        return Messages.find();
+    }
 });
 
-Template.messageList.events({
-	'click .textClass':function(e, template){
-    console.log($(e.currentTarget).data("id"));
-    Meteor.call("messageVote",$(e.currentTarget).data("id"),Meteor.user(),function(res,err){
-      console.log(res);
-      console.log(err);
-        if(err){
-          Errors.throw(err.reason);
-        }
-        else{
-          if(res==="already"){
-            alert("Already Voted");
-          }
-          else{
-            console.log("successfully voted");
-          }
-        }
-    });
-    // alert('id: ' + $(e.currentTarget).data("id"));
-	}
+Template.messageList.onCreated(function() {
+	var self = this;
+    Session.set('loaded',false);
+	self.autorun(function() {
+        Meteor.subscribe('messages', Router.current().params._id, function() {
+            console.log("params id "+Router.current().params._id);
+            Session.set('loaded',true);
+            console.log("subscribe 2");
+        });
+	});
 });
 
 Template.messageList.onRendered(function(){

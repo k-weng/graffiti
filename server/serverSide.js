@@ -1,9 +1,10 @@
-if (Groups.find().count() == 0){
+if (Groups.find().count() == 0) {
 	Groups.insert({name: "Public Group 1", people: [], privateGroup: false, sprays: 0, msgTime: (5 * 60 * 1000)});
 	Groups.insert({name: "Public Group 2", people: [], privateGroup: false, sprays: 0, msgTime: (5 * 60 * 1000)});
 }
 
 Meteor.methods({
+<<<<<<< HEAD
 
 	addCurrent: function(message){
 		Groups.update({_id:message.groupId},
@@ -13,6 +14,9 @@ Meteor.methods({
 	},
 
 	addGroup: function(groupName, currentUser, isPrivate, msgTime)
+=======
+	addGroup: function (groupName, currentUser, isPrivate, msgTime)
+>>>>>>> 11b4c89708dea29bd844ea7f6ded60678f088158
 	{		
 		var groupId = Groups.insert({
 			name: groupName,
@@ -25,19 +29,17 @@ Meteor.methods({
 			currentMessage: "No messages yet"
 		});
 
-		return{_id:groupId};
+		return {_id:groupId};
 	},
 
 	doesUserExist: function (userName) {
-		console.log("doesUserExist is being called.");
-		console.log("The return for the method is " + Meteor.users.find({username: userName}).count());
 		return Meteor.users.find({username: userName}).count();
 	},
 
-	messageSend: function(message){
+	messageSend: function (message){
 		var maxLife = Groups.findOne({_id:message.groupId}).msgTime;
 		console.log(maxLife);
-		var newMsg = _.extend(message,{
+		var newMsg = _.extend(message, {
 			uderID: Meteor.user()._id,
 			username: Meteor.user().username,
 			votes:0,
@@ -48,14 +50,15 @@ Meteor.methods({
 		});
 
 		var id = Messages.insert(newMsg);
-		Groups.update({_id:message.groupId},
+		Groups.update({_id: message.groupId},
 		{
-			$inc:{sprays:1}
+			$inc: {sprays: 1}
 		});
+
 		return {_id: id};
 	},
 
-	messageVote: function(msgId,user){
+	messageVote: function (msgId, user) {
 		// console.log(Messages.find({id:msgId}));
 		// var weight = (15)*(60)*(1000);
 		// var maxLife = (5)*(60)*(1000);
@@ -64,32 +67,30 @@ Meteor.methods({
 		console.log(msgId);
 		var username = user.username;
 		// console.log()
-		if(Messages.find({_id:msgId,voters:username}).count()===0){
-				Messages.find({_id:msgId}).forEach(function(data){
-				var maxLife = Groups.findOne({_id:data.groupId}).msgTime;
+		if(Messages.find({_id: msgId,voters: username}).count() === 0) {
+			Messages.find({_id: msgId}).forEach(function (data) {
+				var maxLife = Groups.findOne({_id: data.groupId}).msgTime;
 				console.log("vote " + maxLife);
-				var weight = maxLife/2;
-				console.log(maxLife - (Date.now()-data.timestamp));
+				var weight = maxLife / 2;
+				console.log(maxLife - (Date.now() - data.timestamp));
 				var now = Date.now();
-				Messages.update({_id:data._id},
-				{
-						$inc:{votes:1},
-						$set:{life: maxLife - (now - data.timestamp) + weight*(data.votes+1)},
-						$push:{voters:username}
+				Messages.update({_id: data._id}, {
+						$inc: {votes: 1},
+						$set: {life: maxLife - (now - data.timestamp) + weight * (data.votes + 1)},
+						$push: {voters: username}
 				});
 			});
-		}else{
+		} else {
 			console.log("already");
-			Messages.find({_id:msgId}).forEach(function(data){
+			Messages.find({_id: msgId}).forEach(function (data) {
 				var now = Date.now();
-				var maxLife = Groups.findOne({_id:data.groupId}).msgTime;
+				var maxLife = Groups.findOne({_id: data.groupId}).msgTime;
 				console.log("vote " + maxLife);
-				var weight = maxLife/2;
-				Messages.update({_id:data._id},
-				{
-						$inc:{votes:-1},
-						$pull:{voters:username},
-						$set:{life: maxLife - (now - data.timestamp) + (weight*(data.votes-1))}
+				var weight = maxLife / 2;
+				Messages.update({_id: data._id}, {
+						$inc:{votes: -1},
+						$pull:{voters: username},
+						$set:{life: maxLife - (now - data.timestamp) + (weight * (data.votes - 1))}
 				});
 			});
 		}
