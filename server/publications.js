@@ -3,11 +3,11 @@
 // 	return Groups.find({},{sort:{sortby:order}});
 // });
 
-Meteor.publish('groups',function(){
+Meteor.publish('groups', function() {
 	return Groups.find({});
 });
 
-Meteor.publish('messages',function(group){
+Meteor.publish('messages', function (group) {
 	console.log("publications **** " + group);
 
 	// Messages.aggregate(
@@ -17,20 +17,18 @@ Meteor.publish('messages',function(group){
 	// 	}
 	// }
 	// ]);
-	Messages.find().forEach(function(data){
+	Messages.find().forEach(function (data) {
 		// console.log(maxLife - (Date.now()-data.timestamp));
 		var now = Date.now();
 		var maxLife = Groups.findOne({_id:data.groupId}).msgTime;
-		var weight = maxLife/2;
+		var weight = maxLife / 2;
 		console.log(maxLife, weight);
-		Messages.update({_id:data._id},
-			{$set:{life: maxLife - (now - data.timestamp) + weight*data.votes }
-		});
+		Messages.update({_id:data._id}, {$set: {life: maxLife - (now - data.timestamp) + weight * data.votes}});
 	});
 
-	Messages.remove({life:{$lt:0}});
+	Messages.remove({life: {$lt: 0}});
 
-	return Messages.find({groupId:group},{life:{$gt:0}});
+	return Messages.find({groupId: group}, {life: {$gt: 0}});
 });
 
 //Meteor.publish("allUsers", function () {
