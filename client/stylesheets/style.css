@@ -128,6 +128,7 @@ hr.group-title {
   padding-top: 10px;
   padding-bottom: 5px;
   padding-right: 10px;
+  margin:10px;
 }
 
 #wall {
@@ -307,6 +308,8 @@ svg {
 }
 
 #signOut {
+    border-radius: 6px;
+    margin: 7.5px 7.5px 7.5px 15px;
 }
 
 /*Quit Group*/

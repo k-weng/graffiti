@@ -19,11 +19,11 @@ Template.messageList.events({
     }
 });
 
-Template.messageList.helpers({
-    messages: function() {
-        return Messages.find();
-    }
-});
+// Template.messageList.helpers({
+//     messages: function() {
+//         return Messages.find();
+//     }
+// });
 
 Template.messageList.onCreated(function() {
 	var self = this;
@@ -43,7 +43,7 @@ var graph,
 var maxLife = Groups.findOne({_id:Router.current().params._id}).msgTime;
 console.log("MAXLIFE " + maxLife)
 graph = new myGraph("#vis");
-Messages.find().observe({
+Messages.find({}).observe({
   added: function (doc) {
     graph.addNode(doc);
   },
