@@ -1,9 +1,9 @@
-Template.userPage.onCreated(function(){
-	Meteor.subscribe('myMessages',Meteor.userId());
+Template.userPage.onCreated(function() {
+	Meteor.subscribe('myMessages', Meteor.userId());
 });
 
 Template.userPage.helpers({
-	myMessages: function(){
+	myMessages: function() {
 		return Messages.find({});
 	}
 });

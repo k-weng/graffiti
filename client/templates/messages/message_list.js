@@ -2,7 +2,7 @@
 Template.messageList.events({
     'click .textClass': function(event, template) {
         console.log($(event.currentTarget).data("id"));
-        Meteor.call("messageVote", $(e.currentTarget).data("id"), Meteor.user(), function (res, err) {
+        Meteor.call("messageVote", $(event.currentTarget).data("id"), Meteor.user(), function (res, err) {
             console.log(res);
             console.log(err);
             if(err) {
