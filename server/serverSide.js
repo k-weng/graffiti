@@ -4,7 +4,6 @@ if (Groups.find().count() == 0) {
 }
 
 Meteor.methods({
-<<<<<<< HEAD
 
 	addCurrent: function(message){
 		Groups.update({_id:message.groupId},
@@ -14,9 +13,7 @@ Meteor.methods({
 	},
 
 	addGroup: function(groupName, currentUser, isPrivate, msgTime)
-=======
-	addGroup: function (groupName, currentUser, isPrivate, msgTime)
->>>>>>> 11b4c89708dea29bd844ea7f6ded60678f088158
+
 	{		
 		var groupId = Groups.insert({
 			name: groupName,
