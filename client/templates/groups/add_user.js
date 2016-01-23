@@ -1,8 +1,8 @@
 Template.addUser.events({
-	'submit .add-user': function(e) { 
-		e.preventDefault();
+	'submit .add-user': function(event) { 
+		event.preventDefault();
 		var newUser = $("#userName").val();
-		e.stopPropagation();
+		event.stopPropagation();
 		var inGroup = Groups.findOne({_id: this._id, people: {$in: [newUser]}}) == null;
 		var groupId = this._id;
 

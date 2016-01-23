@@ -1,31 +1,25 @@
 <template name="addGroup">
-			<form class="add-group">
-			<div class="input-group">
-		  		<span class="input-group-addon">
-		  			<label class="private">
-		    			Private: <input type="checkbox" aria-label="addGroup" checked="{{isPrivate}}">
-		    		</label>
-		  		</span>
-		  		<input type="text" id="groupName" class="form-control" aria-label="addGroup" placeholder="Name of Wall">
-		  		<span class="input-group-addon toggling">
-		  			<select class="selectpicker">
-		  				<option value="a">5 Minutes</option>
-		  				<option value="b">30 Minutes</option>
-		  				<option value="c">1 Hour</option>
-		  				<option value="d">4 Hours</option>
-		  				<option value="e">12 Hours</option>
-		  				<option value="f">1 Day</option>
-		  			</select>
-		  		</span>
-		  		<span class="input-group-btn">
-					<button class="btn btn-default margin-left-stuff" type="submit">Make Wall</button>
-					</span>
-				</div>
-			</form>
-
-	<!-- <form class="add-group">
-		<input type="text" id="groupName" placeholder="Group Name">
-		<input type="submit" value="Create Group">
-		<label class="radio-inline"><input type="radio" class="active">Public</label>
-	</form> -->
+	<form class="add-group">
+	<div class="input-group">
+  		<span class="input-group-addon">
+  			<label class="private">
+    			Private: <input type="checkbox" aria-label="addGroup" checked="{{isPrivate}}">
+    		</label>
+  		</span>
+  		<input type="text" id="groupName" class="form-control" aria-label="addGroup" placeholder="Name of Wall">
+  		<span class="input-group-addon toggling">
+  			<select class="selectpicker">
+  				<option value="a">5 Minutes</option>
+  				<option value="b">30 Minutes</option>
+  				<option value="c">1 Hour</option>
+  				<option value="d">4 Hours</option>
+  				<option value="e">12 Hours</option>
+  				<option value="f">1 Day</option>
+  			</select>
+  		</span>
+  		<span class="input-group-btn">
+			<button class="btn btn-default margin-left-stuff" type="submit">Make Wall</button>
+			</span>
+		</div>
+	</form>
 </template>

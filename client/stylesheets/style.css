@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Merriweather|Bitter:400,700);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
-.scrollable{
-    height:200px;
+
+.scrollable {
+    height: 200px;
     overflow: auto;
     border-radius: 6px;
     background-color: rgba(189, 195, 199, .8);
@@ -9,170 +10,174 @@
     padding-bottom: 5px;
     padding-right: 10px;
 }
-.sprays
-{
+
+.sprays {
     font-family: "Bitter";
-    /*display:inline-block;*/
 }
-.main-container.container-fluid{
+
+.main-container.container-fluid {
     padding: 0;
 }
-.sign-in
-{
+
+.sign-in {
     background-color: rgba(189, 195, 199, .8);
     border-radius: 6px;
 }
+
 .container-fluid.full-width {
     padding-left: 0;
     padding-right: 0;
     overflow-x: hidden;
 }
-body.home
-{
+
+body.home {
 
 }
-.drop-item{
-    cursor: pointer; cursor: hand; 
+
+.drop-item {
+    cursor: pointer;
+    cursor: hand; 
 }
 
-.row.background-home{
+.row.background-home {
     background-image: url("/underpass.jpg");
     background-size: cover;
     z-index: -1;
     padding: 20px;
 }
-.row.how-to{
+
+.row.how-to {
     background-color: #e74c3c;
 }
-.group-list-name
-{
+
+.group-list-name {
   /*  padding-left: 50px;
     padding-right:50px;*/
 }
-.logo-pic
-{
-    margin:10px;
+
+.logo-pic {
+    margin: 10px;
 }
-.group-list-name
-{
-    margin:0px;
+
+.group-list-name {
+    margin: 0px;
 }
-hr.group-title{
+
+hr.group-title {
     margin-bottom: 10px;
 }
-.groupTop
-{
+
+.groupTop {
 	display: block;
 }
-input.form-control
-{
+
+input.form-control {
 	margin-left: 0;
 }
 
-.groupName
-{
+.groupName {
 	/*position:fixed;*/
 	/*padding-left: 20px;*/
     /*width: 150em;*/
-
 }
 
-#signOut
-{
+#signOut {
 /*	margin:5px;*/
 }
-svg
-{
-	height:50%;
+
+svg {
+	height: 50%;
 }
 
-.settings
-{
-	height:30px;
+.settings {
+	height: 30px;
 	width: 50px;
 	/*position:fixed;*/
 	/*margin-bottom: 15px;*/
 	/*display: inline-block;*/
 	/*right:0px;*/
 }
-.plus
-{
-    height:35px;
+
+.plus {
+    height: 35px;
     width: 50px;
     /*position:fixed;*/
     margin-top: 15px;
     /*display: inline-block;*/
     /*right:0px;*/
 }
-.dropdown-menu
-{
+
+.dropdown-menu {
 	/*right:0px;*/
 	/*padding: 0px;*/
     width: 500px;
-    padding:5px;
+    padding: 5px;
 }
-.userDropdown
-{
+
+.userDropdown {
 	/*padding:0px;*/
-	margin-bottom:10px;
+	margin-bottom: 10px;
     height: 30px;
     /*display: inline-block;*/
 }
-.submit-message
-{
+
+.submit-message {
 	/*position:fixed;*/
 	display: block;
 	/*margin: 5px;*/
 }
-img
-{
-	height:100%;
+
+img {
+	height: 100%;
 	margin-bottom: 2px;
 	vertical-align: middle;
 }
-input
-{
+
+input {
 	/*margin:5px;*/
 	box-shadow: none;
 	font-family: "Bitter";
 }
-.explanation
-{
+
+.explanation {
     text-indent: 50px;
-    padding:15px;
+    padding: 15px;
     font-family: "Bitter";
     font-size: 13pt;
     text-align: left;
 }
-div
-{
+
+div {
     display: block;
 }
-.group-line{
-    padding:0px;
+
+.group-line {
+    padding: 0px;
 }
-.logonav
-{
+
+.logonav {
 	font-size: 20pt;
 	text-decoration: none;
 	color: #e74c3c;
 	
 }
-.subtitle{
-    color:#ecf0f1;
+
+.subtitle {
+    color: #ecf0f1;
     font-family: "Fjalla One";
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 34pt;
     padding-top: 0px;
 }
-.logo
-{
+
+.logo {
     font-family: "Fjalla One";
     font-style: "bold";
-    font-size:30pt;
-    color:#e74c3c;
+    font-size: 30pt;
+    color: #e74c3c;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
 a:link {
     text-decoration: none;
     color: #e74c3c;
@@ -192,53 +197,51 @@ a:active {
     text-decoration: none;
     color: #e74c3c;
 }
-.textClass
-{   
+
+.textClass {   
     width: 10px;
     font-family: "Merriweather";
     color: "white";
     white-space: pre-wrap;
     cursor: pointer; cursor: hand; 
-    
 }
-.textClass2
-{   
+
+.textClass2 {   
     width: 100px;
     font-family: "Cookie";
     color: "white";
     white-space: pre-wrap;
     cursor: pointer; cursor: hand; 
     /*text-anchor:middle;*/
+}
 
-}
-h1
-{
-	font-family:"Bitter";
+h1 {
+	font-family: "Bitter";
 	/*background-color: red;*/
-	width:100%;
+	width: 100%;
 }
-h2
-{
-	font-family:"Bitter";
+
+h2 {
+	font-family: "Bitter";
 	/*background-color: red;*/
-	width:100%;
+	width: 100%;
 }
-a
-{
-	font-family:"Merriweather";
+
+a {
+	font-family: "Merriweather";
 	text-decoration: none;
 }
-ul
-{
-	list-style-type:none
+
+ul {
+	list-style-type: none;
 }
 
 .tooltip {	
   /*  position: fixed;	
     top: 220px;
     right:10px;
-    bottom:100;	*/
-    /*text-align: center;			*/
+    bottom:100;
+    text-align: center;*/
     width: 300px;					
     height: 100%;					
     padding: 2px;				
@@ -255,21 +258,23 @@ ul
     width: 50%;
     height: 50%;
 }
-.cloud
-{
+
+.cloud {
     width: 100%;
-    height:auto;
+    height: auto;
 }
+
 .body-home {
     background-position: 50% 50px;
     background-size: cover;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.userList
-{
-    margin-bottom:5px;
+
+.userList {
+    margin-bottom: 5px;
 }
+
 .title {
     font-size: 60px;
     font-weight: 300;
@@ -280,29 +285,36 @@ ul
     padding-right: 0px;
     padding-left: 0px;
 }
-.add-user{
+
+.add-user {
     margin:5px;
 }
-.delete-group{
+
+.delete-group {
     margin: 7px;
 }
-.quit-group{
-    margin:5px;
+
+.quit-group {
+    margin: 5px;
 }
-#message-send{
-    padding-left:0px;
-    padding-right:0px;
+
+#message-send {
+    padding-left: 0px;
+    padding-right: 0px;
 }
+
 #publicColor {
     color: green;
     opacity: 0.4;
     font-size: 50%;
 }
+
 #privateColor {
     color: red;
     opacity: 0.4;
     font-size: 50%;
 }
+
 .toggling {
     border-left: 0px;
     border-right: 0px;

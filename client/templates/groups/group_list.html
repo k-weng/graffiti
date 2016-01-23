@@ -1,79 +1,80 @@
-<template name = "groupList">
-	<div class = "container">
-	<div class="row">
-		<div class="col-sm-4" id="wall">
-			<div class="dropdown">
-		  	<button class="btn btn-primary dropdown-toggle plus" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/plus.png"/>
-		  		<span class="caret"></span>
-		  	</button>
-		  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
-		  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
-		  	</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<hr class = "group-title">
+<template name="groupList">
+	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<h1>Your Walls</h1>
+			<div class="col-sm-4" id="wall">
+				<div class="dropdown">
+			  	<button class="btn btn-primary dropdown-toggle plus" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			  		<img src="/plus.png"/>
+			  		<span class="caret"></span>
+			  	</button>
+			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
+			  	</ul>
+				</div>
 			</div>
 		</div>
-		<div class="dropdown">
-		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButton}}
-		    <span class="caret"></span></button>
-		    <ul class="dropdown-menu">
-		      <li class="drop-item" id="sprays"><a href="#">Total Sprays</a></li>
-		      <li class="drop-item" id="oldest"><a href="#">Oldest</a></li>
-		      <li class="drop-item" id="recent"><a href="#">Recent</a></li>
-		    </ul>
-  		</div>
-		<hr>
-		{{#if hasPrivate}}
-		<div class="scrollable">
-  		<ul>
-			{{#each privateGroups}}
-				<li>{{> group}}</li>
-			{{/each}}
-		</ul>
-		</div>
-		{{else}}
+
+		<div class="row">
+			<hr class="group-title">
 			<div class="row">
-			<div class="col-sm-4">
-				<h3>You aren't a part of any private walls.</h3>
+				<div class="col-sm-4">
+					<h1>Your Walls</h1>
+				</div>
 			</div>
+			<div class="dropdown">
+			    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ sortButton }}
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			      <li class="drop-item" id="sprays"><a href="#">Total Sprays</a></li>
+			      <li class="drop-item" id="oldest"><a href="#">Oldest</a></li>
+			      <li class="drop-item" id="recent"><a href="#">Recent</a></li>
+			    </ul>
+	  		</div>
+			<hr>
+			{{#if hasPrivate}}
+			<div class="scrollable">
+	  		<ul>
+				{{#each privateGroups}}
+					<li>{{> group}}</li>
+				{{/each}}
+			</ul>
+			</div>
+			{{else}}
+				<div class="row">
+				<div class="col-sm-4">
+					<h3>You aren't a part of any private walls.</h3>
+				</div>
+			</div>
+			{{/if}}
 		</div>
-		{{/if}}
-	</div>
 
-	<div class = "row">
-		<hr class = "group-title">
 		<div class="row">
-			<div class="col-sm-4">
-				<h1>Public Walls</h1>
+			<hr class="group-title">
+			<div class="row">
+				<div class="col-sm-4">
+					<h1>Public Walls</h1>
+				</div>
+			</div>
+			<div class="dropdown">
+			    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButtonPub}}
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			      <li class="drop-item" id="sprays-pub"><a href="#">Total Sprays</a></li>
+			      <li class="drop-item" id="oldest-pub"><a href="#">Oldest</a></li>
+			      <li class="drop-item" id="recent-pub"><a href="#">Recent</a></li>
+			    </ul>
+	  		</div>
+			<hr>
+			<div class="scrollable">
+			<ul>
+				{{#each publicGroups}}
+					<li>
+						{{> group}}
+					</li>
+				{{/each}}
+			</ul>
 			</div>
 		</div>
-		<div class="dropdown">
-		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButtonPub}}
-		    <span class="caret"></span></button>
-		    <ul class="dropdown-menu">
-		      <li class="drop-item" id="sprays-pub"><a href="#">Total Sprays</a></li>
-		      <li class="drop-item" id="oldest-pub"><a href="#">Oldest</a></li>
-		      <li class="drop-item" id="recent-pub"><a href="#">Recent</a></li>
-		    </ul>
-  		</div>
-		<hr>
-		<div class="scrollable">
-		<ul>
-			{{#each publicGroups}}
-				<li>
-					{{> group}}
-				</li>
-			{{/each}}
-		</ul>
-		</div>
-	</div>
 
 	</div>
 </template>

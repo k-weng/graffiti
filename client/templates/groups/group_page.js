@@ -1,8 +1,7 @@
 Template.groupPage.helpers({
-	users: function(){
+	users: function() {
 		return this.people.join(", ");
 	},
-
 	ownerOf: function() {
 		return this.createdBy === Meteor.user().username;
 	},
@@ -22,5 +21,4 @@ Template.groupPage.helpers({
 	colorOfGroup: function() {
 		return this.privateGroup ? "privateColor" : "publicColor";
 	}
-
-})
+});
