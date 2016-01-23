@@ -1,63 +1,51 @@
 <template name="groupPage">
 	<div class="container">
-	<div class="row">
-		<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
-			<h1 class="groupName">
-				{{ name }}
-				<small id="{{ colorOfGroup }}">{{ typeOfGroup }}</small>
-			</h1>
-		</div>
-	</div>
-	{{#if requireDropdown}}
-	<div class="row">
-		<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
-		<div class="dropdown userDropdown">
-			<button class="btn btn-primary dropdown-toggle settings" type="image" src="/public/settings.png" data-toggle="dropdown">
-				<img src="/settings.png"/>
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				{{#if ownerOf}}
-				<li>{{> deleteGroup}}</li>
-				{{else}}
-					{{#if isPrivate}}
-					<li>{{> quitGroup}}</li>
-					{{/if}}
-				{{/if}}
-				<!-- <hr> -->
-				{{#if isPrivate}}
-				<li class = "add-user">{{> addUser}}</li>
-				{{/if}}
-			</ul>
-		</div>
-		</div>
-	</div>
-	{{/if}}
-	{{#if isPrivate}}
-	<div class="userList row">
-		<div> Users: {{ users }} </div>
-	</div>
-	{{/if}}
-<div class="row">
-	{{> messageSend}}
-</div>
-	{{> messageList}}
-</div>
-</template>
-<!-- 
-<div class="row fixed">
-		<div class="col-sm-4" id="wall">
-			<h1>Your Walls</h1>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
+				<h1 class="groupName">
+					{{ name }}
+					<small id="{{ colorOfGroup }}">{{ typeOfGroup }}</small>
+				</h1>
+			</div>
 		</div>
 
-				<div class="dropdown">
-			  	<button class="btn btn-primary dropdown-toggle settings" id="dropdownMenu1" type="image" src="settings.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src = "/settings.png"/>
-			  		<span class="caret"></span>
-			  	</button>
-			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
-			  		<li class="dropdown-submenu pull-right"><span class="add-group">{{> addGroup}}</span></li>
-			  	</ul>
+		{{#if requireDropdown}}
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
+					<div class="dropdown userDropdown">
+						<button class="btn btn-primary dropdown-toggle settings" type="image" src="/public/settings.png" data-toggle="dropdown">
+							<img src="/settings.png"/>
+							<span class="caret"></span>
+						</button>
+
+						<ul class="dropdown-menu">
+							{{#if ownerOf}}
+								<li>{{> deleteGroup}}</li>
+							{{else}}
+								{{#if isPrivate}}
+									<li>{{> quitGroup}}</li>
+								{{/if}}
+							{{/if}}
+
+							{{#if isPrivate}}
+								<li class = "add-user">{{> addUser}}</li>
+							{{/if}}
+						</ul>
+					</div>
 				</div>
+			</div>
+		{{/if}}
 
+		{{#if isPrivate}}
+			<div class="userList row">
+				<div>Users: {{ users }}</div>
+			</div>
+		{{/if}}
 
-	</div> -->
+		<div class="row">
+			{{> messageSend}}
+		</div>
+		
+			{{> messageList}}
+	</div>
+</template>

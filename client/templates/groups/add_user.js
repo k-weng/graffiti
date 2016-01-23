@@ -2,10 +2,8 @@ Template.addUser.events({
 	'submit .add-user': function(event) { 
 		event.preventDefault();
 		var newUser = $("#userName").val();
-		event.stopPropagation();
 		var inGroup = Groups.findOne({_id: this._id, people: {$in: [newUser]}}) == null;
 		var groupId = this._id;
-
 		var message = "";
 		var length = newUser.length > 0;
 		var check = (newUser === Meteor.user().username);
@@ -16,10 +14,10 @@ Template.addUser.events({
 
 		Session.set('addUserMessages', message);
 
-		Meteor.call('doesUserExist', newUser, function (error, result) {
-			if (result === 1 && inGroup) {
+		Meteor.call('doesUserExist', newUser, function (err, res) {
+			if (res === 1 && inGroup) {
 				Meteor.call('addUser', newUser, groupId);
-			} else if (result === 0 && length) {
+			} else if (res === 0 && length) {
 				Session.set('addUserMessages', "User does not exist");
 			}
 		});

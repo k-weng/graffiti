@@ -1,25 +1,12 @@
 Template.addGroup.events({
 	'change .private input': function(event) {
-    	Session.set("isPrivate", event.target.checked);
-    },
-	'submit .add-group': function(event) {
-		event.preventDefault();
-		var input = $("#groupName").val();
-		var currentUser = Meteor.user().username;
-		var isPrivate = Session.get("isPrivate");
-		$("#groupName").val("");	
-		if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
-			Meteor.call('addGroup', input, currentUser, isPrivate, Session.get("msgTime"), function(err,res) {
-				Router.go('groupPage',{_id:res._id});
-			});
-		} else {
-			if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
-			if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
-		}
+  		Session.set("isPrivate", event.target.checked);
 	},
-	"change .selectpicker": function(event) {
+
+	'change .selectpicker': function(event) {
 		var timeChoice = $(event.target).val();
-		switch(timeChoice) {
+
+		switch (timeChoice) {
 			case "b":
 				Session.set("msgTime", (30 * 1000 * 60));
 				console.log(Session.get("msgTime"));
@@ -44,13 +31,31 @@ Template.addGroup.events({
 				Session.set("msgTime", (5 * 1000 * 60));
 				console.log(Session.get("msgTime"));
 		}
+
+	},
+	
+	'submit .add-group': function(event) {
+		event.preventDefault();
+		var input = $("#groupName").val();
+		var currentUser = Meteor.user().username;
+		var isPrivate = Session.get("isPrivate");
+		
+		$("#groupName").val("");	
+		if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
+			Meteor.call('addGroup', input, currentUser, isPrivate, Session.get("msgTime"), function (err,res) {
+				Router.go('groupPage',{_id: res._id});
+			});
+		} else {
+			if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
+			if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
+		}
 	}
 });
 
 Template.addGroup.helpers({
-	hideCompleted: function () {
-    	return Session.get("isPrivate");
-    }
+	hideCompleted: function() {
+  	return Session.get("isPrivate");
+  }
 });
 
 Template.addGroup.onRendered(function() {
