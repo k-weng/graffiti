@@ -43,7 +43,7 @@ var graph,
 var maxLife = Groups.findOne({_id:Router.current().params._id}).msgTime;
 console.log("MAXLIFE " + maxLife)
 graph = new myGraph("#vis");
-Messages.find({}).observe({
+Messages.find({groupId:Router.current().params._id}).observe({
   added: function (doc) {
     graph.addNode(doc);
   },
