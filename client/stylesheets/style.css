@@ -8,6 +8,12 @@
     padding-top: 10px;
     padding-bottom: 5px;
     padding-right: 10px;
+    margin:10px;
+}
+.nav-item
+{
+    font-size: 12pt;
+    font-family: "Helvetica";
 }
 .sprays
 {
@@ -29,7 +35,7 @@
 }
 body.home
 {
-
+    background-color: #ecf0f1;
 }
 .drop-item{
     cursor: pointer; cursor: hand; 
@@ -79,7 +85,9 @@ input.form-control
 
 #signOut
 {
-/*	margin:5px;*/
+	margin:7.5px 7.5px 7.5px 15px;
+    background-color: gray;
+    /*border-radius: 6px;*/
 }
 svg
 {
@@ -143,6 +151,7 @@ input
     font-family: "Bitter";
     font-size: 13pt;
     text-align: left;
+
 }
 div
 {
@@ -150,6 +159,7 @@ div
 }
 .group-line{
     padding:0px;
+    margin:8px;
 }
 .logonav
 {
@@ -215,6 +225,7 @@ h1
 {
 	font-family:"Bitter";
 	/*background-color: red;*/
+    color:#e74c3c;
 	width:100%;
 }
 h2
@@ -264,7 +275,7 @@ ul
     background-position: 50% 50px;
     background-size: cover;
     padding-top: 50px;
-    padding-bottom: 50px;
+    /*padding-bottom: 50px;*/
 }
 .userList
 {

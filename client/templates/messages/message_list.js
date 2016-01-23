@@ -100,6 +100,11 @@ function myGraph(el){
       removeNode(d);
     });
 
+    // div.html("<small>" + new Date(d.timestamp) + "<div> Clicks: " + d.votes + " </div>" + "</small>"  + " <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
+    //       .style("font-family","Merriweather")
+    //       .style("font-size","11pt");
+    // });  
+
     div.style("background-color",function(){
         var username = Meteor.user().username;
         if(Messages.find({_id:old._id,voters:username}).count()===0){
@@ -145,6 +150,7 @@ function myGraph(el){
   var w = window.innerWidth - 200,
       h = window.innerHeight - 50;
       console.log(window.innerHeight,window.innerWidth);
+
   var svg = d3.select(el)
     .append("svg:svg")
     .attr("width", w)
@@ -153,6 +159,13 @@ function myGraph(el){
     .attr("pointer-events", "all")
     .attr("viewBox","0 0 "+w+" "+h)
     .attr("perserveAspectRatio","xMinYMid");
+
+  window.onresize = function(){
+    var w = window.innerWidth - 200,
+      h = window.innerHeight - 50;
+    svg.attr("width",w);
+    svg.attr("height",h);
+  };
 
   var vis = svg.append('svg:g');
 

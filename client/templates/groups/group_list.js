@@ -1,8 +1,8 @@
 Template.groupList.onCreated(
 	function(){
 		// debugger
-		Session.set("sort","sprays");
-		Session.set("sort-pub","sprays");
+		Session.set("sort","recent");
+		Session.set("sort-pub","recent");
 		Session.set("order",1)
 		var self=this;
 		// debugger

@@ -9,7 +9,10 @@ Template.messageSend.events({
 		var input = $("#message-input").val();
 
 		if(input && input.length) {
-
+			if(input.length>500){
+				$("#message-input").val("");
+				$("#message-input").attr("placeholder","You're saying too much! (500 char limit)");
+			}else{
 			console.log(input);
 			console.log("submitted");
 
@@ -39,8 +42,16 @@ Template.messageSend.events({
 			// Router.go('groupPage',{_id: this._id});
 			});
 
+			Meteor.call("addCurrent", message, function(err, result) {
+				if(err) {
+					return alert("there's an error");
+				}
+			// Router.go('groupPage',{_id: this._id});
+			});
+
 			$("#message-input").val("");
 			$("#message-input").attr("placeholder","Say something!");
+			}
 		} else {
 			$("#message-input").attr("placeholder","You can't say nothing!");
 		}

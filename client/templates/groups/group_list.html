@@ -20,6 +20,7 @@
 				<h1>Your Walls</h1>
 			</div>
 		</div>
+		{{#if hasPrivate}}
 		<div class="dropdown">
 		    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{sortButton}}
 		    <span class="caret"></span></button>
@@ -29,6 +30,7 @@
 		      <li class="drop-item" id="recent"><a href="#">Recent</a></li>
 		    </ul>
   		</div>
+  		{{/if}}
 		<hr>
 		{{#if hasPrivate}}
 		<div class="scrollable">
@@ -40,7 +42,7 @@
 		</div>
 		{{else}}
 			<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 col-md-8 col-lg-8">
 				<h3>You aren't a part of any private walls.</h3>
 			</div>
 		</div>

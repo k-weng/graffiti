@@ -4,6 +4,14 @@ if (Groups.find().count() == 0){
 }
 
 Meteor.methods({
+
+	addCurrent: function(message){
+		Groups.update({_id:message.groupId},
+		{
+			$set:{currentMessage:message.text}
+		});
+	},
+
 	addGroup: function(groupName, currentUser, isPrivate, msgTime)
 	{		
 		var groupId = Groups.insert({
@@ -13,7 +21,8 @@ Meteor.methods({
 			privateGroup: isPrivate,
 			sprays:0,
 			timestamp: Date.now(),
-			msgTime: msgTime
+			msgTime: msgTime,
+			currentMessage: "No messages yet"
 		});
 
 		return{_id:groupId};
