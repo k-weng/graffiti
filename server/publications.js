@@ -7,9 +7,8 @@ Meteor.publish('groups', function() {
 	return Groups.find({});
 });
 
-Meteor.publish('myMessages', function (user) {
-	console.log("My messages published ", user)
-	return Messages.find({userId: user});
+Meteor.publish('myMessages', function(userId){
+	return Messages.find({userId:userId});
 });
 
 Meteor.publish('messages', function (group) {

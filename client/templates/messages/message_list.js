@@ -2,7 +2,7 @@
 Template.messageList.events({
     'click .textClass': function(event, template) {
         console.log($(event.currentTarget).data("id"));
-        Meteor.call("messageVote", $(e.currentTarget).data("id"), Meteor.user(), function (res, err) {
+        Meteor.call("messageVote", $(event.currentTarget).data("id"), Meteor.user(), function (res, err) {
             console.log(res);
             console.log(err);
             if(err) {
@@ -19,11 +19,11 @@ Template.messageList.events({
     }
 });
 
-// Template.messageList.helpers({
-//     messages: function() {
-//         return Messages.find();
-//     }
-// });
+Template.messageList.helpers({
+    messages: function() {
+        return Messages.find();
+    }
+});
 
 Template.messageList.onCreated(function() {
 	var self = this;
@@ -96,11 +96,10 @@ function myGraph(el){
       removeNode(d);
     });
 
-    // div.html("<small>" + new Date(d.timestamp) + "<div> Clicks: " + d.votes + " </div>" + "</small>"  + " <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
-    //       .style("font-family","Merriweather")
-    //       .style("font-size","11pt");
-    // });  
-
+// .html("<small>" + new Date(d.timestamp) + "<div> Clicks: " + d.votes + " </div>" + "</small>"  + " <hr>" +  "<div> \"" + d.text + "\"</div>" + "<br><div>   -" + d.username + "</div>")  
+//           .style("font-family","Merriweather")
+//           .style("font-size","11pt");
+  
     div.style("background-color",function(){
         var username = Meteor.user().username;
         if(Messages.find({_id:old._id,voters:username}).count()===0){

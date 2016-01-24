@@ -10,12 +10,12 @@ a {
 
 a:active {
   text-decoration: none;
-  color: #e74c3c;
+  color: gray;
 }
 
 a:hover {
   text-decoration: none;
-  color: #e74c3c;
+  color: gray;
 }
 
 a:link {
@@ -25,9 +25,11 @@ a:link {
 
 a:visited {
   text-decoration: none;
-  color: gray;
+  color: #e74c3c;
 }
-
+.body-home{
+  /*background-color: black;*/
+}
 .body-home {
   background-position: 50% 50px;
   background-size: cover;

@@ -1,8 +1,15 @@
 <template name="userPage">
-	<div>hello</div>
+<div class = "container"> 
+<div class = "row "> <h1>Your surviving messages: </h1></div>
 <ul>
 {{#each myMessages}}
-	<li>{{text}}</li>
+	{{> myMessage}}
 {{/each}}
 </ul>
+</div>
+</template>
+
+<template name="myMessage">
+	<li><h2>"{{text}}"</h2> with {{votes}} clicks in <a href="groups/{{groupId}}">{{groupName}}</a></li>
+	<hr>
 </template>

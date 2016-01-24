@@ -4,6 +4,6 @@ Template.userPage.onCreated(function(){
 
 Template.userPage.helpers({
 	myMessages: function(){
-		return Messages.find({});
+		return Messages.find({userId:Meteor.userId()});
 	}
 });
