@@ -155,6 +155,10 @@ hr.group-title {
   /*width: 150em;*/
 }
 
+#maxLife {
+  font-size: 50%;
+}
+
 #privateColor {
   color: red;
   opacity: 0.4;
