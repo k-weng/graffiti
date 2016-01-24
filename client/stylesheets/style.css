@@ -161,6 +161,7 @@ hr.group-title {
 
 #maxLife {
   font-size: 50%;
+  opacity: 0.4;
 }
 
 #privateColor {
