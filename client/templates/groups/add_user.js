@@ -1,35 +1,27 @@
 Template.addUser.events({
 	'submit .add-user': function(event) { 
 		event.preventDefault();
-		var newUser = $("#userName").val();
-		var inGroup = Groups.findOne({_id: this._id, people: {$in: [newUser]}}) == null;
+		
+		var input = $("#userToAdd").val();
 		var groupId = this._id;
-		var message = "";
-		var length = newUser.length > 0;
-		var check = (newUser === Meteor.user().username);
+		var inGroup = Groups.find({_id: groupId, people: {$in: [input]}}).count() === 1;
 
-		if (!length) message = "Please fill in an user";
-		else if (newUser === Meteor.user().username) message = "You are already in the group";
-		else if (!inGroup) message = "User is already in the group";
+		$("#userToAdd").val("");
 
-		Session.set('addUserMessages', message);
-
-		Meteor.call('doesUserExist', newUser, function (err, res) {
-			if (res === 1 && inGroup) {
-				Meteor.call('addUser', newUser, groupId);
-			} else if (res === 0 && length) {
-				Session.set('addUserMessages', "User does not exist");
-			}
-		});
-	}
-});
-
-Template.addUser.onCreated(function() {
-	Session.set('addUserMessages', "");
-});
-
-Template.addUser.helpers({
-	amessage: function() {
-		return Session.get('addUserMessages');
+		if(input && input.length) {
+			Meteor.call('doesUserExist', input, function (err, res) {
+				console.log(res);
+				console.log(inGroup);
+				if (input === Meteor.user().username) $("#userToAdd").attr('placeholder', "Can't add yourself!");
+				else if(inGroup) $("#userToAdd").attr('placeholder', "User already added!");
+				else if(res === 0) $("#userToAdd").attr('placeholder', "User doesn't exist!");
+				else {
+					Meteor.call('addUser', input, groupId);
+					$("#userToAdd").attr('placeholder', "User to Add");
+				}
+			});
+		} else {
+			$("#userToAdd").attr('placeholder', "Please fill in an user!");
+		}
 	}
 });

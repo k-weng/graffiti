@@ -88,6 +88,11 @@ input.form-control {
   margin: 7px;
 }
 
+/*Delete User*/
+.delete-user {
+  margin: 5px;
+}
+
 /*Group*/
 .group-line {
   padding: 0px;

@@ -26,7 +26,11 @@
 							{{/if}}
 
 							{{#if isPrivate}}
-								<li class = "add-user">{{> addUser}}</li>
+								<li class="add-user">{{> addUser}}</li>
+							{{/if}}
+
+							{{#if ownerOf}}
+								<li class="delete-user">{{> deleteUser}}</li>
 							{{/if}}
 						</ul>
 					</div>
