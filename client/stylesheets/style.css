@@ -36,6 +36,10 @@ a:visited {
   padding-top: 50px;
 }
 
+.demo-explanation{
+  font-size: 12pt;
+}
+
 div {
   display: block;
 }
