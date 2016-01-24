@@ -7,6 +7,9 @@ Template.addGroup.events({
 		var timeChoice = $(event.target).val();
 
 		switch (timeChoice) {
+			case "a":
+				Session.set("msgTime", (5 * 1000 * 60));
+				console.log(Session.get("msgTime"));
 			case "b":
 				Session.set("msgTime", (30 * 1000 * 60));
 				console.log(Session.get("msgTime"));
@@ -28,8 +31,7 @@ Template.addGroup.events({
 				console.log(Session.get("msgTime"));
 				break;
 			default:
-				Session.set("msgTime", (5 * 1000 * 60));
-				console.log(Session.get("msgTime"));
+				Session.set("msgTime", 0);
 		}
 
 	},
@@ -40,14 +42,18 @@ Template.addGroup.events({
 		var currentUser = Meteor.user().username;
 		var isPrivate = Session.get("isPrivate");
 		
-		$("#groupName").val("");	
-		if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
-			Meteor.call('addGroup', input, currentUser, isPrivate, Session.get("msgTime"), function (err,res) {
-				Router.go('groupPage',{_id: res._id});
-			});
+		$("#groupName").val("");
+		if (Session.get("msgTime") === 0) {
+			alert("Please select a message fade time!");	
 		} else {
-			if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
-			if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
+			if (Groups.findOne({name: input, createdBy: currentUser}) == null && input.length) {
+				Meteor.call('addGroup', input, currentUser, isPrivate, Session.get("msgTime"), function (err,res) {
+					Router.go('groupPage',{_id: res._id});
+				});
+			} else {
+				if (Groups.find({name: input, createdBy: currentUser}).count() === 1) $("#groupName").attr("placeholder", "Name exists already");
+				if (!input.length) $("#groupName").attr("placeholder", "Gotta have a name!");
+			}
 		}
 	}
 });
@@ -59,5 +65,5 @@ Template.addGroup.helpers({
 });
 
 Template.addGroup.onRendered(function() {
-	Session.set("msgTime", (5 * 1000 * 60));
+	Session.set("msgTime", 0);
 });
