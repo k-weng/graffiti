@@ -59,6 +59,11 @@ img {
   vertical-align: middle;
 }
 
+img.demo{
+  height:300px;
+  width:auto;
+}
+
 input {
   box-shadow: none;
   font-family: "Bitter";
@@ -183,6 +188,11 @@ hr.group-title {
   height: auto;
 }
 
+.nav-item{
+  font-family: "Helvetica";
+  font-size: 12pt;
+}
+
 .container-fluid .full-width {
   padding-left: 0;
   padding-right: 0;
@@ -233,6 +243,10 @@ hr.group-title {
   padding-top: 0px;
 }
 
+.demo-title{
+  /*background-color: #e74c3c;*/
+}
+
 .title {
   font-size: 60px;
   font-weight: 300;
@@ -241,6 +255,10 @@ hr.group-title {
 /*Layout*/
 .main-container.container-fluid {
   padding: 0;
+}
+
+.demo-container{
+  background-color: #e74c3c;
 }
 
 /*Loading*/
