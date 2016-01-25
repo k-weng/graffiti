@@ -10,6 +10,7 @@ Template.addGroup.events({
 			case "a":
 				Session.set("msgTime", (5 * 1000 * 60));
 				console.log(Session.get("msgTime"));
+				break;
 			case "b":
 				Session.set("msgTime", (30 * 1000 * 60));
 				console.log(Session.get("msgTime"));
@@ -33,7 +34,7 @@ Template.addGroup.events({
 			default:
 				Session.set("msgTime", 0);
 		}
-
+		console.log(Session.get("msgTime"));
 	},
 	
 	'submit .add-group': function(event) {
