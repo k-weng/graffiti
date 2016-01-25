@@ -2,7 +2,7 @@ Template.addUser.events({
 	'submit .add-user': function(event) { 
 		event.preventDefault();
 		
-		var input = $("#userToAdd").val();
+		var input = $("#userToAdd").val().trim();
 		var groupId = this._id;
 		var inGroup = Groups.find({_id: groupId, people: {$in: [input]}}).count() === 1;
 
