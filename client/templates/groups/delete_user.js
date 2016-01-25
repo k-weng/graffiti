@@ -2,7 +2,7 @@ Template.deleteUser.events({
 	'submit .delete-user': function (event) { 
 		event.preventDefault();
 
-		var input = $("#userToRemove").val();
+		var input = $("#userToRemove").val().trim();
 		var groupId = this._id;
 		var inGroup = Groups.find({_id: groupId, people: {$in: [input]}}).count() === 1;
 
