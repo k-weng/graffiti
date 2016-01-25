@@ -7,7 +7,7 @@ Template.messageSend.events({
 
 		e.preventDefault();
 		var input = $("#message-input").val();
-
+		input = input.trim();
 		if(input && input.length) {
 			if(input.length>500){
 				$("#message-input").val("");
@@ -52,6 +52,7 @@ Template.messageSend.events({
 			$("#message-input").attr("placeholder","Say something!");
 			}
 		} else {
+			$("#message-input").val("");
 			$("#message-input").attr("placeholder","You can't say nothing!");
 		}
 		// Router.go('groupPage',)

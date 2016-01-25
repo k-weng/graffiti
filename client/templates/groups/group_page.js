@@ -36,7 +36,7 @@ Template.groupPage.helpers({
 		console.log(hours);
 		console.log(days);
 		if (days > 0) return (days + " Day");
-		else if (hours > 0) return hours === 1 ? "1 Hour" : (hours + " Hours");
-		else if (minutes > 0) return minutes + " Minutes";
+		else if (hours > 0) return hours === 1 ? "1 Hour" : (hours + " hours");
+		else if (minutes > 0) return minutes + " minutes";
 	}
 });

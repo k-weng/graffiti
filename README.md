@@ -3,6 +3,9 @@ boba-team
 
 Resources Used:
 ===============
+d3.js graphing library:
+http://d3js.org
+
 "Building a Bubble Cloud"
 article: http://vallandingham.me/building_a_bubble_cloud.html
 code: https://github.com/vlandham/bubble_cloud

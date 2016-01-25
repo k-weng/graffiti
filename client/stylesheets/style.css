@@ -28,7 +28,7 @@ a:visited {
   color: #e74c3c;
 }
 .body-home{
-  /*background-color: black;*/
+  background-color: #ecf0f1;
 }
 .body-home {
   background-position: 50% 50px;
@@ -64,8 +64,8 @@ img {
 }
 
 img.demo{
-  height:300px;
-  width:auto;
+  width:500px;
+  height:auto;
 }
 
 input {
@@ -95,6 +95,8 @@ input.form-control {
 /*Delete Group*/
 .delete-group {
   margin: 7px;
+/*  border-radius: 6px;
+  background-color: #e74c3c;*/
 }
 
 /*Delete User*/
@@ -104,6 +106,7 @@ input.form-control {
 
 /*Group*/
 .group-line {
+  border-color: #2c3e50;
   padding: 0px;
 }
 
@@ -136,11 +139,53 @@ hr.group-title {
   margin-top: 15px;
 }
 
+.dropdown-toggle.btn-primary{
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.dropdown-toggle.btn-primary:active{
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.dropdown-toggle.btn-primary:focus{
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.btn{
+  border-color: #e74c3c;
+  background-color: #e74c3c;
+}
+
+.btn:hover{
+  background-color: #7f8c8d;
+}
+
+.btn:focus{
+  background-color: #7f8c8d;
+}
+
+.btn:active{
+  background-color: #7f8c8d;
+}
+
+.btn:visited{
+  background-color: #7f8c8d;
+}
+
+svg{
+  /*background-color: #ecf0f1;*/
+  border-radius: 6px;
+}
+
 .scrollable {
-  height: 200px;
+  background-color: #d6d9dc;
+  height: 400px;
   overflow: auto;
   border-radius: 6px;
-  background-color: rgba(189, 195, 199, .8);
+  /*background-color: #ecf0f1;*/
   padding-top: 10px;
   padding-bottom: 5px;
   padding-right: 10px;
@@ -160,7 +205,7 @@ hr.group-title {
 }
 
 #maxLife {
-  font-size: 50%;
+  font-size: 100%;
 }
 
 #privateColor {

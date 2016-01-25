@@ -110,6 +110,7 @@ function myGraph(el){
         }
     });
   };
+  
   this.addNode = function(doc){
     nodes.push(doc);
     update();
