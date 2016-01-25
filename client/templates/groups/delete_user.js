@@ -10,8 +10,6 @@ Template.deleteUser.events({
 
 		if(input && input.length) {
 			Meteor.call('doesUserExist', input, function (err, res) {
-				console.log(res);
-				console.log(inGroup);
 				if(res === 0 || !inGroup) $("#userToRemove").attr('placeholder', "User isn't in this Wall!");
 				else if(res === 1 && inGroup) {
 					Meteor.call('deleteUser', input, groupId);

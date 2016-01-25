@@ -9,32 +9,25 @@ Template.addGroup.events({
 		switch (timeChoice) {
 			case "a":
 				Session.set("msgTime", (5 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			case "b":
 				Session.set("msgTime", (30 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			case "c":
 				Session.set("msgTime", (60 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			case "d":
 				Session.set("msgTime", (4 * 60 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			case "e":
 				Session.set("msgTime", (12 * 60 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			case "f":
 				Session.set("msgTime", (24 * 60 * 1000 * 60));
-				console.log(Session.get("msgTime"));
 				break;
 			default:
 				Session.set("msgTime", 0);
 		}
-		console.log(Session.get("msgTime"));
 	},
 	
 	'submit .add-group': function(event) {
