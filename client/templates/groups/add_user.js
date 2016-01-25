@@ -10,8 +10,6 @@ Template.addUser.events({
 
 		if(input && input.length) {
 			Meteor.call('doesUserExist', input, function (err, res) {
-				console.log(res);
-				console.log(inGroup);
 				if (input === Meteor.user().username) $("#userToAdd").attr('placeholder', "Can't add yourself!");
 				else if(inGroup) $("#userToAdd").attr('placeholder', "User already added!");
 				else if(res === 0) $("#userToAdd").attr('placeholder', "User doesn't exist!");
