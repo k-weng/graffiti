@@ -4,7 +4,7 @@ Template.messageSend.events({
 	"submit .submit-message": function(e, t){
 
 		console.log(t.data._id);
-
+		console.log(t.data);
 		e.preventDefault();
 		var input = $("#message-input").val();
 		input = input.trim();
@@ -24,12 +24,13 @@ Template.messageSend.events({
 				r = 60;
 			}
 
+			// var groupName = 
 			var message = {
 				userId:Meteor.userId(), 
 				text: input,
 				timestamp: Date.now(),
 				groupId: t.data._id,
-				groupName: Session.get("currentGroup"),
+				groupName: t.data.name,
 				transparency: 1,
 				radius:r,
 				live: 1

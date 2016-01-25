@@ -51,6 +51,10 @@ h1 {
 
 }
 
+.carousel-caption{
+  color:black;
+}
+
 h2 {
   font-family: "Bitter";
   width: 100%;
@@ -64,8 +68,8 @@ img {
 }
 
 img.demo{
-  width:500px;
-  height:auto;
+  width:auto;
+  height:400px;
 }
 
 input {
@@ -144,14 +148,25 @@ hr.group-title {
   border-color: #e74c3c;
 }
 
+.dropdown-toggle.btn-primary{
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
 .dropdown-toggle.btn-primary:active{
   background-color: #e74c3c;
   border-color: #e74c3c;
 }
 
-.dropdown-toggle.btn-primary:focus{
+/*.dropdown-toggle.btn-primary:focus{
   background-color: #e74c3c;
-  border-color: #e74c3c;
+  border-color: blue;
+}*/
+
+.open>.dropdown-toggle.btn-primary:focus{
+  background-color: #e74c3c;
+  outline: -webkit-focus-ring-color auto 5px;
+  /*border-color: blue;*/
 }
 
 .btn{
@@ -160,19 +175,19 @@ hr.group-title {
 }
 
 .btn:hover{
-  background-color: #7f8c8d;
+  background-color: #c0392b;
 }
 
-.btn:focus{
+/*.btn:focus{
   background-color: #7f8c8d;
-}
+}*/
 
 .btn:active{
-  background-color: #7f8c8d;
+  background-color: #c0392b;
 }
 
 .btn:visited{
-  background-color: #7f8c8d;
+  background-color: #c0392b;
 }
 
 svg{
@@ -189,14 +204,25 @@ svg{
   padding-top: 10px;
   padding-bottom: 5px;
   padding-right: 10px;
-  margin:10px;
+  /*margin:10px;*/
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.tutorial{
+  height:100%;
 }
 
 #wall {
   padding-right: 0px;
   padding-left: 0px;
+  margin-left: 29px;
 } /*Also in Group Page*/
 
+.message-wall {
+  padding-right: 0px;
+  padding-left: 0px;
+} 
 /*Group Page*/
 .groupName {
   /*position:fixed;*/

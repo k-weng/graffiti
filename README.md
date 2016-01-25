@@ -27,3 +27,9 @@ http://mhyfritz.com/blog/2014/08/16/reactive-d3-meteor/
 
 "Building a Slack Clone in Meteor"
 https://scotch.io/tutorials/building-a-slack-clone-in-meteor-js-getting-started
+
+"Discover Meteor" by Tom Coleman and Sacha Greif 
+https://www.discovermeteor.com
+
+"Collision Detection"
+http://bl.ocks.org/mbostock/3231298

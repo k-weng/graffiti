@@ -1,7 +1,7 @@
 <template name="groupPage">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
+			<div class="col-sm-12 col-md-12 col-lg-12 message-wall">
 				<h1 class="groupName">
 					{{ name }}
 					<small id="{{ colorOfGroup }}">{{ typeOfGroup }} wall with <span id="maxLife">{{ maxLife }}</span> fade time</small>
@@ -12,7 +12,7 @@
 
 		{{#if requireDropdown}}
 			<div class="row">
-				<div class="col-sm-12 col-md-12 col-lg-12" id="wall">
+				<div class="col-sm-12 col-md-12 col-lg-12 message-wall">
 					<div class="dropdown userDropdown">
 						<button class="btn btn-primary dropdown-toggle settings glyphicon glyphicon-cog" type="image" src="/public/settings.png" data-toggle="dropdown">
 						</button>
