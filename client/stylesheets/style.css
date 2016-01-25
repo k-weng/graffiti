@@ -195,6 +195,12 @@ svg{
   border-radius: 6px;
 }
 
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
 .scrollable {
   background-color: #d6d9dc;
   height: 400px;
