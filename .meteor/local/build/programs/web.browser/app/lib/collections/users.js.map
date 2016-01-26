@@ -1,0 +1,1 @@
+{"version":3,"sources":["meteor://💻app/lib/collections/users.js"],"names":[],"mappings":";;;;;;;;AAAA,MAAM,CAAC,KAAK,CAAC,IAAI,CAAC;AAChB,QAAM,EAAE,YAAW;AACjB,WAAO,IAAI,CAAC;GACb;CACF,CAAC,CAAC,sE","file":"/lib/collections/users.js","sourcesContent":["Meteor.users.deny({\n  update: function() {\n    return true;\n  }\n});"]}

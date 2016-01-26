@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"tutorial\");\nTemplate[\"tutorial\"] = new Template(\"Template.tutorial\", (function() {\n  var view = this;\n  return HTML.Raw('<div class=\"container\">\\n<div class=\"row\">\\n\t<img src=\"/addGroup.gif\">\\n</div>\\n</div>');\n}));\n","bodyAttrs":{}}

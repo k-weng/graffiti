@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"addGroup\");\nTemplate[\"addGroup\"] = new Template(\"Template.addGroup\", (function() {\n  var view = this;\n  return HTML.Raw('<form class=\"add-group\">\\n\t\t<input type=\"text\" id=\"groupName\">\\n\t\t<input type=\"submit\" name=\"Submit\">\\n\t</form>');\n}));\n","bodyAttrs":{}}

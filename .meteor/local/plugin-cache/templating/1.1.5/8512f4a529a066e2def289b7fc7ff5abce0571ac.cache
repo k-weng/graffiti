@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"loginRequired\");\nTemplate[\"loginRequired\"] = new Template(\"Template.loginRequired\", (function() {\n  var view = this;\n  return HTML.Raw(\"<p>You need to be logged in. </p>\");\n}));\n","bodyAttrs":{}}

@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"quitGroup\");\nTemplate[\"quitGroup\"] = new Template(\"Template.quitGroup\", (function() {\n  var view = this;\n  return HTML.Raw('<form class=\"quit-group\">\\n\t\t<input type=\"submit\" value=\"Quit the Group\">\\n\t</form>');\n}));\n","bodyAttrs":{}}

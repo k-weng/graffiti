@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"deleteGroup\");\nTemplate[\"deleteGroup\"] = new Template(\"Template.deleteGroup\", (function() {\n  var view = this;\n  return HTML.Raw('<form class=\"delete-group\">\\n\t\t<input class=\"delete-group\" type=\"submit\" value=\"Delete Wall\">\\n\t</form>');\n}));\n","bodyAttrs":{}}

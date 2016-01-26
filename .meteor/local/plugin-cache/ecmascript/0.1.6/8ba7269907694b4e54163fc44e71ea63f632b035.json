@@ -1,0 +1,1 @@
+{"metadata":{"modules":{"imports":[],"exports":{"exported":[],"specifiers":[]}},"usedHelpers":[]},"ignored":false,"code":"// Accounts.ui.config({\n//     passwordSignupFields: 'USERNAME_ONLY'\n// });","ast":null,"map":{"version":3,"sources":[],"names":[],"mappings":"","file":"/client/configs.js.map","sourcesContent":[]},"hash":"8ba7269907694b4e54163fc44e71ea63f632b035"}

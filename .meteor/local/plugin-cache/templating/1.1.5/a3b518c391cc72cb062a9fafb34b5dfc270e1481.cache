@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"messageSend\");\nTemplate[\"messageSend\"] = new Template(\"Template.messageSend\", (function() {\n  var view = this;\n  return HTML.Raw('<form class=\"submit-message\">\\n\t\t<input type=\"text\" id=\"message-input\" placeholder=\"comment\">\\n\t</form>');\n}));\n","bodyAttrs":{}}
