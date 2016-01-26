@@ -13,10 +13,8 @@ http://www.w3schools.com/bootstrap/bootstrap_carousel.asp
 d3.js graphing library:
 http://d3js.org
 
-"Building a Bubble Cloud"
-article: http://vallandingham.me/building_a_bubble_cloud.html
-code: https://github.com/vlandham/bubble_cloud
-used: collide and gravity functions
+"Building a Bubble Cloud" by Jim Vallandingham
+http://vallandingham.me/building_a_bubble_cloud.html
 
 http://stackoverflow.com/questions/17007664/forect-layout-graph-is-re-drawing-in-d3-when-meteor-db-updates
 
