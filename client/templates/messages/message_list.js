@@ -38,6 +38,8 @@ Template.messageList.onCreated(function() {
 });
 
 Template.messageList.onRendered(function(){
+// "Adding New Nodes to Force Directed Layout" myGraph function modified from code found from snippet found on:
+// http://stackoverflow.com/questions/9539294/adding-new-nodes-to-force-directed-layout
 var graph,
     color = d3.scale.category10();
 var maxLife = Groups.findOne({_id:Router.current().params._id}).msgTime;
@@ -360,6 +362,9 @@ function myGraph(el){
 
     function collide(node) {
       // console.log("collide");
+      //Collide function taken from:
+      // "Building a Bubble Cloud"
+      // article: http://vallandingham.me/building_a_bubble_cloud.html
       var r = node.radius + 16,
           nx1 = node.x - r,
           nx2 = node.x + r,
