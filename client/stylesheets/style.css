@@ -116,7 +116,7 @@ input.form-control {
 
 /*Delete Group*/
 .delete-group {
-  margin: 7px;
+  margin: 5px;
 /*  border-radius: 6px;
   background-color: #e74c3c;*/
 }
@@ -453,7 +453,7 @@ svg {
 
 /*Quit Group*/
 .quit-group {
-  margin: 15px;
+  margin: 5px;
 }
 
 /*Last Minutes Touches*/
@@ -486,8 +486,13 @@ input[type=submit] {
   transform: scaleX(0);
   transition: .25s linear;
 }
+
 .group:hover:before,
 .group:focus:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+.adjust {
+  margin: 5px;
 }
