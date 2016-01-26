@@ -3,8 +3,8 @@ var linearScale = d3.scale.linear().domain([0,15]).range([15,60]);
 Template.messageSend.events({
 	"submit .submit-message": function(e, t){
 
-		console.log(t.data._id);
-		console.log(t.data);
+		// console.log(t.data._id);
+		// console.log(t.data);
 		e.preventDefault();
 		var input = $("#message-input").val();
 		input = input.trim();
@@ -13,8 +13,8 @@ Template.messageSend.events({
 				$("#message-input").val("");
 				$("#message-input").attr("placeholder","You're saying too much! (500 char limit)");
 			}else{
-			console.log(input);
-			console.log("submitted");
+			// console.log(input);
+			// console.log("submitted");
 
 			// e.stopPropagation();
 			var r = 0;

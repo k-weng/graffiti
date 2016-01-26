@@ -392,6 +392,12 @@ svg {
   height: 50%;
 }
 
+a.get-started-link{
+  color:white;
+  font-size: 15pt;
+  margin:5px;
+}
+
 .textClass {   
   width: 10px;
   font-family: "Merriweather";

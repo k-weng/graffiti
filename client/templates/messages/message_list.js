@@ -1,17 +1,17 @@
 // var dateFormat = require('dateformat');
 Template.messageList.events({
     'click .textClass': function(event, template) {
-        console.log($(event.currentTarget).data("id"));
+        // console.log($(event.currentTarget).data("id"));
         Meteor.call("messageVote", $(event.currentTarget).data("id"), Meteor.user(), function (res, err) {
-            console.log(res);
-            console.log(err);
+            // console.log(res);
+            // console.log(err);
             if(err) {
                 Errors.throw(err.reason);
             } else {
                 if(res==="already") {
                     alert("Already Voted");
                 } else {
-                    console.log("successfully voted");
+                    // console.log("successfully voted");
                 }
             }
         });
@@ -30,9 +30,9 @@ Template.messageList.onCreated(function() {
     Session.set('loaded',false);
 	self.autorun(function() {
         Meteor.subscribe('messages', Router.current().params._id, function() {
-            console.log("params id "+Router.current().params._id);
+            // console.log("params id "+Router.current().params._id);
             Session.set('loaded',true);
-            console.log("subscribe 2");
+            // console.log("subscribe 2");
         });
 	});
 });
@@ -43,7 +43,7 @@ Template.messageList.onRendered(function(){
 var graph,
     color = d3.scale.category10();
 var maxLife = Groups.findOne({_id:Router.current().params._id}).msgTime;
-console.log("MAXLIFE " + maxLife)
+// console.log("MAXLIFE " + maxLife)
 graph = new myGraph("#vis");
 Messages.find({groupId:Router.current().params._id}).observe({
   added: function (doc) {
@@ -65,8 +65,8 @@ function myGraph(el){
 
 
   this.updateNode = function(updated, old){
-    console.log("updateNode"); 
-    console.log(old._id);
+    // console.log("updateNode"); 
+    // console.log(old._id);
     var n = findNode(old._id);
     // // debugger
     n.votes = updated.votes;
@@ -85,11 +85,11 @@ function myGraph(el){
     .transition()
     .duration(10)
     .style("opacity",function(d){
-      console.log("life "+d.life/1000);
-      console.log("new opacity "+d.life/maxLife);
+      // console.log("life "+d.life/1000);
+      // console.log("new opacity "+d.life/maxLife);
       return d.life/maxLife;})
     .transition()
-    .duration(function(d){console.log(d.life, maxLife);return d.life;})
+    .duration(function(d){/*console.log(d.life, maxLife);*/return d.life;})
     .style("opacity",0)
     .each('end',function(d){
       div.transition()    
@@ -108,7 +108,7 @@ function myGraph(el){
         }
     });
 
-    console.log(n.votes,Date(n.timestamp));
+    // console.log(n.votes,Date(n.timestamp));
 
     div.html("<small>" + new Date(n.timestamp) + "<div> Clicks: " + n.votes + " </div>" + "</small>"  + " <hr>" +  "<div> \"" + n.text + "\"</div>" + "<br><div>   -" + n.username + "</div>")  
         .style("font-family","Merriweather")
@@ -149,7 +149,7 @@ function myGraph(el){
 
   var w = window.innerWidth - 200,
       h = window.innerHeight - 50;
-      console.log(window.innerHeight,window.innerWidth);
+      // console.log(window.innerHeight,window.innerWidth);
 
   var svg = d3.select(el)
     .append("svg:svg")
@@ -196,7 +196,7 @@ function myGraph(el){
     // .style("fill", function(d, i) { return "red"; })
     .style("opacity",0)
     .attr("id", function(d){
-        console.log(d.text + " " + d._id + " add id");
+        // console.log(d.text + " " + d._id + " add id");
         return "circle-"+d._id;
     });
 
@@ -207,7 +207,7 @@ function myGraph(el){
     .style("text-anchor","middle")
     .text(function(d){
       if(d.text.length>15){
-        console.log(d.text.length);
+        // console.log(d.text.length);
         return "\"" + d.text.substring(0,16) + "...\"";
       }
       else{
@@ -215,7 +215,7 @@ function myGraph(el){
       }
     })
     // .call(wrap,30)
-    .style("opacity",function(d){console.log(d.text + " " + d.life);return d.life/maxLife})
+    .style("opacity",function(d){/*console.log(d.text + " " + d.life);*/return d.life/maxLife})
     .transition()
     .duration(function(d){return d.life})
     .style("opacity",0)
@@ -229,12 +229,12 @@ function myGraph(el){
         return d._id;
     })
     .attr("id", function(d){
-        console.log(d.text + " " + d._id + " add id");
+        // console.log(d.text + " " + d._id + " add id");
         return "node-"+d._id;
     });
 
   node.on("click",function(d){
-      console.log(d.text);
+      // console.log(d.text);
     })
     .on("mouseover", function(d) {    
       div.transition()    

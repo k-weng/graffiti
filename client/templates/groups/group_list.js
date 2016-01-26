@@ -65,13 +65,13 @@ Template.groupList.helpers({
 		var o = Session.get("order");
 		// return Groups.find({people: {$in: [currentUser]}, privateGroup: true},{sort:{s:o}});
 		if(s === "sprays"){
-			console.log("here")
+			// console.log("here")
 			return Groups.find({privateGroup: false}, {sort: {sprays: -1}});
 		} else if(s === "oldest"){
-			console.log("here")
+			// console.log("here")
 			return Groups.find({privateGroup: false}, {sort: {timestamp: 1}});
 		} else if(s === "recent"){
-			console.log("here")
+			// console.log("here")
 			return Groups.find({privateGroup: false}, {sort: {timestamp: -1}});
 		}
 	}
