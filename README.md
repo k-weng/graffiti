@@ -40,3 +40,6 @@ https://www.discovermeteor.com
 
 "Collision Detection"
 http://bl.ocks.org/mbostock/3231298
+
+"Components"
+https://getbootstrap.com/components
