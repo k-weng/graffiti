@@ -53,6 +53,11 @@ Template.addGroup.events({
 				} 
 			}
 		}
+	},
+
+	'click #groupName': function(event) {
+		event.preventDefault();
+		$("#groupName").attr("placeholder", "Name of Wall");
 	}
 });
 
