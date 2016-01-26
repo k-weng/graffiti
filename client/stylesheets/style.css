@@ -221,6 +221,8 @@ svg{
 
 .footer{
   /*background-color: #e74c3c;*/
+  /*position:fixed;*/
+  /*bottom: 0;*/
   text-align: right;
   background-color: gray;
 }
