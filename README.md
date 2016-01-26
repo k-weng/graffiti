@@ -3,6 +3,13 @@ boba-team
 
 Resources Used:
 ===============
+
+"Deface, demolish, develop: gentrification vs graffiti"
+http://galleryhip.com/graffiti-subway.html
+
+"Bootstrap Carousel Plugin"
+http://www.w3schools.com/bootstrap/bootstrap_carousel.asp
+
 d3.js graphing library:
 http://d3js.org
 

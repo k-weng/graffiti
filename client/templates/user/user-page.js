@@ -15,8 +15,8 @@ Template.userPage.helpers({
 Template.myMessage.helpers({
 	myVotes:function(){
 		if(this.votes===1){
-			return this.votes + " vote"
+			return this.votes + " click"
 		}
-		else return this.votes + " votes";
+		else return this.votes + " clicks";
 	}
 });

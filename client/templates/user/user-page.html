@@ -1,7 +1,11 @@
 <template name="userPage">
 <div class = "container"> 
-<div class = "row "> <h1>Your surviving messages: </h1></div>
+<div class = "row "> 
+	<h1>Your surviving messages: </h1>
+	<hr class="group-line">
+</div>
 
+<div class = "row "> 
 {{#if hasMessages}}
 <div class="scrollable">
 <ul>
@@ -11,10 +15,11 @@
 </ul>
 </div>
 {{else}}
-<div><h3>You haven't posted any messages yet.</h3></div>
+<div><h3>You have no messages currently posted.</h3></div>
 {{/if}}
-
 </div>
+</div>
+
 </template>
 
 <template name="myMessage">
