@@ -27,6 +27,11 @@ a:visited {
   text-decoration: none;
   color: #e74c3c;
 }
+
+.at-btn {
+  color: white !important;
+}
+
 .body-home{
   background-color: #ecf0f1;
 }
@@ -34,6 +39,15 @@ a:visited {
   background-position: 50% 50px;
   background-size: cover;
   padding-top: 50px;
+}
+
+.btn-default {
+  color: white;
+}
+
+.btn-primary {
+  background-color: #e74c3c !important;
+  border-color: #e74c3c !important;
 }
 
 .demo-explanation{
@@ -79,6 +93,10 @@ input {
 
 ul {
   list-style-type: none;
+}
+
+.whitetext{
+  color: white !important;
 }
 
 /*Add Group*/
@@ -129,7 +147,7 @@ input.form-control {
 }
 
 .dropdown-menu {
-  width: 500px;
+  width: 510px;
   padding: 5px;
 } /*Also in Group Page*/
 
@@ -141,6 +159,10 @@ hr.group-title {
   height: 35px;
   width: 50px;
   margin-top: 15px;
+}
+
+.small-drop {
+  width: auto;
 }
 
 .dropdown-toggle.btn-primary{
@@ -433,5 +455,42 @@ svg {
 
 /*Quit Group*/
 .quit-group {
-  margin-left: 6px;
+  margin: 6px;
+}
+
+/*Last Minutes Touches*/
+input[type=submit] {
+  background: #e74c3c;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  color: white;
+}
+
+.group{
+  text-decoration: none;
+  margin:0;
+  padding:0;
+  border:0 none;
+  position: relative;
+  outline: none;
+}
+
+.group:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #e74c3c;
+  visibility: hidden;
+  border-radius: 5px;
+  transform: scaleX(0);
+  transition: .25s linear;
+}
+
+.group:hover:before,
+.group:focus:before {
+  visibility: visible;
+  transform: scaleX(1);
 }
