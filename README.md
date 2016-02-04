@@ -1,4 +1,6 @@
-boba-team
+Graffiti
+
+Graffiti gives users a place to create unstructured message boards. The messages posted to these boards disappear after a certain amount of time. Users can vote on messages to increase their lifespan.
 =========
 
 Resources Used:
